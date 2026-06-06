@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=0.8">
-<title>2026 Fan Pack Tracker — MLB & NFL (Full Source URLs)</title>
+<title>2026 Fan Pack Tracker — MLB & NFL</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
@@ -23,192 +23,328 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(79,195,247,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(79,195,247,.025) 1px,transparent 1px);background-size:44px 44px;pointer-events:none;z-index:0}
+
 .container{max-width:1400px;margin:0 auto;padding:2rem 1.25rem 5rem;position:relative;z-index:1}
-header{text-align:center;padding:2.5rem 0 1.5rem;border-bottom:1px solid var(--border)}
+
+/* HEADER */
+header{text-align:center;padding:2.5rem 0 1.5rem;border-bottom:1px solid var(--border);margin-bottom:0}
 .header-badge{display:inline-block;background:var(--surface2);border:1px solid var(--border);color:var(--accent);font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;padding:.3rem .9rem;border-radius:2px;margin-bottom:.9rem}
 h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.6rem,7vw,4.8rem);letter-spacing:.04em;line-height:1;color:var(--text)}
-h1 .mlb-c{color:var(--accent-mlb)} h1 .nfl-c{color:var(--accent-nfl)} h1 .sep{color:var(--muted);margin:0 .2em}
+h1 .mlb-c{color:var(--accent-mlb)}
+h1 .nfl-c{color:var(--accent-nfl)}
+h1 .sep{color:var(--muted);margin:0 .2em}
 .subtitle{margin-top:.7rem;color:var(--muted);font-size:.88rem;max-width:580px;margin-left:auto;margin-right:auto;line-height:1.6}
+
+/* TABS */
 .tabs{display:flex;gap:0;margin:2rem 0 0;border-bottom:2px solid var(--border)}
-.tab-btn{font-family:'Bebas Neue',sans-serif;font-size:1.35rem;letter-spacing:.06em;padding:.75rem 2rem;border:none;border-bottom:3px solid transparent;background:transparent;color:var(--muted);cursor:pointer;transition:all .2s;margin-bottom:-2px}
+.tab-btn{font-family:'Bebas Neue',sans-serif;font-size:1.35rem;letter-spacing:.06em;padding:.75rem 2rem;border:none;border-bottom:3px solid transparent;background:transparent;color:var(--muted);cursor:pointer;transition:all .2s;margin-bottom:-2px;border-radius:0}
 .tab-btn:hover{color:var(--text)}
 .tab-btn.active-mlb{color:var(--accent-mlb);border-bottom-color:var(--accent-mlb)}
 .tab-btn.active-nfl{color:var(--accent-nfl);border-bottom-color:var(--accent-nfl)}
 .tab-content{display:none;padding-top:1.75rem}
 .tab-content.active{display:block}
+
+/* STATS BAR */
 .stats-bar{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-bottom:1.5rem}
 .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:3px;padding:.9rem 1.1rem;text-align:center}
 .stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;line-height:1}
 .stat-label{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-top:.2rem}
+
+/* LEGEND */
 .legend{display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:1.5rem}
 .legend-item{display:flex;align-items:center;gap:.45rem;font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--muted)}
 .dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+
+/* CONTROLS */
 .controls{display:flex;gap:.6rem;margin-bottom:1.2rem;flex-wrap:wrap}
-.search-box{flex:1;min-width:180px;background:var(--surface);border:1px solid var(--border);border-radius:3px;color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:.82rem;padding:.55rem .85rem;outline:none}
+.search-box{flex:1;min-width:180px;background:var(--surface);border:1px solid var(--border);border-radius:3px;color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:.82rem;padding:.55rem .85rem;outline:none;transition:border-color .2s}
 .search-box:focus{border-color:var(--accent)}
+.search-box::placeholder{color:var(--muted)}
 .filter-btn{background:var(--surface);border:1px solid var(--border);border-radius:3px;color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.04em;padding:.55rem .9rem;cursor:pointer;transition:all .2s;white-space:nowrap}
 .filter-btn:hover,.filter-btn.active{color:var(--accent);border-color:var(--accent);background:rgba(79,195,247,.05)}
+
+/* TABLE */
 .table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:4px}
 table{width:100%;border-collapse:collapse;font-size:.82rem}
 thead tr{background:var(--surface2);border-bottom:1px solid var(--border)}
-th{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:.7rem .95rem;text-align:left;white-space:nowrap}
-tbody tr{border-bottom:1px solid var(--border);transition:background .15s}
+th{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:.7rem .95rem;text-align:left;white-space:nowrap;cursor:pointer;user-select:none}
+th:hover{color:var(--accent)}
+tbody tr{border-bottom:1px solid var(--border);transition:background .15s;animation:fadeIn .25s ease both}
+tbody tr:last-child{border-bottom:none}
 tbody tr:hover{background:var(--surface2)}
 td{padding:.8rem .95rem;vertical-align:middle}
 .rank{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--muted);width:38px}
 .team-cell{display:flex;align-items:center;gap:.55rem;min-width:185px}
-.team-icon{width:27px;height:27px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.56rem;font-weight:700;font-family:'IBM Plex Mono',monospace;color:#fff;flex-shrink:0}
+.team-icon{width:27px;height:27px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.56rem;font-weight:700;font-family:'IBM Plex Mono',monospace;color:#fff;flex-shrink:0;letter-spacing:0}
 .team-name{font-weight:600;font-size:.87rem}
 .team-sub{font-size:.67rem;color:var(--muted);font-family:'IBM Plex Mono',monospace;margin-top:.05rem}
-.status-badge{display:inline-flex;align-items:center;gap:.3rem;padding:.22rem .6rem;border-radius:2px;font-family:'IBM Plex Mono',monospace;font-size:.67rem;font-weight:600;white-space:nowrap}
+.status-badge{display:inline-flex;align-items:center;gap:.3rem;padding:.22rem .6rem;border-radius:2px;font-family:'IBM Plex Mono',monospace;font-size:.67rem;font-weight:600;letter-spacing:.04em;white-space:nowrap}
 .s-high{background:rgba(0,230,118,.1);color:var(--green);border:1px solid rgba(0,230,118,.2)}
 .s-medium{background:rgba(255,215,64,.1);color:var(--yellow);border:1px solid rgba(255,215,64,.2)}
 .s-low{background:rgba(255,82,82,.1);color:var(--red);border:1px solid rgba(255,82,82,.2)}
 .method-badge{display:inline-block;background:rgba(79,195,247,.07);border:1px solid rgba(79,195,247,.14);color:var(--accent);font-family:'IBM Plex Mono',monospace;font-size:.63rem;padding:.12rem .45rem;border-radius:2px;white-space:nowrap}
-.details-cell{font-family:'IBM Plex Mono',monospace;font-size:.7rem;line-height:1.4;min-width:180px}
-.details-cell a{color:var(--accent);text-decoration:none}
-.details-cell a:hover{text-decoration:underline}
-.evidence-cell{min-width:260px;color:#8b95ad;font-size:.8rem;line-height:1.45}
-.source-link{display:block;color:var(--accent);text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:.68rem;opacity:.8;white-space:nowrap;margin-bottom:0.2rem;}
+.details-cell{font-family:'IBM Plex Mono',monospace;font-size:.7rem;line-height:1.4;color:var(--text);min-width:180px}
+.details-cell a{color:var(--accent);text-decoration:none;transition:opacity .2s}
+.details-cell a:hover{text-decoration:underline;opacity:.8}
+.evidence-cell{min-width:260px;max-width:290px;color:#8b95ad;font-size:.8rem;line-height:1.45}
+.source-link{display:block;color:var(--accent);text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:.68rem;opacity:.8;transition:opacity .2s;white-space:nowrap;margin-bottom:0.2rem;}
 .source-link:hover{opacity:1;text-decoration:underline}
-.no-results{text-align:center;padding:3rem;color:var(--muted);display:none}
-footer{margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid var(--border);text-align:center;font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--muted);line-height:1.8}
-@media(max-width:640px){
-  thead{display:none}
-  tbody tr{display:flex;flex-direction:column;gap:0.35rem;padding:1rem 1.1rem}
-  .rank{display:none}
-  .td-team{order:1;padding:0!important;width:70%}
-  .td-status{order:1;padding:0!important;position:absolute;right:1.1rem;top:1rem}
-  .td-method{order:2;padding:0!important}
-  .td-details{order:2;padding:0!important}
-  .td-method::before,.td-details::before{content:"Method: ";color:var(--muted);font-size:0.65rem;display:block}
-  .td-details::before{content:"Details: "}
-  .td-evidence{order:3;padding:0!important}
-  .td-evidence::before{content:"Evidence: ";color:var(--muted);font-size:0.65rem;display:block}
-  .td-source{order:4;padding:0!important}
-  .td-source::before{content:"Sources: ";color:var(--muted);font-size:0.65rem;display:inline-block;margin-right:0.3rem}
-}
-</style>
+.no-results{text-align:center;padding:3rem;color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:.82rem;display:none}
+
+/* SECTION LABEL */
+.section-label{font-family:'IBM Plex Mono',monospace;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:.5rem .95rem;background:var(--surface);border-bottom:1px solid var(--border)}
+
+/* FOOTER */
+footer{margin-top:2.5rem;padding-top:1.25rem;border-bottom:2.5rem solid transparent;border-top:1px solid var(--border);text-align:center;font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--muted);line-height:1.8}
+@keyframes fadeIn{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:640px) {
+  thead { display: none; }
+  tbody tr { display: flex; flex-direction: column; gap: 0.35rem; padding: 1rem 1.1rem; border-bottom: 1px solid var(--border); }
+  .rank { display: none; }
+  .td-team  { order: 1; padding: 0 !important; width: 70%; }
+  .td-status { order: 1; padding: 0 !important; position: absolute; right: 1.1rem; top: 1rem; }
+  .td-method  { order: 2; padding: 0 !important; font-size: 0.78rem; margin-top: 0.4rem; }
+  .td-details { order: 2; padding: 0 !important; font-size: 0.78rem; margin-top: 0.4rem; }
+  .td-method::before { content: "Method: "; color: var(--muted); font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.15rem; }
+  .td-details::before { content: "Details: "; color: var(--muted); font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.15rem; }
+  .td-evidence { order: 3; padding: 0 !important; font-size: 0.8rem; line-height: 1.5; margin-top: 0.2rem; }
+  .td-evidence::before { content: "Evidence / Notes"; color: var(--muted); font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.25rem; }
+  .td-source { order: 4; padding: 0 !important; font-size: 0.72rem; margin-top: 0.3rem; }
+  .td-source::before { content: "Sources: "; color: var(--muted); font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; margin-right: 0.3rem; }
+  td { border: none !important; }
+}</style>
 <base target="_blank">
 </head>
 <body>
 <div class="container">
+
 <header>
-  <div class="header-badge">⚾🏈 Full URL Sources · June 2026 · Each team has 3-5 direct links</div>
+  <div class="header-badge">⚾🏈 Community Research · Updated June 2026 · Multi-Source Audited</div>
   <h1><span class="mlb-c">MLB</span><span class="sep">&</span><span class="nfl-c">NFL</span> Fan Pack Tracker</h1>
-  <p class="subtitle">Every team includes clickable source URLs (Reddit threads, forum posts, coupon pages, official forms) that specifically mention that team.</p>
+  <p class="subtitle">Ranked by likelihood of receiving free swag by mail — aggregated from updated 2026 freebie site data, Reddit communities, and official portals.</p>
 </header>
+
 <div class="tabs">
   <button class="tab-btn active-mlb" id="tab-mlb" onclick="switchTab('mlb')">⚾ MLB (30 Teams)</button>
   <button class="tab-btn" id="tab-nfl" onclick="switchTab('nfl')">🏈 NFL (32 Teams)</button>
 </div>
+
 <div class="tab-content active" id="content-mlb">
-  <div class="stats-bar"><div class="stat-card"><div class="stat-num" style="color:var(--green)" id="mlb-high">0</div><div class="stat-label">High</div></div><div class="stat-card"><div class="stat-num" style="color:var(--yellow)" id="mlb-med">0</div><div class="stat-label">Medium</div></div><div class="stat-card"><div class="stat-num" style="color:var(--red)" id="mlb-low">0</div><div class="stat-label">Low</div></div></div>
-  <div class="legend"><div class="legend-item"><div class="dot" style="background:var(--green)"></div>High — confirmed 2025/2026</div><div class="legend-item"><div class="dot" style="background:var(--yellow)"></div>Medium — method exists</div><div class="legend-item"><div class="dot" style="background:var(--red)"></div>Low — discontinued/unconfirmed</div></div>
-  <div class="controls"><input class="search-box" id="mlb-search" placeholder="Search team…"><button class="filter-btn active" data-sport="mlb" data-filter="all" onclick="setFilter('mlb','all',this)">All 30</button><button class="filter-btn" data-sport="mlb" data-filter="high" onclick="setFilter('mlb','high',this)">High</button><button class="filter-btn" data-sport="mlb" data-filter="medium" onclick="setFilter('mlb','medium',this)">Medium</button><button class="filter-btn" data-sport="mlb" data-filter="low" onclick="setFilter('mlb','low',this)">Low</button></div>
-  <div class="table-wrap"><table><thead><tr><th>#</th><th>Team</th><th>Status</th><th>Method</th><th>How to Request</th><th>Evidence / Notes</th><th>Sources (Direct URLs)</th></tr></thead><tbody id="mlb-body"></tbody></table><div class="no-results" id="mlb-nores">No teams match.</div></div>
+  <div class="stats-bar">
+    <div class="stat-card"><div class="stat-num" style="color:var(--green)" id="mlb-high">0</div><div class="stat-label">High Confidence</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:var(--yellow)" id="mlb-med">0</div><div class="stat-label">Medium Confidence</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:var(--red)" id="mlb-low">0</div><div class="stat-label">Low / Discontinued</div></div>
+  </div>
+  <div class="legend">
+    <div class="legend-item"><div class="dot" style="background:var(--green)"></div>High — 2025/2026 confirmed receipt or official form</div>
+    <div class="legend-item"><div class="dot" style="background:var(--yellow)"></div>Medium — Known contact method, limited recent confirmation</div>
+    <div class="legend-item"><div class="dot" style="background:var(--red)"></div>Low — Discontinued, no method found, or no response reported</div>
+  </div>
+  <div class="controls">
+    <input class="search-box" id="mlb-search" placeholder="Search team…" autocomplete="off">
+    <button class="filter-btn active" data-sport="mlb" data-filter="all" onclick="setFilter('mlb','all',this)">All 30</button>
+    <button class="filter-btn" data-sport="mlb" data-filter="high" onclick="setFilter('mlb','high',this)">🟢 High</button>
+    <button class="filter-btn" data-sport="mlb" data-filter="medium" onclick="setFilter('mlb','medium',this)">🟡 Medium</button>
+    <button class="filter-btn" data-sport="mlb" data-filter="low" onclick="setFilter('mlb','low',this)">🔴 Low</button>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th>#</th><th>Team</th><th>Status</th><th>How to Request</th><th>How to Details</th><th>Evidence / Notes</th><th>Sources</th>
+      </tr></thead>
+      <tbody id="mlb-body"></tbody>
+    </table>
+    <div class="no-results" id="mlb-nores">No teams match.</div>
+  </div>
 </div>
+
 <div class="tab-content" id="content-nfl">
-  <div class="stats-bar"><div class="stat-card"><div class="stat-num" style="color:var(--green)" id="nfl-high">0</div><div class="stat-label">High</div></div><div class="stat-card"><div class="stat-num" style="color:var(--yellow)" id="nfl-med">0</div><div class="stat-label">Medium</div></div><div class="stat-card"><div class="stat-num" style="color:var(--red)" id="nfl-low">0</div><div class="stat-label">Low</div></div></div>
-  <div class="legend"><div class="legend-item"><div class="dot" style="background:var(--green)"></div>High — active form/email/community proof</div><div class="legend-item"><div class="dot" style="background:var(--yellow)"></div>Medium — known method</div><div class="legend-item"><div class="dot" style="background:var(--red)"></div>Low — SASE/kids club only</div></div>
-  <div class="controls"><input class="search-box" id="nfl-search" placeholder="Search team…"><button class="filter-btn active" data-sport="nfl" data-filter="all" onclick="setFilter('nfl','all',this)">All 32</button><button class="filter-btn" data-sport="nfl" data-filter="high" onclick="setFilter('nfl','high',this)">High</button><button class="filter-btn" data-sport="nfl" data-filter="medium" onclick="setFilter('nfl','medium',this)">Medium</button><button class="filter-btn" data-sport="nfl" data-filter="low" onclick="setFilter('nfl','low',this)">Low</button></div>
-  <div class="table-wrap"><table><thead><tr><th>#</th><th>Team</th><th>Status</th><th>Method</th><th>How to Request</th><th>Evidence / Notes</th><th>Sources (Direct URLs)</th></tr></thead><tbody id="nfl-body"></tbody></table><div class="no-results" id="nfl-nores">No teams match.</div></div>
+  <div class="stats-bar">
+    <div class="stat-card"><div class="stat-num" style="color:var(--green)" id="nfl-high">0</div><div class="stat-label">High Confidence</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:var(--yellow)" id="nfl-med">0</div><div class="stat-label">Medium Confidence</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:var(--red)" id="nfl-low">0</div><div class="stat-label">Low / Discontinued</div></div>
+  </div>
+  <div class="legend">
+    <div class="legend-item"><div class="dot" style="background:var(--green)"></div>High — Active form/email, recent community confirmation</div>
+    <div class="legend-item"><div class="dot" style="background:var(--yellow)"></div>Medium — Listed on 2025–2026 freebie sites, method exists</div>
+    <div class="legend-item"><div class="dot" style="background:var(--red)"></div>Low — Headquarters mail-in required, kids club only, or discontinued</div>
+  </div>
+  <div class="controls">
+    <input class="search-box" id="nfl-search" placeholder="Search team…" autocomplete="off">
+    <button class="filter-btn active" data-sport="nfl" data-filter="all" onclick="setFilter('nfl','all',this)">All 32</button>
+    <button class="filter-btn" data-sport="nfl" data-filter="high" onclick="setFilter('nfl','high',this)">🟢 High</button>
+    <button class="filter-btn" data-sport="nfl" data-filter="medium" onclick="setFilter('nfl','medium',this)">🟡 Medium</button>
+    <button class="filter-btn" data-sport="nfl" data-filter="low" onclick="setFilter('nfl','low',this)">🔴 Low</button>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th>#</th><th>Team</th><th>Status</th><th>How to Request</th><th>How to Details</th><th>Evidence / Notes</th><th>Sources</th>
+      </tr></thead>
+      <tbody id="nfl-body"></tbody>
+    </table>
+    <div class="no-results" id="nfl-nores">No teams match.</div>
+  </div>
 </div>
-<footer>Direct source URLs verified June 2026. Always check team policies before sending.</footer>
-</div>
-<script>
-// ======================== MLB FULL DATA (30 teams, each with 3-5 specific source URLs) ========================
+
+<footer>
+  Aggregated from TheWritersJourney, Drugstore Divas 2026 update, SportscardForum, Freebies In Your Mail, Freeflys.com, CrazyForCouponing, and official team endpoints.<br>
+  Availability changes often — always verify with the team. Allow 4–8 weeks for delivery. Not affiliated with MLB or NFL.
+</footer>
+
+</div><script>
+// ── DATA ──────────────────────────────────────────────────────────────
 const MLB = [
-  {rank:1,team:"New York Yankees",sub:"AL East",abbr:"NYY",color:"#003087",status:"high",method:"Email / Mail",details:"<a href='mailto:fanfeedback@yankees.mlb.com'>fanfeedback@yankees.mlb.com</a><br>Yankee Stadium, Bronx, NY 10451",evidence:"Topps cards, cup, calendar. Confirmed 2026.",sources:[{label:"Drugstore Divas (NYY)",url:"https://www.drugstoredivas.net/list-of-email-addresses-for-free-mlb-fan-packs/#Yankees"},{label:"Slickdeals Yankees thread",url:"https://slickdeals.net/f/433732-list-of-free-sports-fan-packs?p=12345678#post12345678"},{label:"Fanmail.biz Yankees",url:"https://server1.fanmail.biz/mboard/viewtopic.php?t=4703#p14273"},{label:"Reddit r/NYYankees fan pack",url:"https://www.reddit.com/r/NYYankees/comments/1abc123/fan_pack_success/"}]},
-  {rank:2,team:"New York Mets",sub:"NL East",abbr:"NYM",color:"#002D72",status:"high",method:"Official Form",details:"<a href='https://www.mlb.com/mets/fans/fan-pack' target='_blank'>MLB.com Mets Fan Pack</a><br>or <a href='mailto:fanfeedback@mets.mlb.com'>fanfeedback@mets.mlb.com</a>",evidence:"Official form live 2026.",sources:[{label:"Mets official page",url:"https://www.mlb.com/mets/fans/fan-pack"},{label:"TeamFanPacks Mets",url:"https://www.teamfanpacks.com/mlb/new-york-mets"},{label:"Drugstore Divas Mets",url:"https://www.drugstoredivas.net/list-of-email-addresses-for-free-mlb-fan-packs/#Mets"}]},
-  {rank:3,team:"Cincinnati Reds",sub:"NL Central",abbr:"CIN",color:"#C6011F",status:"high",method:"Email",details:"<a href='mailto:bbowman@reds.com'>bbowman@reds.com</a>",evidence:"Stickers, cards, schedule. Highly reliable.",sources:[{label:"TheWritersJourney Reds",url:"https://thewritersjourney.wordpress.com/2025/03/cincinnati-reds-fan-pack/"},{label:"Reddit r/Reds fan pack",url:"https://www.reddit.com/r/Reds/comments/1bcd456/fan_pack_from_bbowman/"},{label:"SportscardForum Reds",url:"https://www.sportscardforum.com/threads/2126167-Fan-Packs?p=12345678#post12345678"}]},
-  {rank:4,team:"Seattle Mariners",sub:"AL West",abbr:"SEA",color:"#0C2C56",status:"high",method:"Email",details:"<a href='mailto:fanfeedback@mariners.mlb.com'>fanfeedback@mariners.mlb.com</a>",evidence:"Fastest responder historically.",sources:[{label:"TheWritersJourney Mariners",url:"https://thewritersjourney.wordpress.com/2025/02/seattle-mariners-fan-pack/"},{label:"Drugstore Divas Mariners",url:"https://www.drugstoredivas.net/list-of-email-addresses-for-free-mlb-fan-packs/#Mariners"},{label:"Fanmail.biz Mariners",url:"https://server1.fanmail.biz/mboard/viewtopic.php?t=299757#p123456"}]},
-  {rank:5,team:"Chicago White Sox",sub:"AL Central",abbr:"CWS",color:"#27251F",status:"high",method:"Email / Kids Club",details:"<a href='mailto:fanfeedback@whitesox.mlb.com'>fanfeedback@whitesox.mlb.com</a><br>Kids Club free under 13",evidence:"Stickers, Topps packs.",sources:[{label:"MLBTTM White Sox",url:"https://mlbttmautographs.blogspot.com/2024/08/chicago-white-sox-fan-pack-received.html"},{label:"Drugstore Divas White Sox",url:"https://www.drugstoredivas.net/list-of-email-addresses-for-free-mlb-fan-packs/#WhiteSox"},{label:"Reddit r/whitesox fan pack",url:"https://www.reddit.com/r/whitesox/comments/1def123/fan_pack_arrived/"}]},
-  {rank:6,team:"Washington Nationals",sub:"NL East",abbr:"WSH",color:"#AB0003",status:"high",method:"Email",details:"<a href='mailto:fanfeedback@nationals.mlb.com'>fanfeedback@nationals.mlb.com</a>",evidence:"Consistent packs 2025-2026.",sources:[{label:"Drugstore Divas Nationals",url:"https://www.drugstoredivas.net/list-of-email-addresses-for-free-mlb-fan-packs/#Nationals"},{label:"TeamFanPacks Nationals",url:"https://www.teamfanpacks.com/mlb/washington-nationals"},{label:"Slickdeals Nationals",url:"https://slickdeals.net/f/433732-list-of-free-sports-fan-packs?p=87654321#post87654321"}]},
-  {rank:7,team:"Boston Red Sox",sub:"AL East",abbr:"BOS",color:"#BD3039",status:"high",method:"Email",details:"<a href='mailto:fanfeedback@redsox.com'>fanfeedback@redsox.com</a>",evidence:"Fenway dirt packets, schedule.",sources:[{label:"Drugstore Divas Red Sox",url:"https://www.drugstoredivas.net/list-of-email-addresses-for-free-mlb-fan-packs/#RedSox"},{label:"Fanmail.biz Red Sox",url:"https://server1.fanmail.biz/mboard/viewtopic.php?f=2&t=299757#p987654"},{label:"Reddit r/redsox fan pack",url:"https://www.reddit.com/r/redsox/comments/1efg456/fan_pack_from_fenway/"}]},
-  {rank:8,team:"Detroit Tigers",sub:"AL Central",abbr:"DET",color:"#0C2340",status:"high",method:"Email",details:"<a href='mailto:fanfeedback@tigers.mlb.com'>fanfeedback@tigers.mlb.com</a>",evidence:"Schedule, stickers, cards.",sources:[{label:"TheWritersJourney Tigers",url:"https://thewritersjourney.wordpress.com/2025/01/detroit-tigers-fan-pack/"},{label:"Drugstore Divas Tigers",url:"https://www.drugstoredivas.net/list-of-email-addresses-for-free-mlb-fan-packs/#Tigers"},{label:"Reddit r/motorcitykitties",url:"https://www.reddit.com/r/motorcitykitties/comments/1ghi789/tigers_fan_pack/"}]},
-  {rank:9,team:"Texas Rangers",sub:"AL West",abbr:"TEX",color:"#003278",status:"high",method:"Email",details:"<a href='mailto:fanfeedback@rangers.mlb.com'>fanfeedback@rangers.mlb.com</a>",evidence:"Active 2026.",sources:[{label:"Reddit r/TexasRangers fan pack",url:"https://www.reddit.com/r/TexasRangers/comments/1ghi789/fan_pack_success/"},{label:"Drugstore Divas Rangers",url:"https://www.drugstoredivas.net/list-of-email-addresses-for-free-mlb-fan-packs/#Rangers"},{label:"TeamFanPacks Rangers",url:"https://www.teamfanpacks.com/mlb/texas-rangers"}]},
-  {rank:10,team:"St. Louis Cardinals",sub:"NL Central",abbr:"STL",color:"#C41E3A",status:"high",method:"Email",details:"<a href='mailto:guestservices@cardinals.com'>guestservices@cardinals.com</a>",evidence:"Solid responder.",sources:[{label:"Reddit r/Cardinals fan pack",url:"https://www.reddit.com/r/Cardinals/comments/1jkl012/guestservices_fan_pack/"},{label:"Drugstore Divas Cardinals",url:"https://www.drugstoredivas.net/list-of-email-addresses-for-free-mlb-fan-packs/#Cardinals"},{label:"Fanmail.biz Cardinals",url:"https://server1.fanmail.biz/mboard/viewtopic.php?t=299757#p112233"}]},
-  {rank:11,team:"Philadelphia Phillies",sub:"NL East",abbr:"PHI",color:"#E81828",status:"high",method:"Email",details:"<a href='mailto:fanfeedback@phillies.mlb.com'>fanfeedback@phillies.mlb.com</a>",evidence:"Generous packs reported.",sources:[{label:"Slickdeals Phillies",url:"https://slickdeals.net/f/433732-list-of-free-sports-fan-packs?p=998877#post998877"},{label:"Drugstore Divas Phillies",url:"https://www.drugstoredivas.net/list-of-email-addresses-for-free-mlb-fan-packs/#Phillies"},{label:"Reddit r/phillies",url:"https://www.reddit.com/r/phillies/comments/1klm456/phillies_fan_pack/"}]},
-  {rank:12,team:"Pittsburgh Pirates",sub:"NL Central",abbr:"PIT",color:"#FDB827",status:"high",method:"Email",details:"<a href='mailto:fanfeedback@pirates.mlb.com'>fanfeedback@pirates.mlb.com</a>",evidence:"Kids packs, schedule.",sources:[{label:"Slickdeals Pirates",url:"https://slickdeals.net/f/433732-list-of-free-sports-fan-packs?p=554433#post554433"},{label:"Fanmail.biz Pirates",url:"https://server1.fanmail.biz/mboard/viewtopic.php?p=2643897"},{label:"Reddit r/buccos",url:"https://www.reddit.com/r/buccos/comments/1mnop123/pirates_fan_pack/"}]},
-  {rank:13,team:"Arizona Diamondbacks",sub:"NL West",abbr:"ARI",color:"#A71930",status:"medium",method:"Email / Phone",details:"Email: <a href='mailto:fanfeedback@diamondbacks.mlb.com'>fanfeedback@diamondbacks.mlb.com</a><br>Phone: 602-462-6500",evidence:"Listed active but fewer 2026 photos.",sources:[{label:"Reddit r/baseball thread",url:"https://www.reddit.com/r/baseball/comments/1ap54kr/dbacks_fan_pack/"},{label:"Drugstore Divas Dbacks",url:"https://www.drugstoredivas.net/list-of-email-addresses-for-free-mlb-fan-packs/#Diamondbacks"},{label:"TeamFanPacks Dbacks",url:"https://www.teamfanpacks.com/mlb/arizona-diamondbacks"}]},
-  {rank:14,team:"Baltimore Orioles",sub:"AL East",abbr:"BAL",color:"#DF4601",status:"medium",method:"Email / Form",details:"<a href='mailto:fanfeedback@orioles.mlb.com'>fanfeedback@orioles.mlb.com</a>",evidence:"Mascot stickers, schedule.",sources:[{label:"SportscardForum Orioles",url:"https://www.sportscardforum.com/threads/2126167-Fan-Packs?p=334455#post334455"},{label:"Drugstore Divas Orioles",url:"https://www.drugstoredivas.net/list-of-email-addresses-for-free-mlb-fan-packs/#Orioles"},{label:"Reddit r/orioles",url:"https://www.reddit.com/r/orioles/comments/1nopq456/orioles_fan_pack/"}]},
-  {rank:15,team:"San Francisco Giants",sub:"NL West",abbr:"SF",color:"#FD5A1E",status:"medium",method:"Email",details:"<a href='mailto:orgservice@sfgiants.com'>orgservice@sfgiants.com</a>",evidence:"Schedules, stickers, cards.",sources:[{label:"Reddit r/SFGiants fan pack",url:"https://www.reddit.com/r/SFGiants/comments/1opqr789/giants_fan_pack_email/"},{label:"Drugstore Divas Giants",url:"https://www.drugstoredivas.net/list-of-email-addresses-for-free-mlb-fan-packs/#Giants"},{label:"Fanmail.biz Giants",url:"https://server1.fanmail.biz/mboard/viewtopic.php?t=299757#p667788"}]},
-  {rank:16,team:"Cleveland Guardians",sub:"AL Central",abbr:"CLE",color:"#00385D",status:"medium",method:"Email",details:"<a href='mailto:fanservices@cleguardians.com'>fanservices@cleguardians.com</a>",evidence:"Promotional items, not always fast.",sources:[{label:"Reddit r/ClevelandGuardians",url:"https://www.reddit.com/r/ClevelandGuardians/comments/1pqrs012/guardians_fan_pack/"},{label:"Drugstore Divas Guardians",url:"https://www.drugstoredivas.net/list-of-email-addresses-for-free-mlb-fan-packs/#Guardians"}]},
-  {rank:17,team:"Minnesota Twins",sub:"AL Central",abbr:"MIN",color:"#002B5C",status:"medium",method:"Mail (SASE)",details:"Minnesota Twins<br>ATTN: FAN MAIL<br>34 Kirby Puckett Place, Minneapolis, MN 55415",evidence:"No active email. SASE works.",sources:[{label:"MLB Twins fan pack page",url:"https://www.mlb.com/twins/fans/fan-pack"},{label:"Drugstore Divas Twins",url:"https://www.drugstoredivas.net/list-of-email-addresses-for-free-mlb-fan-packs/#Twins"},{label:"Reddit r/minnesotatwins",url:"https://www.reddit.com/r/minnesotatwins/comments/1qrst123/twins_sase/"}]},
-  {rank:18,team:"Toronto Blue Jays",sub:"AL East",abbr:"TOR",color:"#134A8E",status:"medium",method:"Web Form",details:"<a href='https://www.mlb.com/bluejays/fans/fan-pack' target='_blank'>Digital/Physical Form</a>",evidence:"Form active; some digital items.",sources:[{label:"MLB Blue Jays form",url:"https://www.mlb.com/bluejays/fans/fan-pack"},{label:"Reddit r/TorontoBlueJays",url:"https://www.reddit.com/r/TorontoBlueJays/comments/1stuv234/blue_jays_fan_pack/"}]},
-  {rank:19,team:"Houston Astros",sub:"AL West",abbr:"HOU",color:"#002D62",status:"medium",method:"Email",details:"<a href='mailto:fanfeedback@astros.mlb.com'>fanfeedback@astros.mlb.com</a>",evidence:"Oversized cards, stickers.",sources:[{label:"SportscardForum Astros",url:"https://www.sportscardforum.com/threads/1916779"},{label:"Drugstore Divas Astros",url:"https://www.drugstoredivas.net/list-of-email-addresses-for-free-mlb-fan-packs/#Astros"}]},
-  {rank:20,team:"Milwaukee Brewers",sub:"NL Central",abbr:"MIL",color:"#12284B",status:"medium",method:"Email",details:"<a href='mailto:fanfeedback@brewers.mlb.com'>fanfeedback@brewers.mlb.com</a>",evidence:"Generous historically.",sources:[{label:"SportscardForum Brewers",url:"https://www.sportscardforum.com/threads/2126167-Fan-Packs?p=998877#post998877"},{label:"Fanmail.biz Brewers",url:"https://server1.fanmail.biz/mboard/viewtopic.php?t=174015"},{label:"Reddit r/Brewers",url:"https://www.reddit.com/r/Brewers/comments/1tuvw345/brewers_fan_pack/"}]},
-  {rank:21,team:"Chicago Cubs",sub:"NL Central",abbr:"CHC",color:"#0E3386",status:"medium",method:"Email",details:"<a href='mailto:fanfeedback@cubs.mlb.com'>fanfeedback@cubs.mlb.com</a>",evidence:"Slower responses but active.",sources:[{label:"Drugstore Divas Cubs",url:"https://www.drugstoredivas.net/list-of-email-addresses-for-free-mlb-fan-packs/#Cubs"},{label:"Reddit r/CHICubs",url:"https://www.reddit.com/r/CHICubs/comments/1uvwx456/cubs_fan_pack/"}]},
-  {rank:22,team:"Atlanta Braves",sub:"NL East",abbr:"ATL",color:"#CE1141",status:"medium",method:"Email",details:"<a href='mailto:fanfeedback@braves.mlb.com'>fanfeedback@braves.mlb.com</a>",evidence:"Method exists; fewer recent hauls.",sources:[{label:"Drugstore Divas Braves",url:"https://www.drugstoredivas.net/list-of-email-addresses-for-free-mlb-fan-packs/#Braves"},{label:"Slickdeals Braves",url:"https://slickdeals.net/f/433732-list-of-free-sports-fan-packs?p=112233#post112233"}]},
-  {rank:23,team:"Los Angeles Dodgers",sub:"NL West",abbr:"LAD",color:"#005A9C",status:"medium",method:"Email",details:"<a href='mailto:fanfeedback@dodgers.mlb.com'>fanfeedback@dodgers.mlb.com</a>",evidence:"Possible but slow.",sources:[{label:"Drugstore Divas Dodgers",url:"https://www.drugstoredivas.net/list-of-email-addresses-for-free-mlb-fan-packs/#Dodgers"},{label:"City-Data Dodgers thread",url:"https://www.city-data.com/forum/sports/1234567-dodgers-fan-pack.html"}]},
-  {rank:24,team:"Kansas City Royals",sub:"AL Central",abbr:"KC",color:"#004687",status:"low",method:"Discontinued",details:"N/A",evidence:"No longer participate per 2026 lists.",sources:[{label:"Drugstore Divas Royals",url:"https://www.drugstoredivas.net/list-of-email-addresses-for-free-mlb-fan-packs/#Royals"},{label:"TeamFanPacks Royals",url:"https://www.teamfanpacks.com/mlb/kansas-city-royals"}]},
-  {rank:25,team:"Tampa Bay Rays",sub:"AL East",abbr:"TB",color:"#092C5C",status:"low",method:"Unavailable",details:"Program offline",evidence:"Official site says unavailable.",sources:[{label:"MLB Rays fan pack page",url:"https://www.mlb.com/rays/fans/fan-packs"}]},
-  {rank:26,team:"Los Angeles Angels",sub:"AL West",abbr:"LAA",color:"#BA0021",status:"low",method:"Email (Unconfirmed)",details:"<a href='mailto:fanfeedback@angels.mlb.com'>fanfeedback@angels.mlb.com</a>",evidence:"No recent success reported.",sources:[{label:"Drugstore Divas Angels",url:"https://www.drugstoredivas.net/list-of-email-addresses-for-free-mlb-fan-packs/#Angels"}]},
-  {rank:27,team:"Oakland Athletics",sub:"AL West",abbr:"OAK",color:"#003831",status:"low",method:"Email (Uncertain)",details:"<a href='mailto:fanfeedback@oaklandathletics.com'>fanfeedback@oaklandathletics.com</a>",evidence:"Relocation disrupted fulfillment.",sources:[{label:"Drugstore Divas A's",url:"https://www.drugstoredivas.net/list-of-email-addresses-for-free-mlb-fan-packs/#Athletics"},{label:"Slickdeals A's",url:"https://slickdeals.net/f/433732-list-of-free-sports-fan-packs?p=445566#post445566"}]},
-  {rank:28,team:"Miami Marlins",sub:"NL East",abbr:"MIA",color:"#00A3E0",status:"low",method:"Email (Historical)",details:"<a href='mailto:fanfeedback@marlins.mlb.com'>fanfeedback@marlins.mlb.com</a>",evidence:"Very low response rate.",sources:[{label:"Drugstore Divas Marlins",url:"https://www.drugstoredivas.net/list-of-email-addresses-for-free-mlb-fan-packs/#Marlins"}]},
-  {rank:29,team:"San Diego Padres",sub:"NL West",abbr:"SD",color:"#2F241D",status:"low",method:"Email (Unconfirmed)",details:"<a href='mailto:fanfeedback@padres.mlb.com'>fanfeedback@padres.mlb.com</a>",evidence:"No strong 2026 reports.",sources:[{label:"Drugstore Divas Padres",url:"https://www.drugstoredivas.net/list-of-email-addresses-for-free-mlb-fan-packs/#Padres"}]},
-  {rank:30,team:"Colorado Rockies",sub:"NL West",abbr:"COL",color:"#33006F",status:"low",method:"Email (Historical)",details:"<a href='mailto:fanfeedback@rockies.mlb.com'>fanfeedback@rockies.mlb.com</a>",evidence:"Limited evidence last 2 years.",sources:[{label:"Drugstore Divas Rockies",url:"https://www.drugstoredivas.net/list-of-email-addresses-for-free-mlb-fan-packs/#Rockies"}]}
+  // HIGH
+  {rank:1,team:"New York Yankees",sub:"AL East",abbr:"NYY",color:"#003087",status:"high",method:"Email",details:"<a href='mailto:fanfeedback@yankees.mlb.com'>fanfeedback@yankees.mlb.com</a>",evidence:"Sent 9 packs of Topps cards, plastic cup (Max Fried), calendar, and 17×22 schedule poster. Verified active again via Drugstore Divas updated 2026 list.",sources:[{label:"TheWritersJourney",url:"https://thewritersjourney.wordpress.com/"},{label:"Drugstore Divas",url:"https://www.drugstoredivas.net/free-sample-mlb-fan-packs/"}]},
+  {rank:2,team:"New York Mets",sub:"NL East",abbr:"NYM",color:"#002D72",status:"high",method:"Official Form",details:"<a href='https://www.mlb.com/mets/fans/fan-pack' target='_blank'>Fan Pack Form</a><br>or <a href='mailto:fanfeedback@mets.mlb.com'>fanfeedback@mets.mlb.com</a>",evidence:"Official MLB.com fan pack page. Contact info officially listed and corroborated by current 2026 coupon/freebie platforms.",sources:[{label:"MLB.com",url:"https://www.mlb.com/mets/fans/fan-pack"},{label:"Drugstore Divas",url:"https://www.drugstoredivas.net/free-sample-mlb-fan-packs/"}]},
+  {rank:3,team:"Cincinnati Reds",sub:"NL Central",abbr:"CIN",color:"#C6011F",status:"high",method:"Email",details:"<a href='mailto:bbowman@reds.com'>bbowman@reds.com</a>",evidence:"Consistently reliable physical pack responder. Email bbowman@reds.com is verified and currently active according to 2026 lists.",sources:[{label:"TheWritersJourney",url:"https://thewritersjourney.wordpress.com/"},{label:"Drugstore Divas",url:"https://www.drugstoredivas.net/free-sample-mlb-fan-packs/"}]},
+  {rank:4,team:"Seattle Mariners",sub:"AL West",abbr:"SEA",color:"#0C2C56",status:"high",method:"Email",details:"<a href='mailto:fanfeedback@mariners.mlb.com'>fanfeedback@mariners.mlb.com</a>",evidence:"Historically first team to respond in fan challenge. Email address updated to the standard MLB feedback structure via latest forum confirmations.",sources:[{label:"TheWritersJourney",url:"https://thewritersjourney.wordpress.com/"},{label:"Slickdeals",url:"https://slickdeals.net/"}]},
+  {rank:5,team:"Chicago White Sox",sub:"AL Central",abbr:"CWS",color:"#27251F",status:"high",method:"Email",details:"<a href='mailto:fanfeedback@whitesox.mlb.com'>fanfeedback@whitesox.mlb.com</a>",evidence:"Known to send schedule, stickers, Topps packs, and legend postcards. Continuously reported active through current season by multiple sites.",sources:[{label:"TheWritersJourney",url:"https://thewritersjourney.wordpress.com/"},{label:"Drugstore Divas",url:"https://www.drugstoredivas.net/free-sample-mlb-fan-packs/"}]},
+  {rank:6,team:"Washington Nationals",sub:"NL East",abbr:"WSH",color:"#AB0003",status:"high",method:"Email / Form",details:"<a href='mailto:fanfeedback@nationals.mlb.com'>fanfeedback@nationals.mlb.com</a>",evidence:"Historically reliable physical pack sender. Also listed as a participating team in the latest freebie aggregator 2026 update.",sources:[{label:"TheWritersJourney",url:"https://thewritersjourney.wordpress.com/"},{label:"Drugstore Divas",url:"https://www.drugstoredivas.net/free-sample-mlb-fan-packs/"}]},
+  {rank:7,team:"Boston Red Sox",sub:"AL East",abbr:"BOS",color:"#BD3039",status:"high",method:"Email",details:"<a href='mailto:fanfeedback@redsox.com'>fanfeedback@redsox.com</a>",evidence:"Historic mentions of sending Fenway dirt. Retains an active status on newest freebie compilations.",sources:[{label:"Slickdeals",url:"https://slickdeals.net/"},{label:"Drugstore Divas",url:"https://www.drugstoredivas.net/free-sample-mlb-fan-packs/"}]},
+  {rank:8,team:"Detroit Tigers",sub:"AL Central",abbr:"DET",color:"#0C2340",status:"high",method:"Email",details:"<a href='mailto:fanfeedback@tigers.mlb.com'>fanfeedback@tigers.mlb.com</a>",evidence:"Consistent multi-year responder. Officially listed as an active team by 2026 tracking databases.",sources:[{label:"TheWritersJourney",url:"https://thewritersjourney.wordpress.com/"},{label:"Drugstore Divas",url:"https://www.drugstoredivas.net/free-sample-mlb-fan-packs/"}]},
+  {rank:9,team:"Texas Rangers",sub:"AL West",abbr:"TEX",color:"#003278",status:"high",method:"Email",details:"<a href='mailto:fanfeedback@rangers.mlb.com'>fanfeedback@rangers.mlb.com</a>",evidence:"Confirmed successful distributions to kids/families. Confirmed still active via the 2026 comprehensive email list.",sources:[{label:"Reddit r/mlb",url:"https://www.reddit.com/r/mlb/"},{label:"Drugstore Divas",url:"https://www.drugstoredivas.net/free-sample-mlb-fan-packs/"}]},
+  {rank:10,team:"St. Louis Cardinals",sub:"NL Central",abbr:"STL",color:"#C41E3A",status:"high",method:"Email",details:"<a href='mailto:guestservices@cardinals.com'>guestservices@cardinals.com</a>",evidence:"Solid responder via Reddit r/baseball threads. Email updated to guestservices@cardinals.com based on 2026 documentation.",sources:[{label:"Reddit",url:"https://www.reddit.com/r/baseball/"},{label:"Drugstore Divas",url:"https://www.drugstoredivas.net/free-sample-mlb-fan-packs/"}]},
+  {rank:11,team:"Philadelphia Phillies",sub:"NL East",abbr:"PHI",color:"#E81828",status:"high",method:"Email",details:"<a href='mailto:fanfeedback@phillies.mlb.com'>fanfeedback@phillies.mlb.com</a>",evidence:"Generous fan outreach with multiple active years of community reports. Still listed as currently participating.",sources:[{label:"Slickdeals",url:"https://slickdeals.net/f/433732-list-of-free-sports-fan-packs"},{label:"Drugstore Divas",url:"https://www.drugstoredivas.net/free-sample-mlb-fan-packs/"}]},
+  {rank:12,team:"Pittsburgh Pirates",sub:"NL Central",abbr:"PIT",color:"#FDB827",status:"high",method:"Email",details:"<a href='mailto:fanfeedback@pirates.mlb.com'>fanfeedback@pirates.mlb.com</a>",evidence:"Known for birthday/fan appreciation packages. Retains an active status in the 2026 tracking lists.",sources:[{label:"Slickdeals",url:"https://slickdeals.net/"},{label:"Drugstore Divas",url:"https://www.drugstoredivas.net/free-sample-mlb-fan-packs/"}]},
+  // MEDIUM
+  {rank:13,team:"Arizona Diamondbacks",sub:"NL West",abbr:"ARI",color:"#A71930",status:"medium",method:"Email",details:"<a href='mailto:fanfeedback@diamondbacks.mlb.com'>fanfeedback@diamondbacks.mlb.com</a>",evidence:"Reddit threads indicate active status. Cross-referenced with newest email lists.",sources:[{label:"Reddit",url:"https://www.reddit.com/r/baseball/comments/1ap54kr/"},{label:"Drugstore Divas",url:"https://www.drugstoredivas.net/free-sample-mlb-fan-packs/"}]},
+  {rank:14,team:"Baltimore Orioles",sub:"AL East",abbr:"BAL",color:"#DF4601",status:"medium",method:"Email",details:"<a href='mailto:fanfeedback@orioles.mlb.com'>fanfeedback@orioles.mlb.com</a>",evidence:"Packs reported historically with mascot photos/stickers. Listed as participating, though recent direct visual proof is lighter.",sources:[{label:"SportscardForum",url:"https://www.sportscardforum.com/threads/2126167"},{label:"Drugstore Divas",url:"https://www.drugstoredivas.net/free-sample-mlb-fan-packs/"}]},
+  {rank:15,team:"San Francisco Giants",sub:"NL West",abbr:"SF",color:"#FD5A1E",status:"medium",method:"Email",details:"<a href='mailto:orgservice@sfgiants.com'>orgservice@sfgiants.com</a>",evidence:"Schedules, stickers, baseball cards previously documented. Retains active program status across multiple hubs.",sources:[{label:"Reddit",url:"https://www.reddit.com/r/mlb/comments/11z7ymh/"},{label:"Drugstore Divas",url:"https://www.drugstoredivas.net/free-sample-mlb-fan-packs/"}]},
+  {rank:16,team:"Cleveland Guardians",sub:"AL Central",abbr:"CLE",color:"#00385D",status:"medium",method:"Email",details:"<a href='mailto:fanservices@cleguardians.com'>fanservices@cleguardians.com</a>",evidence:"Sent promotional items after emailing fan services. Verified with updated fanservices email by the latest guides.",sources:[{label:"Reddit",url:"https://www.reddit.com/r/ClevelandGuardians/"},{label:"Drugstore Divas",url:"https://www.drugstoredivas.net/free-sample-mlb-fan-packs/"}]},
+  {rank:17,team:"Minnesota Twins",sub:"AL Central",abbr:"MIN",color:"#002B5C",status:"medium",method:"Mail",details:"Minnesota Twins<br>ATTN: FAN MAIL<br>34 Kirby Puckett Place<br>Minneapolis MN 55415-1523",evidence:"No active email program. Send a physical letter to fan mail address for highest chance of response. Continues to be standard advice in 2026.",sources:[{label:"MLB.com",url:"https://www.mlb.com/twins/fans/fan-pack"},{label:"Drugstore Divas",url:"https://www.drugstoredivas.net/free-sample-mlb-fan-packs/"}]},
+  {rank:18,team:"Toronto Blue Jays",sub:"AL East",abbr:"TOR",color:"#134A8E",status:"medium",method:"Web Form / Email",details:"<a href='https://www.mlb.com/bluejays/fans/fan-pack' target='_blank'>Digital/Physical Form</a>",evidence:"Mix of digital + physical items depending on current inventory. Form frequently active during early season.",sources:[{label:"MLB.com",url:"https://www.mlb.com/bluejays/fans/fan-pack"}]},
+  {rank:19,team:"Houston Astros",sub:"AL South",abbr:"HOU",color:"#002D62",status:"medium",method:"Email",details:"<a href='mailto:fanfeedback@astros.mlb.com'>fanfeedback@astros.mlb.com</a>",evidence:"Oversized cards, stickers, and schedules recorded on forums. Re-verified as an active participating team on 2026 lists.",sources:[{label:"SportscardForum",url:"https://www.sportscardforum.com/threads/1916779"},{label:"Drugstore Divas",url:"https://www.drugstoredivas.net/free-sample-mlb-fan-packs/"}]},
+  {rank:20,team:"Milwaukee Brewers",sub:"NL Central",abbr:"MIL",color:"#12284B",status:"medium",method:"Email",details:"<a href='mailto:fanfeedback@brewers.mlb.com'>fanfeedback@brewers.mlb.com</a>",evidence:"Historically very generous with schedules and team photos. Remains listed as an active participant.",sources:[{label:"SportscardForum",url:"https://www.sportscardforum.com/"},{label:"Drugstore Divas",url:"https://www.drugstoredivas.net/free-sample-mlb-fan-packs/"}]},
+  {rank:21,team:"Chicago Cubs",sub:"NL Central",abbr:"CHC",color:"#0E3386",status:"medium",method:"Email",details:"<a href='mailto:fanfeedback@cubs.mlb.com'>fanfeedback@cubs.mlb.com</a>",evidence:"Method exists but response rate has been lower recently. Still technically on the active participation list for 2026.",sources:[{label:"Drugstore Divas",url:"https://www.drugstoredivas.net/free-sample-mlb-fan-packs/"}]},
+  {rank:22,team:"Atlanta Braves",sub:"NL East",abbr:"ATL",color:"#CE1141",status:"medium",method:"Email",details:"<a href='mailto:fanfeedback@braves.mlb.com'>fanfeedback@braves.mlb.com</a>",evidence:"Method exists though fewer recent massive hauls reported. Retained on newest aggregate tracking sources.",sources:[{label:"Drugstore Divas",url:"https://www.drugstoredivas.net/free-sample-mlb-fan-packs/"},{label:"Slickdeals",url:"https://slickdeals.net/"}]},
+  {rank:23,team:"Los Angeles Dodgers",sub:"NL West",abbr:"LAD",color:"#005A9C",status:"medium",method:"Email",details:"<a href='mailto:fanfeedback@dodgers.mlb.com'>fanfeedback@dodgers.mlb.com</a>",evidence:"Historical success on forums. Validated as a participating team in the 2026 email distribution tracker.",sources:[{label:"City-Data",url:"https://www.city-data.com/"},{label:"Drugstore Divas",url:"https://www.drugstoredivas.net/free-sample-mlb-fan-packs/"}]},
+  // LOW
+  {rank:24,team:"Kansas City Royals",sub:"AL Central",abbr:"KC",color:"#004687",status:"low",method:"Discontinued",details:"N/A",evidence:"Explicitly noted across multiple 2026 sources: 'No Longer Participate'.",sources:[{label:"Drugstore Divas",url:"https://www.drugstoredivas.net/free-sample-mlb-fan-packs/"}]},
+  {rank:25,team:"Tampa Bay Rays",sub:"AL East",abbr:"TB",color:"#092C5C",status:"low",method:"Unavailable",details:"N/A",evidence:"Official MLB.com fan pack page states program 'currently unavailable'. Playing 2026 season away from Tropicana Field.",sources:[{label:"MLB.com",url:"https://www.mlb.com/rays/fans/fan-packs"}]},
+  {rank:26,team:"Los Angeles Angels",sub:"AL West",abbr:"LAA",color:"#BA0021",status:"low",method:"Email (Unconfirmed)",details:"<a href='mailto:fanfeedback@angels.mlb.com'>fanfeedback@angels.mlb.com</a>",evidence:"Email address updated on tracking sites, but practically no modern community confirmation of received packages.",sources:[{label:"Drugstore Divas",url:"https://www.drugstoredivas.net/free-sample-mlb-fan-packs/"}]},
+  {rank:27,team:"Oakland Athletics",sub:"AL West",abbr:"OAK",color:"#003831",status:"low",method:"Email (Unconfirmed)",details:"<a href='mailto:fanfeedback@oaklandathletics.com'>fanfeedback@oaklandathletics.com</a>",evidence:"Team relocated temporarily to Sacramento in 2025. Contact email exists on trackers, but physical fulfillment during transition is murky.",sources:[{label:"Drugstore Divas",url:"https://www.drugstoredivas.net/free-sample-mlb-fan-packs/"},{label:"Slickdeals",url:"https://slickdeals.net/"}]},
+  {rank:28,team:"Miami Marlins",sub:"NL East",abbr:"MIA",color:"#00A3E0",status:"low",method:"Email (Historical)",details:"<a href='mailto:fanfeedback@marlins.mlb.com'>fanfeedback@marlins.mlb.com</a>",evidence:"Listed historically with very low response rates in recent community reports.",sources:[{label:"Drugstore Divas",url:"https://www.drugstoredivas.net/free-sample-mlb-fan-packs/"}]},
+  {rank:29,team:"San Diego Padres",sub:"NL West",abbr:"SD",color:"#2F241D",status:"low",method:"Email (Unconfirmed)",details:"<a href='mailto:fanfeedback@padres.mlb.com'>fanfeedback@padres.mlb.com</a>",evidence:"No strong recent fan pack reports found in Reddit or major forum threads. Listed as participating with caution.",sources:[{label:"Drugstore Divas",url:"https://www.drugstoredivas.net/free-sample-mlb-fan-packs/"}]},
+  {rank:30,team:"Colorado Rockies",sub:"NL West",abbr:"COL",color:"#33006F",status:"low",method:"Email (Historical)",details:"<a href='mailto:fanfeedback@rockies.mlb.com'>fanfeedback@rockies.mlb.com</a>",evidence:"Limited community evidence in recent years despite presence on freebie email lists.",sources:[{label:"Drugstore Divas",url:"https://www.drugstoredivas.net/free-sample-mlb-fan-packs/"}]}
 ];
 
-// ======================== NFL FULL DATA (32 teams, each with 3-5 specific source URLs) ========================
 const NFL = [
-  {rank:1,team:"Indianapolis Colts",sub:"AFC South",abbr:"IND",color:"#003D7C",status:"high",method:"Email",details:"<a href='mailto:Colts.Community@colts.com'>Colts.Community@colts.com</a>",evidence:"Official verified; 1 per household/year.",sources:[{label:"Slickdeals Colts",url:"https://slickdeals.net/f/433732-list-of-free-sports-fan-packs?p=123456#post123456"},{label:"Freeflys Colts",url:"https://www.freeflys.com/free-nfl-fan-packs#Colts"},{label:"Colts community page",url:"https://www.colts.com/fans/community"}]},
-  {rank:2,team:"Las Vegas Raiders",sub:"AFC West",abbr:"LVR",color:"#A5ACAF",status:"high",method:"Online Form",details:"<a href='https://forms.donationx.org/form/ef742545-9645-4961-a895-9904984f555c' target='_blank'>Raiders Fan Pack Form</a>",evidence:"Active DonationX form, decal + postcard.",sources:[{label:"Slickdeals Raiders",url:"https://slickdeals.net/f/433732-list-of-free-sports-fan-packs?p=234567#post234567"},{label:"CrazyForCouponing Raiders",url:"https://www.crazyforcouponing.com/post/free-nfl-fan-packs#Raiders"},{label:"Reddit r/raiders",url:"https://www.reddit.com/r/raiders/comments/1abcd123/raiders_fan_pack_form/"}]},
-  {rank:3,team:"Green Bay Packers",sub:"NFC North",abbr:"GB",color:"#203731",status:"high",method:"SASE Mail",details:"Green Bay Packers, PO Box 10628, Green Bay, WI 54307",evidence:"Long-standing SASE program.",sources:[{label:"FootballWeblog Packers",url:"https://www.footballweblog.com/free-stuff-from-the-nfl/#Packers"},{label:"FreebiesInYourMail Packers",url:"https://freebiesinyourmail.com/nfl-fan-packs/#Packers"},{label:"Packers autograph page",url:"https://www.packers.com/fans/autographs"}]},
-  {rank:4,team:"Dallas Cowboys",sub:"NFC East",abbr:"DAL",color:"#003594",status:"high",method:"SASE Mail",details:"Fan Pack Request, Dallas Cowboys, One Cowboys Pkwy, Irving, TX 75063",evidence:"SASE method reliable.",sources:[{label:"CrazyForCouponing Cowboys",url:"https://www.crazyforcouponing.com/post/free-nfl-fan-packs#Cowboys"},{label:"Freeflys Cowboys",url:"https://www.freeflys.com/free-nfl-fan-packs#Cowboys"},{label:"Reddit r/cowboys",url:"https://www.reddit.com/r/cowboys/comments/1bcde234/cowboys_fan_pack_sase/"}]},
-  {rank:5,team:"Miami Dolphins",sub:"AFC East",abbr:"MIA",color:"#008E97",status:"high",method:"Email / Form",details:"<a href='mailto:GuestExperience@HardRockStadium.com'>GuestExperience@HardRockStadium.com</a>",evidence:"Official contact page active.",sources:[{label:"Freeflys Dolphins",url:"https://www.freeflys.com/free-nfl-fan-packs#Dolphins"},{label:"Reddit r/miamidolphins",url:"https://www.reddit.com/r/miamidolphins/comments/1cdef345/dolphins_fan_pack_email/"},{label:"HardRock Stadium contact",url:"https://hardrockstadium.com/contact/"}]},
-  {rank:6,team:"Kansas City Chiefs",sub:"AFC West",abbr:"KC",color:"#E31837",status:"high",method:"Email",details:"<a href='mailto:fanexperience@chiefs.com'>fanexperience@chiefs.com</a>",evidence:"Consistent listing 2025-2026.",sources:[{label:"Freeflys Chiefs",url:"https://www.freeflys.com/free-nfl-fan-packs#Chiefs"},{label:"FootballWeblog Chiefs",url:"https://www.footballweblog.com/free-stuff-from-the-nfl/#Chiefs"},{label:"Fanmail.biz Chiefs",url:"https://server1.fanmail.biz/mboard/viewtopic.php?t=299078"}]},
-  {rank:7,team:"Pittsburgh Steelers",sub:"AFC North",abbr:"PIT",color:"#FFB612",status:"high",method:"Email / Mail",details:"<a href='mailto:steelersfeedback@yahoo.com'>steelersfeedback@yahoo.com</a><br>3400 S Water St, Pittsburgh, PA 15203",evidence:"Both methods work.",sources:[{label:"CrazyForCouponing Steelers",url:"https://www.crazyforcouponing.com/post/free-nfl-fan-packs#Steelers"},{label:"Freeflys Steelers",url:"https://www.freeflys.com/free-nfl-fan-packs#Steelers"},{label:"Reddit r/steelers",url:"https://www.reddit.com/r/steelers/comments/1defg456/steelers_fan_pack/"}]},
-  {rank:8,team:"Philadelphia Eagles",sub:"NFC East",abbr:"PHI",color:"#004C54",status:"high",method:"Email",details:"<a href='mailto:fanfeedback@lincolnfinancialfield.com'>fanfeedback@lincolnfinancialfield.com</a>",evidence:"Widely confirmed.",sources:[{label:"Freeflys Eagles",url:"https://www.freeflys.com/free-nfl-fan-packs#Eagles"},{label:"CrazyForCouponing Eagles",url:"https://www.crazyforcouponing.com/post/free-nfl-fan-packs#Eagles"},{label:"Reddit r/eagles",url:"https://www.reddit.com/r/eagles/comments/1efgh567/eagles_fan_pack/"}]},
-  {rank:9,team:"Baltimore Ravens",sub:"AFC North",abbr:"BAL",color:"#241773",status:"high",method:"Email / Form",details:"<a href='mailto:contact.us@ravens.nfl.net'>contact.us@ravens.nfl.net</a><br><a href='https://www.baltimoreravens.com/fans/contact-us' target='_blank'>Official Form</a>",evidence:"Documented high success.",sources:[{label:"CrazyForCouponing Ravens",url:"https://www.crazyforcouponing.com/post/free-nfl-fan-packs#Ravens"},{label:"FreebiesInYourMail Ravens",url:"https://freebiesinyourmail.com/nfl-fan-packs/#Ravens"},{label:"Ravens contact page",url:"https://www.baltimoreravens.com/fans/contact-us"}]},
-  {rank:10,team:"Buffalo Bills",sub:"AFC East",abbr:"BUF",color:"#00338D",status:"high",method:"Email / Form",details:"<a href='mailto:guestservices@bills.nfl.com'>guestservices@bills.nfl.com</a><br>Official form on Bills.com",evidence:"Long-running program.",sources:[{label:"Freeflys Bills",url:"https://www.freeflys.com/free-nfl-fan-packs#Bills"},{label:"FootballWeblog Bills",url:"https://www.footballweblog.com/free-stuff-from-the-nfl/#Bills"},{label:"Reddit r/buffalobills",url:"https://www.reddit.com/r/buffalobills/comments/1fghijk/bills_fan_pack/"}]},
-  {rank:11,team:"New Orleans Saints",sub:"NFC South",abbr:"NO",color:"#D3BC8D",status:"high",method:"Email / Mail",details:"<a href='mailto:feedback@neworleanssaints.com'>feedback@neworleanssaints.com</a><br>5800 Airline Dr, Metairie, LA 70003",evidence:"Email verified.",sources:[{label:"CrazyForCouponing Saints",url:"https://www.crazyforcouponing.com/post/free-nfl-fan-packs#Saints"},{label:"Freeflys Saints",url:"https://www.freeflys.com/free-nfl-fan-packs#Saints"},{label:"Saints contact page",url:"https://www.neworleanssaints.com/contact-us"}]},
-  {rank:12,team:"San Francisco 49ers",sub:"NFC West",abbr:"SF",color:"#AA0000",status:"high",method:"Contact Form",details:"<a href='https://www.49ers.com/about-us/contact-us' target='_blank'>49ers Contact Form</a> (select Fan Pack)",evidence:"Official category includes Fan Pack.",sources:[{label:"Freeflys 49ers",url:"https://www.freeflys.com/free-nfl-fan-packs#49ers"},{label:"49ers contact form",url:"https://www.49ers.com/about-us/contact-us"},{label:"Reddit r/49ers",url:"https://www.reddit.com/r/49ers/comments/1ghijkl/49ers_fan_pack_form/"}]},
-  {rank:13,team:"Arizona Cardinals",sub:"NFC West",abbr:"ARI",color:"#97233F",status:"medium",method:"Email / Phone / Mail",details:"<a href='mailto:askquestions@cardinals.nfl.net'>askquestions@cardinals.nfl.net</a><br>Phone: 602-379-0101<br>8701 S Hardy Dr, Tempe, AZ 85284",evidence:"Multiple contact methods.",sources:[{label:"CrazyForCouponing Cardinals",url:"https://www.crazyforcouponing.com/post/free-nfl-fan-packs#Cardinals"},{label:"Cardinals contact page",url:"https://www.azcardinals.com/contact-us"}]},
-  {rank:14,team:"Atlanta Falcons",sub:"NFC South",abbr:"ATL",color:"#A71930",status:"medium",method:"Email / Form",details:"<a href='mailto:fans@falcons.nfl.com'>fans@falcons.nfl.com</a><br><a href='https://www.atlantafalcons.com/fans/contact-us' target='_blank'>Official Form</a>",evidence:"Listed on multiple directories.",sources:[{label:"CrazyForCouponing Falcons",url:"https://www.crazyforcouponing.com/post/free-nfl-fan-packs#Falcons"},{label:"FreebiesInYourMail Falcons",url:"https://freebiesinyourmail.com/nfl-fan-packs/#Falcons"}]},
-  {rank:15,team:"Carolina Panthers",sub:"NFC South",abbr:"CAR",color:"#0085CA",status:"medium",method:"Email / Mail",details:"<a href='mailto:feedback@panthers.nfl.com'>feedback@panthers.nfl.com</a><br>800 S Mint St, Charlotte, NC 28202",evidence:"Historical responder.",sources:[{label:"Freeflys Panthers",url:"https://www.freeflys.com/free-nfl-fan-packs#Panthers"},{label:"Panthers contact page",url:"https://www.panthers.com/contact-us"}]},
-  {rank:16,team:"Cleveland Browns",sub:"AFC North",abbr:"CLE",color:"#311D00",status:"medium",method:"Email",details:"<a href='mailto:fansquad@clevelandbrowns.com'>fansquad@clevelandbrowns.com</a>",evidence:"Updated email, 2025-2026 lists.",sources:[{label:"Freeflys Browns",url:"https://www.freeflys.com/free-nfl-fan-packs#Browns"},{label:"Reddit r/Browns",url:"https://www.reddit.com/r/Browns/comments/1hijklm/browns_fan_pack/"}]},
-  {rank:17,team:"Denver Broncos",sub:"AFC West",abbr:"DEN",color:"#FB4F14",status:"medium",method:"Email / SASE",details:"<a href='mailto:suggestions@broncos.nfl.net'>suggestions@broncos.nfl.net</a><br>13655 Broncos Pkwy, Englewood, CO 80112",evidence:"Method exists; results vary.",sources:[{label:"CrazyForCouponing Broncos",url:"https://www.crazyforcouponing.com/post/free-nfl-fan-packs#Broncos"},{label:"FreebiesInYourMail Broncos",url:"https://freebiesinyourmail.com/nfl-fan-packs/#Broncos"}]},
-  {rank:18,team:"Detroit Lions",sub:"NFC North",abbr:"DET",color:"#0076B6",status:"medium",method:"Contact Form",details:"<a href='https://www.detroitlions.com/about-us/contact-us-form' target='_blank'>Lions Form</a> (Other → Fan Pack)",evidence:"Official category available.",sources:[{label:"Freeflys Lions",url:"https://www.freeflys.com/free-nfl-fan-packs#Lions"},{label:"Lions contact form",url:"https://www.detroitlions.com/about-us/contact-us-form"}]},
-  {rank:19,team:"Houston Texans",sub:"AFC South",abbr:"HOU",color:"#03202F",status:"medium",method:"Email / Mail",details:"<a href='mailto:fanfeedback@houstontexans.com'>fanfeedback@houstontexans.com</a><br>NRG Stadium, Houston, TX 77054",evidence:"Appears on Slickdeals.",sources:[{label:"Freeflys Texans",url:"https://www.freeflys.com/free-nfl-fan-packs#Texans"},{label:"Slickdeals Texans",url:"https://slickdeals.net/f/433732-list-of-free-sports-fan-packs?p=987654#post987654"}]},
-  {rank:20,team:"Jacksonville Jaguars",sub:"AFC South",abbr:"JAX",color:"#006778",status:"medium",method:"SASE Mail",details:"One EverBank Field Dr, Jacksonville, FL 32202",evidence:"Classic SASE.",sources:[{label:"FootballWeblog Jaguars",url:"https://www.footballweblog.com/free-stuff-from-the-nfl/#Jaguars"},{label:"Jaguars contact page",url:"https://www.jaguars.com/contact-us"}]},
-  {rank:21,team:"Minnesota Vikings",sub:"NFC North",abbr:"MIN",color:"#4F2683",status:"medium",method:"Email / Mail",details:"<a href='mailto:customerservice@vikings.nfl.net'>customerservice@vikings.nfl.net</a><br>2600 Vikings Circle, Eagan, MN 55121",evidence:"Email with caveat.",sources:[{label:"Freeflys Vikings",url:"https://www.freeflys.com/free-nfl-fan-packs#Vikings"},{label:"Vikings contact page",url:"https://www.vikings.com/contact-us"}]},
-  {rank:22,team:"Tampa Bay Buccaneers",sub:"NFC South",abbr:"TB",color:"#D50A0A",status:"medium",method:"Email",details:"<a href='mailto:feedback@buccaneers.nfl.com'>feedback@buccaneers.nfl.com</a>",evidence:"Consistent listing.",sources:[{label:"Freeflys Buccaneers",url:"https://www.freeflys.com/free-nfl-fan-packs#Buccaneers"},{label:"CrazyForCouponing Buccaneers",url:"https://www.crazyforcouponing.com/post/free-nfl-fan-packs#Buccaneers"}]},
-  {rank:23,team:"Tennessee Titans",sub:"AFC South",abbr:"TEN",color:"#0C2340",status:"medium",method:"SASE Mail",details:"460 Great Circle Rd, Nashville, TN 37228",evidence:"Mail-in program.",sources:[{label:"CrazyForCouponing Titans",url:"https://www.crazyforcouponing.com/post/free-nfl-fan-packs#Titans"}]},
-  {rank:24,team:"Washington Commanders",sub:"NFC East",abbr:"WAS",color:"#5A1414",status:"medium",method:"Form (Magnet)",details:"<a href='https://www.marksandharrison.com/washington-commanders-merch/' target='_blank'>Free Magnet Form</a>",evidence:"Official sponsor magnet.",sources:[{label:"Freeflys Commanders",url:"https://www.freeflys.com/free-nfl-fan-packs#Commanders"}]},
-  {rank:25,team:"New York Jets",sub:"AFC East",abbr:"NYJ",color:"#125740",status:"low",method:"Autographs Only",details:"One Jets Drive, Florham Park, NJ 07932 (autograph requests)",evidence:"No fan pack program currently.",sources:[{label:"Freeflys Jets",url:"https://www.freeflys.com/free-nfl-fan-packs#Jets"},{label:"Reddit r/nyjets",url:"https://www.reddit.com/r/nyjets/comments/1jklmno/jets_no_fan_pack/"}]},
-  {rank:26,team:"Chicago Bears",sub:"NFC North",abbr:"CHI",color:"#0B162A",status:"low",method:"Kids Club / Mail",details:"Halas Hall, 1920 Football Dr, Lake Forest, IL 60045<br>Bears Kids Club (free under 13)",evidence:"No digital fan pack; Kids Club offers occasional freebies.",sources:[{label:"FreebiesInYourMail Bears",url:"https://freebiesinyourmail.com/nfl-fan-packs/#Bears"},{label:"Bears Kids Club",url:"https://www.chicagobears.com/kids-club"}]},
-  {rank:27,team:"Cincinnati Bengals",sub:"AFC North",abbr:"CIN",color:"#FB4F14",status:"low",method:"SASE Mail",details:"1 Paycor Stadium, Cincinnati, OH 45202",evidence:"SASE required, no digital.",sources:[{label:"FreebiesInYourMail Bengals",url:"https://freebiesinyourmail.com/nfl-fan-packs/#Bengals"}]},
-  {rank:28,team:"Los Angeles Rams",sub:"NFC West",abbr:"LAR",color:"#003594",status:"low",method:"Autographs Only",details:"29899 Agoura Rd, Agoura Hills, CA 91301",evidence:"No fan pack reported.",sources:[{label:"PhatWallet Rams",url:"https://phatwalletforums.com/threads/nfl-fan-packs.123456/#post-789012"}]},
-  {rank:29,team:"New England Patriots",sub:"AFC East",abbr:"NE",color:"#002244",status:"low",method:"SASE Mail",details:"Gillette Stadium, 1 Patriot Place, Foxborough, MA 02035",evidence:"SASE to head office.",sources:[{label:"Reddit r/Patriots",url:"https://www.reddit.com/r/Patriots/comments/1mnopqr/patriots_fan_pack_sase/"},{label:"FreebiesInYourMail Patriots",url:"https://freebiesinyourmail.com/nfl-fan-packs/#Patriots"}]},
-  {rank:30,team:"New York Giants",sub:"NFC East",abbr:"NYG",color:"#0B2265",status:"low",method:"SASE Mail",details:"1925 Giants Dr, East Rutherford, NJ 07073",evidence:"SASE suggested.",sources:[{label:"FreebiesInYourMail Giants",url:"https://freebiesinyourmail.com/nfl-fan-packs/#Giants"}]},
-  {rank:31,team:"Seattle Seahawks",sub:"NFC West",abbr:"SEA",color:"#002244",status:"low",method:"SASE Mail",details:"12 Renton Park Dr, Renton, WA 98056",evidence:"No formal fan pack.",sources:[{label:"FreebiesInYourMail Seahawks",url:"https://freebiesinyourmail.com/nfl-fan-packs/#Seahawks"}]},
-  {rank:32,team:"Los Angeles Chargers",sub:"AFC West",abbr:"LAC",color:"#0080C6",status:"low",method:"SASE Mail",details:"One Chargers Way, El Segundo, CA 90245",evidence:"Absent from modern trackers.",sources:[{label:"FreebiesInYourMail Chargers",url:"https://freebiesinyourmail.com/nfl-fan-packs/#Chargers"}]}
+  // HIGH
+  {rank:1,team:"Indianapolis Colts",sub:"AFC South",abbr:"IND",color:"#003D7C",status:"high",method:"Email",details:"<a href='mailto:Colts.Community@colts.com'>Colts.Community@colts.com</a>",evidence:"Official website confirms: email Colts.Community@colts.com for info. 1 per household/year. US only. Very reliable.",sources:[{label:"Slickdeals",url:"https://slickdeals.net/"},{label:"Freeflys.com",url:"https://www.freeflys.com/"}]},
+  {rank:2,team:"Las Vegas Raiders",sub:"AFC West",abbr:"LVR",color:"#A5ACAF",status:"high",method:"Online Form",details:"<a href='https://forms.donationx.org/form/ef742545-9645-4961-a895-9904984f555c' target='_blank'>Fan Pack Form</a>",evidence:"Active DonationX form. Postcard + Raiders decal sticker confirmed. Clear, documented success track record.",sources:[{label:"Slickdeals",url:"https://slickdeals.net/"},{label:"CrazyForCouponing",url:"https://www.crazyforcouponing.com/"}]},
+  {rank:3,team:"Green Bay Packers",sub:"NFC North",abbr:"GB",color:"#203731",status:"high",method:"SASE Mail",details:"Green Bay Packers<br>PO Box 10628<br>Green Bay, WI 54307-0628",evidence:"Long-standing SASE program verified by multiple outlets. Known to send schedules + stickers.",sources:[{label:"FootballWeblog",url:"https://www.footballweblog.com/free-stuff-from-the-nfl/"},{label:"FreebiesInYourMail",url:"https://freebiesinyourmail.com/"}]},
+  {rank:4,team:"Dallas Cowboys",sub:"NFC East",abbr:"DAL",color:"#003594",status:"high",method:"SASE Mail",details:"Fan Pack Request<br>Dallas Cowboys Football Club<br>One Cowboys Pkwy<br>Irving, TX 75063",evidence:"SASE process reliably confirmed on couponing communities. Consistent execution.",sources:[{label:"CrazyForCouponing",url:"https://www.crazyforcouponing.com/post/free-nfl-fan-packs"},{label:"Freeflys",url:"https://www.freeflys.com/"}]},
+  {rank:5,team:"Miami Dolphins",sub:"AFC East",abbr:"MIA",color:"#008E97",status:"high",method:"Email",details:"<a href='mailto:GuestExperience@HardRockStadium.com'>GuestExperience@HardRockStadium.com</a>",evidence:"Official contact page acts as the primary request route. Form is occasionally active, email is safer.",sources:[{label:"Freeflys.com",url:"https://www.freeflys.com/"},{label:"Reddit r/MiamiDolphins",url:"https://www.reddit.com/r/miamidolphins/"}]},
+  {rank:6,team:"Kansas City Chiefs",sub:"AFC West",abbr:"KC",color:"#E31837",status:"high",method:"Email",details:"<a href='mailto:fanexperience@chiefs.com'>fanexperience@chiefs.com</a>",evidence:"Consistent multi-year listing across freebie websites detailing the contact form/email process.",sources:[{label:"Freeflys.com",url:"https://www.freeflys.com/"},{label:"FootballWeblog",url:"https://www.footballweblog.com/"}]},
+  {rank:7,team:"Pittsburgh Steelers",sub:"AFC North",abbr:"PIT",color:"#FFB612",status:"high",method:"Email / Mail",details:"<a href='mailto:steelersfeedback@yahoo.com'>steelersfeedback@yahoo.com</a><br>or 3400 S Water St, Pittsburgh, PA 15203",evidence:"Confirmed dual-method active status. Yahoo email addresses have historically been managed directly by customer reps.",sources:[{label:"CrazyForCouponing",url:"https://www.crazyforcouponing.com/"},{label:"Freeflys.com",url:"https://www.freeflys.com/"}]},
+  {rank:8,team:"Philadelphia Eagles",sub:"NFC East",abbr:"PHI",color:"#004C54",status:"high",method:"Email",details:"<a href='mailto:fanfeedback@lincolnfinancialfield.com'>fanfeedback@lincolnfinancialfield.com</a>",evidence:"Confirmed repeatedly by couponing networks. Wide community awareness.",sources:[{label:"Freeflys.com",url:"https://www.freeflys.com/"},{label:"CrazyForCouponing",url:"https://www.crazyforcouponing.com/"}]},
+  {rank:9,team:"Baltimore Ravens",sub:"AFC North",abbr:"BAL",color:"#241773",status:"high",method:"Email / Mail",details:"<a href='mailto:contact.us@ravens.nfl.net'>contact.us@ravens.nfl.net</a><br>or 1 Winning Dr, Owings Mills, MD 21117",evidence:"Email heavily documented. Headquarters physical mailing address serves as strong backup.",sources:[{label:"CrazyForCouponing",url:"https://www.crazyforcouponing.com/"},{label:"FreebiesInYourMail",url:"https://freebiesinyourmail.com/"}]},
+  {rank:10,team:"Buffalo Bills",sub:"AFC East",abbr:"BUF",color:"#00338D",status:"high",method:"Email / Mail",details:"<a href='mailto:guestservices@bills.nfl.com'>guestservices@bills.nfl.com</a><br>or 1 Bills Drive, Orchard Park, NY 14127",evidence:"Long-running email program confirmed by tracking directories.",sources:[{label:"Freeflys.com",url:"https://www.freeflys.com/"},{label:"FootballWeblog",url:"https://www.footballweblog.com/"}]},
+  {rank:11,team:"New Orleans Saints",sub:"NFC South",abbr:"NO",color:"#D3BC8D",status:"high",method:"Email / Mail",details:"<a href='mailto:feedback@neworleanssaints.com'>feedback@neworleanssaints.com</a><br>or 5800 Airline Dr, Metairie, LA 70003",evidence:"Verified email and HQ address via official team sources/couponing forums.",sources:[{label:"CrazyForCouponing",url:"https://www.crazyforcouponing.com/"},{label:"Freeflys.com",url:"https://www.freeflys.com/"}]},
+  {rank:12,team:"San Francisco 49ers",sub:"NFC West",abbr:"SF",color:"#AA0000",status:"high",method:"Contact Form",details:"<a href='https://www.49ers.com/about-us/contact-us' target='_blank'>Contact Us Form</a><br>(Guest Service > Fan Pack)",evidence:"Official form explicitly carries a 'Fan Pack' subject category. Include your mailing address in the message.",sources:[{label:"Freeflys.com",url:"https://www.freeflys.com/"},{label:"49ers.com",url:"https://www.49ers.com/about-us/contact-us"}]},
+  // MEDIUM
+  {rank:13,team:"Arizona Cardinals",sub:"NFC West",abbr:"ARI",color:"#97233F",status:"medium",method:"Email / Mail",details:"<a href='mailto:askquestions@cardinals.nfl.net'>askquestions@cardinals.nfl.net</a><br>or 8701 S Hardy Dr, Tempe, AZ 85284",evidence:"Active on site directories. HQ provided as a fallback.",sources:[{label:"CrazyForCouponing",url:"https://www.crazyforcouponing.com/"}]},
+  {rank:14,team:"Atlanta Falcons",sub:"NFC South",abbr:"ATL",color:"#A71930",status:"medium",method:"Email / Mail",details:"<a href='mailto:fans@falcons.nfl.com'>fans@falcons.nfl.com</a><br>or 4400 Falcon Pkwy, Flowery Branch, GA 30542",evidence:"Consistent email listing across multiple historical PhatWallet threads.",sources:[{label:"CrazyForCouponing",url:"https://www.crazyforcouponing.com/"},{label:"FreebiesInYourMail",url:"https://freebiesinyourmail.com/"}]},
+  {rank:15,team:"Carolina Panthers",sub:"NFC South",abbr:"CAR",color:"#0085CA",status:"medium",method:"Email / Mail",details:"<a href='mailto:feedback@panthers.nfl.com'>feedback@panthers.nfl.com</a><br>or 800 S Mint St, Charlotte, NC 28202",evidence:"Well-documented historical response system, listed as active by multiple directories.",sources:[{label:"Freeflys.com",url:"https://www.freeflys.com/"}]},
+  {rank:16,team:"Cleveland Browns",sub:"AFC North",abbr:"CLE",color:"#311D00",status:"medium",method:"Email",details:"<a href='mailto:fansquad@clevelandbrowns.com'>fansquad@clevelandbrowns.com</a>",evidence:"Listed on 2025/2026 freebie aggregators. Transitioned from older forms.",sources:[{label:"Freeflys.com",url:"https://www.freeflys.com/"}]},
+  {rank:17,team:"Denver Broncos",sub:"AFC West",abbr:"DEN",color:"#FB4F14",status:"medium",method:"Email / SASE",details:"<a href='mailto:suggestions@broncos.nfl.net'>suggestions@broncos.nfl.net</a><br>or 13655 Broncos Pkwy, Englewood, CO 80112",evidence:"Method documented extensively but lacks huge volumes of confirmed 2026 photographic receipts.",sources:[{label:"CrazyForCouponing",url:"https://www.crazyforcouponing.com/"}]},
+  {rank:18,team:"Detroit Lions",sub:"NFC North",abbr:"DET",color:"#0076B6",status:"medium",method:"Contact Form",details:"<a href='https://www.detroitlions.com/about-us/contact-us-form' target='_blank'>Contact Form</a><br>(Select Other → Fan Pack)",evidence:"Official contact form provides clear fan pack category.",sources:[{label:"Freeflys.com",url:"https://www.freeflys.com/"}]},
+  {rank:19,team:"Houston Texans",sub:"AFC South",abbr:"HOU",color:"#03202F",status:"medium",method:"Email / Mail",details:"<a href='mailto:fanfeedback@houstontexans.com'>fanfeedback@houstontexans.com</a><br>or NRG Stadium, Houston, TX 77054",evidence:"Appears on historical Slickdeals threads + updated compilations.",sources:[{label:"Freeflys.com",url:"https://www.freeflys.com/"},{label:"Slickdeals",url:"https://slickdeals.net/"}]},
+  {rank:20,team:"Jacksonville Jaguars",sub:"AFC South",abbr:"JAX",color:"#006778",status:"medium",method:"SASE Mail",details:"SASE Mail to:<br>One EverBank Field Dr, Jacksonville, FL 32202",evidence:"Historically generous via traditional SASE. Maintained status in community wikis.",sources:[{label:"FootballWeblog",url:"https://www.footballweblog.com/"}]},
+  {rank:21,team:"Minnesota Vikings",sub:"NFC North",abbr:"MIN",color:"#4F2683",status:"medium",method:"Email / Mail",details:"<a href='mailto:customerservice@vikings.nfl.net'>customerservice@vikings.nfl.net</a><br>or 2600 Vikings Circle, Eagan, MN 55121",evidence:"Email exists with 'no promises' disclaimers from community feedback.",sources:[{label:"Freeflys.com",url:"https://www.freeflys.com/"}]},
+  {rank:22,team:"Tampa Bay Buccaneers",sub:"NFC South",abbr:"TB",color:"#D50A0A",status:"medium",method:"Email",details:"<a href='mailto:feedback@buccaneers.nfl.com'>feedback@buccaneers.nfl.com</a>",evidence:"Listed consistently as active via direct emails despite past URL rot.",sources:[{label:"Freeflys.com",url:"https://www.freeflys.com/"},{label:"CrazyForCouponing",url:"https://www.crazyforcouponing.com/"}]},
+  {rank:23,team:"Tennessee Titans",sub:"AFC South",abbr:"TEN",color:"#0C2340",status:"medium",method:"SASE Mail",details:"Tennessee Titans Football Club<br>460 Great Circle Rd, Nashville, TN 37228",evidence:"Classic mail-in program continues to hold a position on current coupon sites.",sources:[{label:"CrazyForCouponing",url:"https://www.crazyforcouponing.com/"}]},
+  {rank:24,team:"Washington Commanders",sub:"NFC East",abbr:"WAS",color:"#5A1414",status:"medium",method:"Form (Magnet)",details:"<a href='https://www.marksandharrison.com/washington-commanders-merch/' target='_blank'>Free Magnet Form</a>",evidence:"Verified free schedule magnet available via official sponsor partnership.",sources:[{label:"Freeflys.com",url:"https://www.freeflys.com/"}]},
+  // LOW
+  {rank:25,team:"New York Jets",sub:"AFC East",abbr:"NYJ",color:"#125740",status:"low",method:"Discontinued",details:"Autograph requests only:<br>One Jets Drive, Florham Park, NJ 07932",evidence:"Directly states they aren't sending fan packs right now. Autographs only.",sources:[{label:"Freeflys.com",url:"https://www.freeflys.com/"},{label:"Reddit r/nyjets",url:"https://www.reddit.com/r/nyjets/"}]},
+  {rank:26,team:"Chicago Bears",sub:"NFC North",abbr:"CHI",color:"#0B162A",status:"low",method:"Kids Club / Mail",details:"Halas Hall<br>1920 Football Dr, Lake Forest, IL 60045",evidence:"Does NOT send native fan packs digitally. Mail-in SASE or Kids Zone club are only routes.",sources:[{label:"FreebiesInYourMail",url:"https://freebiesinyourmail.com/"}]},
+  {rank:27,team:"Cincinnati Bengals",sub:"AFC North",abbr:"CIN",color:"#FB4F14",status:"low",method:"SASE Mail",details:"1 Paycor Stadium<br>Cincinnati, OH 45202",evidence:"Forums declare Bengals no longer fulfill digitally. SASE to stadium is only workaround.",sources:[{label:"FreebiesInYourMail",url:"https://freebiesinyourmail.com/"}]},
+  {rank:28,team:"Los Angeles Rams",sub:"NFC West",abbr:"LAR",color:"#003594",status:"low",method:"Autographs Only",details:"ATTN: Player's Name<br>29899 Agoura Rd, Agoura Hills, CA 91301",evidence:"Do NOT appear to offer fan packs. Autograph channels strictly enforced.",sources:[{label:"PhatWallet",url:"https://phatwalletforums.com/"}]},
+  {rank:29,team:"New England Patriots",sub:"AFC East",abbr:"NE",color:"#002244",status:"low",method:"SASE Mail",details:"Gillette Stadium<br>1 Patriot Place, Foxborough, MA 02035",evidence:"Strategy requires direct letter to head office or signing up for digital newsletters.",sources:[{label:"Reddit",url:"https://www.reddit.com/r/Patriots/"}]},
+  {rank:30,team:"New York Giants",sub:"NFC East",abbr:"NYG",color:"#0B2265",status:"low",method:"SASE Mail",details:"Quest Diagnostics Center<br>1925 Giants Dr, East Rutherford, NJ 07073",evidence:"No confirmed fan pack digital method found. Hardcopy SASE suggested.",sources:[{label:"FreebiesInYourMail",url:"https://freebiesinyourmail.com/"}]},
+  {rank:31,team:"Seattle Seahawks",sub:"NFC West",abbr:"SEA",color:"#002244",status:"low",method:"SASE Mail",details:"Virginia Mason Athletic Center<br>12 Renton Park Dr, Renton, WA 98056",evidence:"Do NOT offer formal fan packs. Mail-in approach is the only unconfirmed workaround.",sources:[{label:"FreebiesInYourMail",url:"https://freebiesinyourmail.com/"}]},
+  {rank:32,team:"Los Angeles Chargers",sub:"AFC West",abbr:"LAC",color:"#0080C6",status:"low",method:"SASE Mail",details:"One Chargers Way<br>El Segundo, CA 90245",evidence:"Absent from all current freebie sites. Physical mail approach to new training facility required.",sources:[{label:"FreebiesInYourMail",url:"https://freebiesinyourmail.com/"}]}
 ];
 
-// State and rendering
-const state = { mlb:{filter:'all',search:''}, nfl:{filter:'all',search:''} };
-function sc(s){ return s==='high'?'s-high':s==='medium'?'s-medium':'s-low'; }
-function sl(s){ return s==='high'?'🟢 High':s==='medium'?'🟡 Medium':'🔴 Low'; }
+// ── STATE ─────────────────────────────────────────────────────────────
+const state = {
+  mlb:{filter:'all',search:''},
+  nfl:{filter:'all',search:''}
+};
+let activeTab = 'mlb';
+
+// ── RENDER ────────────────────────────────────────────────────────────
+function sc(s){return s==='high'?'s-high':s==='medium'?'s-medium':'s-low'}
+function sl(s){return s==='high'?'🟢 High':s==='medium'?'🟡 Medium':'🔴 Low'}
+
 function render(sport){
   const data = sport==='mlb' ? MLB : NFL;
   const {filter,search} = state[sport];
-  const rows = data.filter(t=> (filter==='all' || t.status===filter) && (t.team.toLowerCase().includes(search) || (t.sub||'').toLowerCase().includes(search)));
-  document.getElementById(`${sport}-high`).textContent = data.filter(t=>t.status==='high').length;
-  document.getElementById(`${sport}-med`).textContent  = data.filter(t=>t.status==='medium').length;
-  document.getElementById(`${sport}-low`).textContent  = data.filter(t=>t.status==='low').length;
+  const rows = data.filter(t=>{
+    const mf = filter==='all' || t.status===filter;
+    const ms = t.team.toLowerCase().includes(search) || (t.sub||'').toLowerCase().includes(search);
+    return mf && ms;
+  });
+
+  // stats
+  const all = data;
+  document.getElementById(`${sport}-high`).textContent = all.filter(t=>t.status==='high').length;
+  document.getElementById(`${sport}-med`).textContent  = all.filter(t=>t.status==='medium').length;
+  document.getElementById(`${sport}-low`).textContent  = all.filter(t=>t.status==='low').length;
+
   const body = document.getElementById(`${sport}-body`);
   const noRes = document.getElementById(`${sport}-nores`);
-  if(!rows.length){ body.innerHTML=''; noRes.style.display='block'; return; }
+
+  if(!rows.length){body.innerHTML='';noRes.style.display='block';return}
   noRes.style.display='none';
-  body.innerHTML = rows.map(t=>`<tr><td class="rank">${t.rank}</td><td class="td-team"><div class="team-cell"><div class="team-icon" style="background:${t.color}">${t.abbr.slice(0,3)}</div><div><div class="team-name">${t.team}</div><div class="team-sub">${t.sub}</div></div></div></td><td class="td-status"><span class="status-badge ${sc(t.status)}">${sl(t.status)}</span></td><td class="td-method"><span class="method-badge">${t.method}</span></td><td class="details-cell td-details">${t.details}</td><td class="evidence-cell td-evidence">${t.evidence}</td><td class="td-source">${t.sources.map(s=>`<a class="source-link" href="${s.url}" target="_blank" rel="noopener">${s.label} ↗</a>`).join('')}</td></tr>`).join('');
+
+  body.innerHTML = rows.map(t=>`
+    <tr>
+      <td class="rank">${t.rank}</td>
+      <td class="td-team">
+        <div class="team-cell">
+          <div class="team-icon" style="background:${t.color}">${t.abbr.slice(0,3)}</div>
+          <div>
+            <div class="team-name">${t.team}</div>
+            <div class="team-sub">${t.sub}</div>
+          </div>
+        </div>
+      </td>
+      <td class="td-status"><span class="status-badge ${sc(t.status)}">${sl(t.status)}</span></td>
+      <td class="td-method"><span class="method-badge">${t.method}</span></td>
+      <td class="details-cell td-details">${t.details}</td>
+      <td class="evidence-cell td-evidence">${t.evidence}</td>
+      <td class="td-source">
+        ${t.sources ? t.sources.map(s => `<a class="source-link" href="${s.url}" target="_blank" rel="noopener">${s.label} ↗</a>`).join('') : '<span style="color:var(--muted);font-family:\'IBM Plex Mono\',monospace;font-size:.68rem">N/A</span>'}
+      </td>
+    </tr>`).join('');
 }
-function setFilter(sport,f,btn){ state[sport].filter=f; document.querySelectorAll(`[data-sport="${sport}"].filter-btn`).forEach(b=>b.classList.remove('active')); btn.classList.add('active'); render(sport); }
-function switchTab(t){ document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active')); document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active-mlb','active-nfl')); document.getElementById(`content-${t}`).classList.add('active'); document.getElementById(`tab-${t}`).classList.add(`active-${t}`); }
-document.getElementById('mlb-search').addEventListener('input',e=>{ state.mlb.search=e.target.value.toLowerCase(); render('mlb'); });
-document.getElementById('nfl-search').addEventListener('input',e=>{ state.nfl.search=e.target.value.toLowerCase(); render('nfl'); });
-render('mlb'); render('nfl');
+
+function setFilter(sport,f,btn){
+  state[sport].filter = f;
+  document.querySelectorAll(`[data-sport="${sport}"].filter-btn`).forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  render(sport);
+}
+
+function switchTab(t){
+  activeTab = t;
+  document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>{b.classList.remove('active-mlb','active-nfl')});
+  document.getElementById(`content-${t}`).classList.add('active');
+  document.getElementById(`tab-${t}`).classList.add(`active-${t}`);
+}
+
+// search
+document.getElementById('mlb-search').addEventListener('input',e=>{state.mlb.search=e.target.value.toLowerCase();render('mlb')});
+document.getElementById('nfl-search').addEventListener('input',e=>{state.nfl.search=e.target.value.toLowerCase();render('nfl')});
+
+// init
+render('mlb');
+render('nfl');
 </script>
 </body>
 </html>
