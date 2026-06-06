@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=0.8">
+<meta name="viewport" content="width=device-width, initial-scale=0.9">
 <title>2026 Fan Pack Tracker — MLB & NFL</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -25,7 +25,7 @@
 body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;min-height:100vh;overflow-x:hidden}
 body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(79,195,247,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(79,195,247,.025) 1px,transparent 1px);background-size:44px 44px;pointer-events:none;z-index:0}
 
-.container{max-width:1150px;margin:0 auto;padding:2rem 1.25rem 5rem;position:relative;z-index:1}
+.container{max-width:1400px;margin:0 auto;padding:2rem 1.25rem 5rem;position:relative;z-index:1}
 
 /* HEADER */
 header{text-align:center;padding:2.5rem 0 1.5rem;border-bottom:1px solid var(--border);margin-bottom:0}
@@ -66,7 +66,7 @@ h1 .sep{color:var(--muted);margin:0 .2em}
 
 /* TABLE */
 .table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:4px}
-table{width:100%;border-collapse:collapse;font-size:.85rem}
+table{width:100%;border-collapse:collapse;font-size:.82rem}
 thead tr{background:var(--surface2);border-bottom:1px solid var(--border)}
 th{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:.7rem .95rem;text-align:left;white-space:nowrap;cursor:pointer;user-select:none}
 th:hover{color:var(--accent)}
@@ -88,7 +88,7 @@ td{padding:.8rem .95rem;vertical-align:middle}
 .details-cell a{color:var(--accent);text-decoration:none;transition:opacity .2s}
 .details-cell a:hover{text-decoration:underline;opacity:.8}
 .evidence-cell{min-width:260px;max-width:290px;color:#8b95ad;font-size:.8rem;line-height:1.45}
-.source-link{color:var(--accent);text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:.68rem;opacity:.8;transition:opacity .2s}
+.source-link{color:var(--accent);text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:.68rem;opacity:.8;transition:opacity .2s;white-space:nowrap}
 .source-link:hover{opacity:1;text-decoration:underline}
 .no-results{text-align:center;padding:3rem;color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:.82rem;display:none}
 
@@ -100,29 +100,38 @@ footer{margin-top:2.5rem;padding-top:1.25rem;border-bottom:2.5rem solid transpar
 @keyframes fadeIn{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:640px) {
   thead { display: none; }
-  
+
   tbody tr { 
     display: flex; 
     flex-direction: column; 
-    gap: 0.25rem; 
-    padding: 1rem; 
+    gap: 0.35rem; 
+    padding: 1rem 1.1rem; 
     border-bottom: 1px solid var(--border);
   }
 
-  /* Line 1: Team & Status */
-  .row-line-1 { display: flex; justify-content: space-between; align-items: center; order: 1; }
   .rank { display: none; }
-  .team-cell { flex: 1; }
-  
-  /* Line 2: Request Method & Details */
-  .row-line-2 { display: flex; gap: 0.5rem; align-items: center; order: 2; font-size: 0.8rem; }
-  
+
+  /* Line 1: Team & Status */
+  .td-team  { order: 1; padding: 0 !important; width: 70%; }
+  .td-status { order: 1; padding: 0 !important; position: absolute; right: 1.1rem; top: 1rem; }
+
+  /* Line 2: How to Request & How to Details */
+  .td-method  { order: 2; padding: 0 !important; font-size: 0.78rem; margin-top: 0.4rem; }
+  .td-details { order: 2; padding: 0 !important; font-size: 0.78rem; margin-top: 0.4rem; }
+  .td-method::before { content: "Method: "; color: var(--muted); font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.15rem; }
+  .td-details::before { content: "Details: "; color: var(--muted); font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.15rem; }
+
   /* Line 3: Evidence/Notes */
-  .evidence-cell { display: block !important; order: 3; font-size: 0.75rem; color: var(--muted); margin: 0.25rem 0; }
-  
+  .td-evidence { order: 3; padding: 0 !important; font-size: 0.8rem; line-height: 1.5; margin-top: 0.2rem; }
+  .td-evidence::before { content: "Evidence / Notes"; color: var(--muted); font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.25rem; }
+
   /* Line 4: Source */
-  .source-td { order: 4; font-size: 0.7rem; }
+  .td-source { order: 4; padding: 0 !important; font-size: 0.72rem; margin-top: 0.3rem; }
+  .td-source::before { content: "Source: "; color: var(--muted); font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; margin-right: 0.3rem; }
+
+  td { border: none !important; }
 }</style>
+<base target="_blank">
 </head>
 <body>
 <div class="container">
@@ -314,7 +323,7 @@ function render(sport){
   body.innerHTML = rows.map(t=>`
     <tr>
       <td class="rank">${t.rank}</td>
-      <td>
+      <td class="td-team">
         <div class="team-cell">
           <div class="team-icon" style="background:${t.color}">${t.abbr.slice(0,3)}</div>
           <div>
@@ -323,11 +332,11 @@ function render(sport){
           </div>
         </div>
       </td>
-      <td><span class="status-badge ${sc(t.status)}">${sl(t.status)}</span></td>
-      <td><span class="method-badge">${t.method}</span></td>
-      <td class="details-cell">${t.details}</td>
-      <td class="evidence-cell">${t.evidence}</td>
-      <td>${t.sourceUrl==='#'?`<span style="color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:.68rem">N/A</span>`:`<a class="source-link" href="${t.sourceUrl}" target="_blank" rel="noopener">${t.sourceLabel} ↗</a>`}</td>
+      <td class="td-status"><span class="status-badge ${sc(t.status)}">${sl(t.status)}</span></td>
+      <td class="td-method"><span class="method-badge">${t.method}</span></td>
+      <td class="details-cell td-details">${t.details}</td>
+      <td class="evidence-cell td-evidence">${t.evidence}</td>
+      <td class="td-source">${t.sourceUrl==='#'?`<span style="color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:.68rem">N/A</span>`:`<a class="source-link" href="${t.sourceUrl}" target="_blank" rel="noopener">${t.sourceLabel} ↗</a>`}</td>
     </tr>`).join('');
 }
 
