@@ -95,7 +95,51 @@ td{padding:.8rem .95rem;vertical-align:middle}
 /* FOOTER */
 footer{margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid var(--border);text-align:center;font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--muted);line-height:1.8}
 @keyframes fadeIn{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:640px){.evidence-cell{display:none}.team-sub{display:none}.stats-bar{grid-template-columns:repeat(3,1fr)}.tab-btn{padding:.65rem 1.2rem;font-size:1.1rem}}
+@media(max-width:640px) {
+  /* Hide the table headers on mobile */
+  thead { display: none; }
+  
+  /* Force table components to behave like block elements */
+  tbody, tr, td { display: block; width: 100%; }
+  
+  /* Create card-like appearance for each team */
+  tbody tr {
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border);
+    padding: 1rem;
+    background: var(--surface);
+    border-radius: 6px;
+  }
+  
+  /* Remove rank from mobile to save space */
+  .rank { display: none; }
+  
+  /* Ensure the team cell looks correct in a block layout */
+  .team-cell { margin-bottom: 0.5rem; }
+  
+  /* Force Evidence and Source to take full width and separate them */
+  .evidence-cell {
+    display: block;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text);
+    font-size: 0.85rem;
+    max-width: 100%;
+  }
+  
+  td:last-child {
+    display: block;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border);
+    text-align: right;
+  }
+
+  /* Keep stats bar and tab buttons readable */
+  .stats-bar { grid-template-columns: repeat(3, 1fr); }
+  .tab-btn { padding: 0.65rem 1.2rem; font-size: 1.1rem; }
+}
 </style>
 </head>
 <body>
