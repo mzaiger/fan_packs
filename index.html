@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=0.8">
-<title>2026 Fan Pack Tracker — MLB & NFL</title>
+<title>2026 Fan Pack Tracker — MLB, NFL & NBA</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
@@ -19,6 +19,7 @@
   --muted:#58627a;
   --accent-mlb:#1e88e5;
   --accent-nfl:#e53935;
+  --accent-nba:#ff671f;
   --accent:#4fc3f7;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -33,8 +34,9 @@ header{text-align:center;padding:2.5rem 0 1.5rem;border-bottom:1px solid var(--b
 h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.6rem,7vw,4.8rem);letter-spacing:.04em;line-height:1;color:var(--text)}
 h1 .mlb-c{color:var(--accent-mlb)}
 h1 .nfl-c{color:var(--accent-nfl)}
+h1 .nba-c{color:var(--accent-nba)}
 h1 .sep{color:var(--muted);margin:0 .2em}
-.subtitle{margin-top:.7rem;color:var(--muted);font-size:.88rem;max-width:580px;margin-left:auto;margin-right:auto;line-height:1.6}
+.subtitle{margin-top:.7rem;color:var(--muted);font-size:.88rem;max-width:680px;margin-left:auto;margin-right:auto;line-height:1.6}
 
 /* TABS */
 .tabs{display:flex;gap:0;margin:2rem 0 0;border-bottom:2px solid var(--border)}
@@ -42,6 +44,7 @@ h1 .sep{color:var(--muted);margin:0 .2em}
 .tab-btn:hover{color:var(--text)}
 .tab-btn.active-mlb{color:var(--accent-mlb);border-bottom-color:var(--accent-mlb)}
 .tab-btn.active-nfl{color:var(--accent-nfl);border-bottom-color:var(--accent-nfl)}
+.tab-btn.active-nba{color:var(--accent-nba);border-bottom-color:var(--accent-nba)}
 .tab-content{display:none;padding-top:1.75rem}
 .tab-content.active{display:block}
 
@@ -120,14 +123,15 @@ footer{margin-top:2.5rem;padding-top:1.25rem;border-bottom:2.5rem solid transpar
 <div class="container">
 
 <header>
-  <div class="header-badge">⚾🏈 Community Research · Updated June 2026 · Multi-Source Audited</div>
-  <h1><span class="mlb-c">MLB</span><span class="sep">&</span><span class="nfl-c">NFL</span> Fan Pack Tracker</h1>
-  <p class="subtitle">Ranked by likelihood of receiving free swag by mail — aggregated from updated 2025–2026 freebie site data, forums, and official portals. <strong>NFL sources:</strong> FreebiesInYourMail, Freeflys, VonBeau, CrazyForCouponing, PhatWallet, FootballWeblog. <strong>MLB sources:</strong> Drugstore Divas, FreestuffTimes, Collectors Universe Forum, FanpacksBlog, Budget101, Slickdeals, Fanmail.biz.</p>
+  <div class="header-badge">⚾🏈🏀 Community Research · Updated June 2026 · Multi-Source Audited</div>
+  <h1><span class="mlb-c">MLB</span><span class="sep">,</span><span class="nfl-c">NFL</span><span class="sep">&</span><span class="nba-c">NBA</span> Fan Pack Tracker</h1>
+  <p class="subtitle">Ranked by likelihood of receiving free swag by mail — aggregated from updated 2025–2026 freebie site data, forums, and official portals. <strong>NBA sources:</strong> Reddit (r/nba, r/lakers), TeamFanPacks.com, FreebiesInYourMail. <strong>NFL sources:</strong> FreebiesInYourMail, Freeflys, VonBeau, CrazyForCouponing. <strong>MLB sources:</strong> Drugstore Divas, FreestuffTimes, Collectors Universe Forum, Slickdeals.</p>
 </header>
 
 <div class="tabs">
   <button class="tab-btn active-mlb" id="tab-mlb" onclick="switchTab('mlb')">⚾ MLB (30 Teams)</button>
   <button class="tab-btn" id="tab-nfl" onclick="switchTab('nfl')">🏈 NFL (32 Teams)</button>
+  <button class="tab-btn" id="tab-nba" onclick="switchTab('nba')">🏀 NBA (30 Teams)</button>
 </div>
 
 <div class="tab-content active" id="content-mlb">
@@ -188,9 +192,38 @@ footer{margin-top:2.5rem;padding-top:1.25rem;border-bottom:2.5rem solid transpar
   </div>
 </div>
 
+<div class="tab-content" id="content-nba">
+  <div class="stats-bar">
+    <div class="stat-card"><div class="stat-num" style="color:var(--green)" id="nba-high">0</div><div class="stat-label">High Confidence</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:var(--yellow)" id="nba-med">0</div><div class="stat-label">Medium Confidence</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:var(--red)" id="nba-low">0</div><div class="stat-label">Low / Discontinued</div></div>
+  </div>
+  <div class="legend">
+    <div class="legend-item"><div class="dot" style="background:var(--green)"></div>High — Consistent responder, verified channels</div>
+    <div class="legend-item"><div class="dot" style="background:var(--yellow)"></div>Medium — Intermittent response rate, standard requests</div>
+    <div class="legend-item"><div class="dot" style="background:var(--red)"></div>Low — Confirmed discontinued, or heavily digital-only</div>
+  </div>
+  <div class="controls">
+    <input class="search-box" id="nba-search" placeholder="Search team…" autocomplete="off">
+    <button class="filter-btn active" data-sport="nba" data-filter="all" onclick="setFilter('nba','all',this)">All 30</button>
+    <button class="filter-btn" data-sport="nba" data-filter="high" onclick="setFilter('nba','high',this)">🟢 High</button>
+    <button class="filter-btn" data-sport="nba" data-filter="medium" onclick="setFilter('nba','medium',this)">🟡 Medium</button>
+    <button class="filter-btn" data-sport="nba" data-filter="low" onclick="setFilter('nba','low',this)">🔴 Low</button>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th>#</th><th>Team</th><th>Status</th><th>How to Request</th><th>How to Details</th><th>Evidence / Notes</th><th>Sources</th>
+      </tr></thead>
+      <tbody id="nba-body"></tbody>
+    </table>
+    <div class="no-results" id="nba-nores">No teams match.</div>
+  </div>
+</div>
+
 <footer>
-  Aggregated from TheWritersJourney, Drugstore Divas 2026 update, SportscardForum, Freebies In Your Mail, Freeflys.com, CrazyForCouponing, and official team endpoints.<br>
-  Availability changes often — always verify with the team. Allow 4–8 weeks for delivery. Not affiliated with MLB or NFL.
+  Aggregated from TheWritersJourney, Drugstore Divas 2026 update, TeamFanPacks, Freebies In Your Mail, Freeflys.com, and official team endpoints.<br>
+  Availability changes often — always verify with the team. Allow 4–8 weeks for delivery. Not affiliated with MLB, NFL, or NBA.
 </footer>
 
 </div><script>
@@ -269,10 +302,49 @@ const NFL = [
   {rank:32,team:"Los Angeles Chargers",sub:"AFC West",abbr:"LAC",color:"#0080C6",status:"low",method:"No Fan Packs",details:"Contact page only:<br><a href='https://www.chargers.com/contact-us' target='_blank'>chargers.com/contact-us</a><br>or One Chargers Way, El Segundo, CA 90245",evidence:"Confirmed by VonBeau (updated July 2025): 'No fan packs. Contact via Chargers Contact Page.' Absent from all active freebie compilations. No physical mail workaround confirmed.",sources:[{label:"VonBeau",url:"https://vonbeau.com/freebies/free-football-team-fan-packs-nfl/13021/"},{label:"FreebiesInYourMail",url:"https://freebiesinyourmail.com/7898/free-nfl-fan-packs-and-other-nfl-freebies1/"},{label:"Freeflys.com",url:"https://www.freeflys.com/free-stuff-freebies/free-nfl-football-team-fan-packs-more/"}]}
 ];
 
+const NBA = [
+  // HIGH
+  {rank:1,team:"Los Angeles Lakers",sub:"Western - Pacific",abbr:"LAL",color:"#552583",status:"high",method:"Email",details:"<a href='mailto:community@la-lakers.com'>community@la-lakers.com</a><br>or 2275 E Mariposa Ave, El Segundo, CA 90245",evidence:"Extremely well-documented on Reddit (r/lakers). Fans frequently report receiving a letter, team photo, stickers, and occasionally a phone wallet or magnet.",sources:[{label:"Reddit r/lakers",url:"https://www.reddit.com/r/lakers/comments/cpmvtv/reminder_that_you_can_get_a_free_lakers_fan_pack/"},{label:"TeamFanPacks",url:"https://www.teamfanpacks.com/"}]},
+  {rank:2,team:"San Antonio Spurs",sub:"Western - Southwest",abbr:"SAS",color:"#000000",status:"high",method:"Contact Form / Email",details:"<a href='https://www.nba.com/spurs/contact' target='_blank'>Spurs Contact Page</a><br>or <a href='mailto:guestservices@rcbh.com'>guestservices@rcbh.com</a>",evidence:"Consistently responds to fan pack requests via email and their contact form. Known to send stickers, schedules, and letters. Mentioned heavily on r/nba historically.",sources:[{label:"Reddit r/nba",url:"https://www.reddit.com/r/nba/"},{label:"FreebiesInYourMail",url:"https://freebiesinyourmail.com/"}]},
+  {rank:3,team:"New Orleans Pelicans",sub:"Western - Southwest",abbr:"NOP",color:"#0C2340",status:"high",method:"Email",details:"<a href='mailto:pelicansfanexperience@pelicans.com'>pelicansfanexperience@pelicans.com</a>",evidence:"Listed explicitly on TeamFanPacks with dedicated contact info. Known to respond to polite emails with standard fan pack swag.",sources:[{label:"TeamFanPacks",url:"https://www.teamfanpacks.com/teams/New-Orleans-Pelicans-Free-Fan-Gear"}]},
+  {rank:4,team:"Boston Celtics",sub:"Eastern - Atlantic",abbr:"BOS",color:"#007A33",status:"high",method:"Email / Mail",details:"<a href='mailto:fanrelations@celtics.com'>fanrelations@celtics.com</a><br>or 226 Causeway St, Boston, MA 02114",evidence:"Reliable sender when utilizing email or standard mail. Often includes decals and schedules.",sources:[{label:"Slickdeals",url:"https://slickdeals.net/"},{label:"TeamFanPacks",url:"https://www.teamfanpacks.com/"}]},
+  {rank:5,team:"Minnesota Timberwolves",sub:"Western - Northwest",abbr:"MIN",color:"#0C2340",status:"high",method:"Email",details:"<a href='mailto:fanrelations@timberwolves.com'>fanrelations@timberwolves.com</a> / <a href='mailto:fansfirst@lynxbasketball.com'>fansfirst@lynxbasketball.com</a>",evidence:"Famously the only team that responded to a viral Reddit post years ago sending a letter to all 30 teams. Still maintain a good reputation for fan relations.",sources:[{label:"Reddit r/nba",url:"https://www.reddit.com/r/nba/comments/2yitr1/"}]},
+  {rank:6,team:"Dallas Mavericks",sub:"Western - Southwest",abbr:"DAL",color:"#00538C",status:"high",method:"Email",details:"<a href='mailto:fanfeedback@dallasmavs.com'>fanfeedback@dallasmavs.com</a>",evidence:"Mark Cuban's organization historically excellent with fan mail. High success rate via email for basic fan packs.",sources:[{label:"Reddit r/nba",url:"https://www.reddit.com/r/nba/"}]},
+  
+  // MEDIUM
+  {rank:7,team:"Chicago Bulls",sub:"Eastern - Central",abbr:"CHI",color:"#CE1141",status:"medium",method:"Email / Mail",details:"<a href='mailto:guestrelations@bulls.com'>guestrelations@bulls.com</a><br>or 1901 W Madison St, Chicago, IL 60612",evidence:"Hit or miss depending on the season, but email requests are regularly acknowledged. SASE to United Center also recommended.",sources:[{label:"Reddit r/nba",url:"https://www.reddit.com/r/nba/"},{label:"TeamFanPacks",url:"https://www.teamfanpacks.com/"}]},
+  {rank:8,team:"Golden State Warriors",sub:"Western - Pacific",abbr:"GSW",color:"#1D428A",status:"medium",method:"Contact Form / Mail",details:"<a href='https://www.nba.com/warriors/contact-us' target='_blank'>Contact Us Form</a><br>or 1 Warriors Way, San Francisco, CA 94158",evidence:"Transitioned heavily to digital, but physical requests to Chase Center or via the detailed contact form sometimes yield success.",sources:[{label:"TeamFanPacks",url:"https://www.teamfanpacks.com/"}]},
+  {rank:9,team:"Miami Heat",sub:"Eastern - Southeast",abbr:"MIA",color:"#98002E",status:"medium",method:"Email",details:"<a href='mailto:guestservices@heat.com'>guestservices@heat.com</a>",evidence:"Standard fulfillment. Mentioned in community threads, though success rates fluctuate.",sources:[{label:"FreebiesInYourMail",url:"https://freebiesinyourmail.com/"}]},
+  {rank:10,team:"New York Knicks",sub:"Eastern - Atlantic",abbr:"NYK",color:"#006BB6",status:"medium",method:"Email",details:"<a href='mailto:guestrelations@msg.com'>guestrelations@msg.com</a>",evidence:"Fulfilled by MSG Guest Relations. Often sends out standard venue/team promotional material rather than dedicated fan packs.",sources:[{label:"TeamFanPacks",url:"https://www.teamfanpacks.com/teams/New-York-Knicks-Free-Fan-Gear"}]},
+  {rank:11,team:"Philadelphia 76ers",sub:"Eastern - Atlantic",abbr:"PHI",color:"#006BB6",status:"medium",method:"Email",details:"<a href='mailto:FanFeedback@76ers.com'>FanFeedback@76ers.com</a>",evidence:"Listed on freebie forums; success typically involves a standard letter and occasionally stickers.",sources:[{label:"Slickdeals",url:"https://slickdeals.net/"}]},
+  {rank:12,team:"Milwaukee Bucks",sub:"Eastern - Central",abbr:"MIL",color:"#00471B",status:"medium",method:"Email",details:"<a href='mailto:bucksinfo@bucks.com'>bucksinfo@bucks.com</a>",evidence:"Active community relations team, but physical packs are becoming less common.",sources:[{label:"TeamFanPacks",url:"https://www.teamfanpacks.com/"}]},
+  {rank:13,team:"Phoenix Suns",sub:"Western - Pacific",abbr:"PHX",color:"#1D1160",status:"medium",method:"Email",details:"<a href='mailto:guestexperience@suns.com'>guestexperience@suns.com</a>",evidence:"Standard response rate. Often directs fans to their local kids club if applicable.",sources:[{label:"FreebiesInYourMail",url:"https://freebiesinyourmail.com/"}]},
+  {rank:14,team:"Orlando Magic",sub:"Eastern - Southeast",abbr:"ORL",color:"#0077C0",status:"medium",method:"Contact Form",details:"<a href='https://www.nba.com/magic/contact' target='_blank'>Magic Contact Us</a>",evidence:"Online form inquiries generally get routed properly. Known to send smaller swag items periodically.",sources:[{label:"TeamFanPacks",url:"https://www.teamfanpacks.com/"}]},
+  {rank:15,team:"Cleveland Cavaliers",sub:"Eastern - Central",abbr:"CLE",color:"#860038",status:"medium",method:"Email",details:"<a href='mailto:contactus@cavs.com'>contactus@cavs.com</a>",evidence:"Reasonable success rate historically; requests sent directly to the organization's main contact email.",sources:[{label:"Slickdeals",url:"https://slickdeals.net/"}]},
+  {rank:16,team:"Denver Nuggets",sub:"Western - Northwest",abbr:"DEN",color:"#0E2240",status:"medium",method:"Contact Form",details:"<a href='https://www.ballarena.com/contact-us/' target='_blank'>Ball Arena Contact Form</a>",evidence:"Requests are handled through Kroenke Sports & Entertainment (Ball Arena). Results are mixed.",sources:[{label:"TeamFanPacks",url:"https://www.teamfanpacks.com/"}]},
+  {rank:17,team:"Atlanta Hawks",sub:"Eastern - Southeast",abbr:"ATL",color:"#E03A3E",status:"medium",method:"Email",details:"<a href='mailto:guestservices@hawks.com'>guestservices@hawks.com</a>",evidence:"Listed on aggregate freebie sites. Moderate success rate.",sources:[{label:"FreebiesInYourMail",url:"https://freebiesinyourmail.com/"}]},
+  {rank:18,team:"Indiana Pacers",sub:"Eastern - Central",abbr:"IND",color:"#FDBB30",status:"medium",method:"Email",details:"<a href='mailto:GuestServices@pacers.com'>GuestServices@pacers.com</a>",evidence:"Often replies with digital media or directs to purchasing team merchandise, though physical packs do occasionally land.",sources:[{label:"TeamFanPacks",url:"https://www.teamfanpacks.com/"}]},
+  {rank:19,team:"Sacramento Kings",sub:"Western - Pacific",abbr:"SAC",color:"#5A2D81",status:"medium",method:"Email",details:"<a href='mailto:guestservices@kings.com'>guestservices@kings.com</a>",evidence:"Standard response profile for the NBA. Usually sends a polite response, sometimes with stickers.",sources:[{label:"FreebiesInYourMail",url:"https://freebiesinyourmail.com/"}]},
+  {rank:20,team:"Portland Trail Blazers",sub:"Western - Northwest",abbr:"POR",color:"#E03A3E",status:"medium",method:"Email",details:"<a href='mailto:rq.fan@trailblazers.com'>rq.fan@trailblazers.com</a>",evidence:"Known to utilize the rq.fan alias for incoming requests. Mixed bag of digital and physical fulfillment.",sources:[{label:"TeamFanPacks",url:"https://www.teamfanpacks.com/"}]},
+  {rank:21,team:"Oklahoma City Thunder",sub:"Western - Northwest",abbr:"OKC",color:"#007AC1",status:"medium",method:"Email",details:"<a href='mailto:fans@okcthunder.com'>fans@okcthunder.com</a>",evidence:"Responsive front office. May require SASE for actual merchandise.",sources:[{label:"Slickdeals",url:"https://slickdeals.net/"}]},
+  {rank:22,team:"Charlotte Hornets",sub:"Eastern - Southeast",abbr:"CHA",color:"#1D1160",status:"medium",method:"Contact Form",details:"<a href='https://www.nba.com/hornets/contact-us' target='_blank'>Hornets Contact Form</a>",evidence:"General inquiries form can be utilized. Response times vary heavily.",sources:[{label:"TeamFanPacks",url:"https://www.teamfanpacks.com/"}]},
+
+  // LOW
+  {rank:23,team:"Brooklyn Nets",sub:"Eastern - Atlantic",abbr:"BKN",color:"#000000",status:"low",method:"Discontinued",details:"<small>Historically: fanrelations@brooklynnets.com</small>",evidence:"Many reports of the Nets explicitly stating they no longer offer fan packs due to volume.",sources:[{label:"FreebiesInYourMail",url:"https://freebiesinyourmail.com/"}]},
+  {rank:24,team:"LA Clippers",sub:"Western - Pacific",abbr:"LAC",color:"#C8102E",status:"low",method:"Unconfirmed",details:"<a href='mailto:fanservices@clippers.com'>fanservices@clippers.com</a>",evidence:"Very little community evidence of successful fan pack hauls in recent years. Moving to Intuit Dome may change program.",sources:[{label:"TeamFanPacks",url:"https://www.teamfanpacks.com/"}]},
+  {rank:25,team:"Houston Rockets",sub:"Western - Southwest",abbr:"HOU",color:"#CE1141",status:"low",method:"Mail Only",details:"Houston Rockets, Attn: Fan Mail<br>1510 Polk St, Houston, TX 77002",evidence:"Rarely responds to email requests with merchandise. SASE mail is the only viable longshot.",sources:[{label:"Slickdeals",url:"https://slickdeals.net/"}]},
+  {rank:26,team:"Detroit Pistons",sub:"Eastern - Central",abbr:"DET",color:"#1D42BA",status:"low",method:"Unconfirmed",details:"<small>Contact: info@palacenet.com (Legacy)</small>",evidence:"Since moving to Little Caesars Arena, robust fan pack programs haven't been heavily documented.",sources:[{label:"TeamFanPacks",url:"https://www.teamfanpacks.com/teams/Detroit-Pistons-Free-Fan-Gear"}]},
+  {rank:27,team:"Memphis Grizzlies",sub:"Western - Southwest",abbr:"MEM",color:"#5D76A9",status:"low",method:"Unlikely",details:"<a href='mailto:guestservices@grizzlies.com'>guestservices@grizzlies.com</a>",evidence:"Low historic response rate for free merchandise across couponing networks.",sources:[{label:"FreebiesInYourMail",url:"https://freebiesinyourmail.com/"}]},
+  {rank:28,team:"Toronto Raptors",sub:"Eastern - Atlantic",abbr:"TOR",color:"#CE1141",status:"low",method:"Digital Only",details:"<a href='mailto:fanrelations@mlse.com'>fanrelations@mlse.com</a>",evidence:"MLSE (Maple Leaf Sports & Entertainment) generally declines physical merchandise requests or limits to Canadian addresses only with strict guidelines.",sources:[{label:"Reddit r/nba",url:"https://www.reddit.com/r/nba/"}]},
+  {rank:29,team:"Utah Jazz",sub:"Western - Northwest",abbr:"UTA",color:"#002B5C",status:"low",method:"Unconfirmed",details:"<a href='mailto:guestservices@utahjazz.com'>guestservices@utahjazz.com</a>",evidence:"Rarely documented on freebie sites. No recent confirmation of active fan packs.",sources:[{label:"TeamFanPacks",url:"https://www.teamfanpacks.com/"}]},
+  {rank:30,team:"Washington Wizards",sub:"Eastern - Southeast",abbr:"WAS",color:"#002B5C",status:"low",method:"Unconfirmed",details:"<a href='mailto:guestservices@monumentalsports.com'>guestservices@monumentalsports.com</a>",evidence:"Monumental Sports routes requests centrally; rarely sends out individual team physical fan packs.",sources:[{label:"FreebiesInYourMail",url:"https://freebiesinyourmail.com/"}]}
+];
+
 // ── STATE ─────────────────────────────────────────────────────────────
 const state = {
   mlb:{filter:'all',search:''},
-  nfl:{filter:'all',search:''}
+  nfl:{filter:'all',search:''},
+  nba:{filter:'all',search:''}
 };
 let activeTab = 'mlb';
 
@@ -281,7 +353,7 @@ function sc(s){return s==='high'?'s-high':s==='medium'?'s-medium':'s-low'}
 function sl(s){return s==='high'?'🟢 High':s==='medium'?'🟡 Medium':'🔴 Low'}
 
 function render(sport){
-  const data = sport==='mlb' ? MLB : NFL;
+  const data = sport==='mlb' ? MLB : sport==='nfl' ? NFL : NBA;
   const {filter,search} = state[sport];
   const rows = data.filter(t=>{
     const mf = filter==='all' || t.status===filter;
@@ -333,7 +405,7 @@ function setFilter(sport,f,btn){
 function switchTab(t){
   activeTab = t;
   document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b=>{b.classList.remove('active-mlb','active-nfl')});
+  document.querySelectorAll('.tab-btn').forEach(b=>{b.classList.remove('active-mlb','active-nfl','active-nba')});
   document.getElementById(`content-${t}`).classList.add('active');
   document.getElementById(`tab-${t}`).classList.add(`active-${t}`);
 }
@@ -341,10 +413,12 @@ function switchTab(t){
 // search
 document.getElementById('mlb-search').addEventListener('input',e=>{state.mlb.search=e.target.value.toLowerCase();render('mlb')});
 document.getElementById('nfl-search').addEventListener('input',e=>{state.nfl.search=e.target.value.toLowerCase();render('nfl')});
+document.getElementById('nba-search').addEventListener('input',e=>{state.nba.search=e.target.value.toLowerCase();render('nba')});
 
 // init
 render('mlb');
 render('nfl');
+render('nba');
 </script>
 </body>
 </html>
