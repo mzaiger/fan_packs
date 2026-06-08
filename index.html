@@ -129,8 +129,7 @@ footer{margin-top:2.5rem;padding-top:1.25rem;border-bottom:2.5rem solid transpar
   .td-evidence::before { content: "Evidence / Notes"; color: var(--muted); font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 0.25rem; }
   .td-source { order: 4; padding: 0 !important; font-size: 0.72rem; margin-top: 0.3rem; }
   .td-source::before { content: "Sources: "; color: var(--muted); font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; margin-right: 0.3rem; }
-  .td-receipt { order: 4; padding: 0 !important; font-size: 0.72rem; margin-top: 0.3rem; }
-  .td-receipt::before { content: "Verified Receipt: "; color: var(--muted); font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; margin-right: 0.3rem; }
+  .td-receipts { order: 99 !important; padding:0 !important; margin-top:.75rem; width:100%; }
   td { border: none !important; }
 }</style>
 <base target="_blank">
@@ -173,7 +172,7 @@ footer{margin-top:2.5rem;padding-top:1.25rem;border-bottom:2.5rem solid transpar
   <div class="table-wrap">
     <table>
       <thead><tr>
-        <th>#</th><th>Team</th><th>Status</th><th>How to Request</th><th>How to Details</th><th>Evidence / Notes</th><th>Sources</th><th>🧡 Verified Receipts</th>
+        <th>#</th><th>Team</th><th>Status</th><th>How to Request / Details</th><th>Evidence / Notes</th><th>Sources</th><th>🧡 Verified Receipts</th>
       </tr></thead>
       <tbody id="mlb-body"></tbody>
     </table>
@@ -203,7 +202,7 @@ footer{margin-top:2.5rem;padding-top:1.25rem;border-bottom:2.5rem solid transpar
   <div class="table-wrap">
     <table>
       <thead><tr>
-        <th>#</th><th>Team</th><th>Status</th><th>How to Request</th><th>How to Details</th><th>Evidence / Notes</th><th>Sources</th><th>🧡 Verified Receipts</th>
+        <th>#</th><th>Team</th><th>Status</th><th>How to Request / Details</th><th>Evidence / Notes</th><th>Sources</th><th>🧡 Verified Receipts</th>
       </tr></thead>
       <tbody id="nfl-body"></tbody>
     </table>
@@ -233,7 +232,7 @@ footer{margin-top:2.5rem;padding-top:1.25rem;border-bottom:2.5rem solid transpar
   <div class="table-wrap">
     <table>
       <thead><tr>
-        <th>#</th><th>Team</th><th>Status</th><th>How to Request</th><th>How to Details</th><th>Evidence / Notes</th><th>Sources</th><th>🧡 Verified Receipts</th>
+        <th>#</th><th>Team</th><th>Status</th><th>How to Request / Details</th><th>Evidence / Notes</th><th>Sources</th><th>🧡 Verified Receipts</th>
       </tr></thead>
       <tbody id="nba-body"></tbody>
     </table>
@@ -263,7 +262,7 @@ footer{margin-top:2.5rem;padding-top:1.25rem;border-bottom:2.5rem solid transpar
   <div class="table-wrap">
     <table>
       <thead><tr>
-        <th>#</th><th>Team</th><th>Status</th><th>How to Request</th><th>How to Details</th><th>Evidence / Notes</th><th>Sources</th><th>🧡 Verified Receipts</th>
+        <th>#</th><th>Team</th><th>Status</th><th>How to Request / Details</th><th>Evidence / Notes</th><th>Sources</th><th>🧡 Verified Receipts</th>
       </tr></thead>
       <tbody id="nhl-body"></tbody>
     </table>
@@ -718,8 +717,7 @@ function render(sport){
         </div>
       </td>
       <td class="td-status"><span class="status-badge ${sc(t.status)}">${sl(t.status)}</span></td>
-      <td class="td-method"><span class="method-badge">${t.method}</span></td>
-      <td class="details-cell td-details">${t.details}</td>
+      <td class="details-cell td-details"><span class="method-badge">${t.method}</span><br><div style="margin-top:.45rem">${t.details}</div></td>
       <td class="evidence-cell td-evidence">${t.evidence}</td>
       <td class="td-source">
         ${t.sources ? t.sources.map(s => `<a class="source-link" href="${s.url}" target="_blank" rel="noopener">${s.label} ↗</a>`).join('') : '<span style="color:var(--muted);font-family:\'IBM Plex Mono\',monospace;font-size:.68rem">N/A</span>'}
