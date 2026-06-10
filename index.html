@@ -151,7 +151,7 @@ footer{margin-top:2.5rem;padding-top:1.25rem;border-bottom:2.5rem solid transpar
   <button class="tab-btn" id="tab-nfl" onclick="switchTab('nfl')">🏈 NFL (32 Teams)</button>
   <button class="tab-btn" id="tab-nba" onclick="switchTab('nba')">🏀 NBA (30 Teams)</button>
   <button class="tab-btn" id="tab-nhl" onclick="switchTab('nhl')">🏒 NHL (32 Teams)</button>
-  <button class="tab-btn" id="tab-ncaa" onclick="switchTab('ncaa')">🎓 College (94 Schools)</button>
+  <button class="tab-btn" id="tab-ncaa" onclick="switchTab('ncaa')">🎓 College (93 Schools)</button>
 </div>
 
 <div class="tab-content active" id="content-mlb">
@@ -695,7 +695,6 @@ const NHL = [
 
 // ── NCAA DATA ─────────────────────────────────────────────────────────
 const NCAA = [
-  // ── VERIFIED PHYSICAL RECEIPTS ────────────────────────────────────────
   {rank:1,team:"University of Florida Gators",sub:"SEC – Power 4 · Gainesville, FL",abbr:"UFL",color:"#0021A5",status:"high",method:"Contact Form / Email",
    details:"<a href='https://floridagators.com/sports/2016/6/20/contact-us.aspx' target='_blank'>FloridaGators.com Contact Form</a><br>or <a href='mailto:athletics@ufl.edu'>athletics@ufl.edu</a><br>or UAA, PO Box 14485, Gainesville, FL 32604",
    evidence:"SportsCardForum Ultimate NCAA Fan Pack Thread (Jan 2019): user received a blanket and a T-shirt from Florida — one of the most impressive confirmed college hauls in the thread. FreestuffTimes NCAA section lists gatorzone.com/contact as the request route. One of the only Power 4 schools with verified physical merchandise (not just stickers/schedules) confirmed by a community member.",
@@ -732,110 +731,83 @@ const NCAA = [
    redditReceipts:[{source:"SportsCardForum – Ultimate NCAA Fan Pack Thread (with photo)",url:"https://www.sportscardforum.com/threads/2446705-The-Ultimate-NCAA-Fan-Pack-Thread",desc:"Received: 4 large posters. Photo confirmed in January 2019. Noted as one of the best mid-major responses in the experiment."}],
    sources:[{label:"SportsCardForum – Ultimate NCAA Fan Pack Thread",url:"https://www.sportscardforum.com/threads/2446705-The-Ultimate-NCAA-Fan-Pack-Thread"},{label:"BallStateSports Contact",url:"https://ballstatesports.com/sports/2019/3/5/contact-athletics.aspx"}]},
 
-  {rank:7,team:"Oregon Ducks",sub:"Big Ten – Power 4 · Eugene, OR",abbr:"ORE",color:"#154733",status:"high",method:"Contact Form / Email",
-   details:"<a href='https://goducks.com/sports/2016/6/20/contact-us.aspx' target='_blank'>GoDucks.com Contact Form</a><br>or <a href='mailto:athletics@uoregon.edu'>athletics@uoregon.edu</a><br>or Oregon Athletics, 2727 Leo Harris Pkwy, Eugene, OR 97401",
-   evidence:"HFBoards College Fan Pack thread: Oregon was the only school to successfully respond to a user's early college fan pack attempt, inspiring the HFBoards thread. Confirmed by the original poster as one of the most responsive college programs. FreestuffTimes historically listed Oregon athletics. Nike partnership program history suggests strong swag culture.",
-   redditReceipts:[{source:"HFBoards – College Football Fan Packs Thread",url:"https://forums.hfboards.com/threads/college-football-fan-packs.2065989/",desc:"Original poster confirmed Oregon as the only college that responded to their initial fan pack request attempt — started the HFBoards college fan pack discussion."}],
-   sources:[{label:"HFBoards – College Football Fan Packs Thread",url:"https://forums.hfboards.com/threads/college-football-fan-packs.2065989/"},{label:"GoDucks Contact Form",url:"https://goducks.com/sports/2016/6/20/contact-us.aspx"},{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"}]},
-
-  // ── MEDIUM – LISTED ON FREEBIE SITES, CONTACT EXISTS ─────────────────
-  {rank:8,team:"Auburn Tigers",sub:"SEC – Power 4 · Auburn, AL",abbr:"AUB",color:"#0C2340",status:"medium",method:"Email",
+  {rank:7,team:"Auburn Tigers",sub:"SEC – Power 4 · Auburn, AL",abbr:"AUB",color:"#0C2340",status:"medium",method:"Email",
    details:"<a href='mailto:athletics@auburn.edu'>athletics@auburn.edu</a><br>or Auburn Athletics, 392 S Donahue Dr, Auburn, AL 36849",
    evidence:"FreestuffTimes NCAA email list (oldest documented source): lists athletics@auburn.edu as the direct fan request contact. One of the few Power 4 schools with a direct email explicitly listed in a fan pack aggregator. No modern confirmed physical receipts in community threads, but the email is still active per freebie site data.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"Auburn Athletics Contact",url:"https://auburntigers.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:9,team:"LSU Tigers",sub:"SEC – Power 4 · Baton Rouge, LA",abbr:"LSU",color:"#461D7C",status:"medium",method:"Contact Form",
+  {rank:8,team:"LSU Tigers",sub:"SEC – Power 4 · Baton Rouge, LA",abbr:"LSU",color:"#461D7C",status:"medium",method:"Contact Form",
    details:"<a href='https://lsusports.net/sports/2016/6/20/contact-us.aspx' target='_blank'>LSUSports.net Contact Form</a><br>or LSU Athletics, One Tiger Stadium, Baton Rouge, LA 70803",
    evidence:"FreestuffTimes NCAA section lists LSU's contact form (lsusports.net/CreateTicket.dbml — now updated URL). LSU athletics has an active community relations department. No specific fan pack receipts confirmed in community threads, but the contact path is well-documented. Tiger Athletic Foundation occasionally sends out branded materials to fan mail requests.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"LSUSports Contact",url:"https://lsusports.net/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:10,team:"Tennessee Volunteers",sub:"SEC – Power 4 · Knoxville, TN",abbr:"TENN",color:"#FF8200",status:"medium",method:"Contact Form",
-   details:"<a href='https://utsports.com/sports/2016/6/20/contact-us.aspx' target='_blank'>UTSports.com Contact Form</a><br>or UT Athletics, 1600 Stadium Dr, Knoxville, TN 37996",
-   evidence:"FreestuffTimes lists UTSports as the contact route for Tennessee. UT athletics has a large fan engagement team ('Vol for Life' program). Pocket schedules and sticker packs are commonly distributed at community events. No photo-confirmed receipts in public threads, but contact form is verified active.",
-   sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"UTSports Contact",url:"https://utsports.com/sports/2016/6/20/contact-us.aspx"}]},
-
-  {rank:11,team:"Kentucky Wildcats",sub:"SEC – Power 4 · Lexington, KY",abbr:"UK",color:"#0033A0",status:"medium",method:"Contact Form",
+  {rank:9,team:"Kentucky Wildcats",sub:"SEC – Power 4 · Lexington, KY",abbr:"UK",color:"#0033A0",status:"medium",method:"Contact Form",
    details:"<a href='https://ukathletics.com/sports/2016/6/20/contact-us.aspx' target='_blank'>UKAthletics.com Contact Form</a><br>or UK Athletics, Nutter Field House, Lexington, KY 40506",
    evidence:"FreestuffTimes NCAA list references ukathletics.com/feedback as the Kentucky contact. UK Athletics has an active fan services department. Big Blue Nation fan club has historically distributed schedules and branded items. No photo-confirmed receipts in community threads; medium confidence based on documented contact and freebie site listing.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"UKAthletics Contact",url:"https://ukathletics.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:12,team:"Arkansas Razorbacks",sub:"SEC – Power 4 · Fayetteville, AR",abbr:"ARK",color:"#9D2235",status:"medium",method:"Contact Form",
+  {rank:10,team:"Arkansas Razorbacks",sub:"SEC – Power 4 · Fayetteville, AR",abbr:"ARK",color:"#9D2235",status:"medium",method:"Contact Form",
    details:"<a href='https://arkansasrazorbacks.com/sports/2016/6/20/contact-us.aspx' target='_blank'>ArkansasRazorbacks.com Contact Form</a><br>or UA Athletics, Broyles Athletic Center, Fayetteville, AR 72701",
    evidence:"FreestuffTimes lists Arkansas Razorbacks contact form as a viable fan pack request path. Razorback Foundation mailing has historically included branded items for fan mail recipients. No specific community-thread confirmed physical receipts; worth trying the contact form or mailing the Broyles Center directly.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"ArkansasRazorbacks Contact",url:"https://arkansasrazorbacks.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:13,team:"UCLA Bruins",sub:"Big Ten – Power 4 · Los Angeles, CA",abbr:"UCLA",color:"#2D68C4",status:"medium",method:"Contact Form / Email",
+  {rank:11,team:"UCLA Bruins",sub:"Big Ten – Power 4 · Los Angeles, CA",abbr:"UCLA",color:"#2D68C4",status:"medium",method:"Contact Form / Email",
    details:"<a href='https://uclabruins.com/sports/2016/6/20/feedback.aspx' target='_blank'>UCLABruins.com Feedback Form</a><br>or <a href='mailto:atleticsfan@athletics.ucla.edu'>atleticsfan@athletics.ucla.edu</a><br>or J.D. Morgan Center, 325 Westwood Plaza, Los Angeles, CA 90095",
    evidence:"FreestuffTimes lists uclabruins.com/feedback/ucla-feedback.html as the contact path. UCLA Athletics is the largest D1 athletic department by sport count and has an extensive fan relations team. Bruin Walk fan engagement events regularly feature sticker and schedule distribution. No photo-confirmed mail receipts in community threads, but contact path is well-documented.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"UCLABruins Feedback",url:"https://uclabruins.com/sports/2016/6/20/feedback.aspx"}]},
 
-  {rank:14,team:"Maryland Terrapins",sub:"Big Ten – Power 4 · College Park, MD",abbr:"UMD",color:"#E03A3E",status:"medium",method:"Contact Form",
-   details:"<a href='https://umterps.com/sports/2016/6/20/contact-us.aspx' target='_blank'>UMTerps.com Contact Form</a><br>or UMD Athletics, XFINITY Center, College Park, MD 20742",
-   evidence:"FreestuffTimes lists umterps.com/feedback as the Maryland contact route. Terrapin Club fan engagement includes schedule and sticker distributions. Mid-tier response rate for Big Ten schools based on community thread data. No confirmed physical receipts in public community threads, but contact is active and documented.",
-   sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"UMTerps Contact",url:"https://umterps.com/sports/2016/6/20/contact-us.aspx"}]},
-
-  {rank:15,team:"Vanderbilt Commodores",sub:"SEC – Power 4 · Nashville, TN",abbr:"VAN",color:"#866D4B",status:"medium",method:"Contact Form",
+  {rank:12,team:"Vanderbilt Commodores",sub:"SEC – Power 4 · Nashville, TN",abbr:"VAN",color:"#866D4B",status:"medium",method:"Contact Form",
    details:"<a href='https://vucommodores.com/sports/2016/6/20/contact-us.aspx' target='_blank'>VUCommodores.com Contact Form</a><br>or Vanderbilt Athletics, 2601 Jess Neely Dr, Nashville, TN 37212",
    evidence:"FreestuffTimes lists a Vanderbilt contact form (sitemason.vanderbilt.edu/form/b2GjSg — now retired, use vucommodores.com contact). Vanderbilt fan relations is a smaller operation vs. other SEC schools. No confirmed community thread receipts; medium confidence based on documented contact path and SEC affiliation.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"VUCommodores Contact",url:"https://vucommodores.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:16,team:"Ohio State Buckeyes",sub:"Big Ten – Power 4 · Columbus, OH",abbr:"OSU",color:"#BB0000",status:"medium",method:"Contact Form / Mail",
+  {rank:13,team:"Ohio State Buckeyes",sub:"Big Ten – Power 4 · Columbus, OH",abbr:"OSU",color:"#BB0000",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://ohiostatebuckeyes.com/sports/2016/6/20/contact-us.aspx' target='_blank'>OhioStateBuckeyes.com Contact Form</a><br>or Buckeye Club, 215 St. John Arena, 410 Woody Hayes Dr, Columbus, OH 43210<br><small>BuckeyeClub@osu.edu — (614) 292-9908</small>",
    evidence:"FreestuffTimes lists Ohio State as one of the larger NCAA programs with a contact form (ohiostatebuckeyes.com/CreateTicket.dbml — now updated). Buckeye Club handles season parking and fan relations at (614) 292-9908. No specific fan pack receipts confirmed in community threads; the Buckeye Club mailing address is the best route for a physical request. Large program with high volume of fan mail may reduce personal response rate.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"OhioStateBuckeyes Contact",url:"https://ohiostatebuckeyes.com/sports/2016/6/20/contact-us.aspx"},{label:"Buckeye Club Contact Info",url:"https://ohiostatebuckeyes.com/feature/buckeye-club"}]},
 
-  {rank:17,team:"Penn State Nittany Lions",sub:"Big Ten – Power 4 · University Park, PA",abbr:"PSU",color:"#041E42",status:"medium",method:"Contact Form / Mail",
+  {rank:14,team:"Penn State Nittany Lions",sub:"Big Ten – Power 4 · University Park, PA",abbr:"PSU",color:"#041E42",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://gopsusports.com/sports/2016/6/20/contact-us.aspx' target='_blank'>GoPSUSports.com Contact Form</a><br>or Nittany Lion Club, 1 Bryce Jordan Center, University Park, PA 16802",
    evidence:"Penn State Alumni Association runs 'The Football Letter' free subscription — a digital-first fan engagement program with game previews and alumni news. Physical fan pack requests should go via the Nittany Lion Club mailing address or contact form. No confirmed community thread receipts for physical mail, but Penn State has a large, active fan relations team.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"GoPSUSports Contact",url:"https://gopsusports.com/sports/2016/6/20/contact-us.aspx"},{label:"Penn State Football Letter Program",url:"https://www.psu.edu/news/athletics/story/find-your-pride-football-season-alumni-association"}]},
 
-  {rank:18,team:"Michigan Wolverines",sub:"Big Ten – Power 4 · Ann Arbor, MI",abbr:"MICH",color:"#00274C",status:"medium",method:"Contact Form / Mail",
+  {rank:15,team:"Michigan Wolverines",sub:"Big Ten – Power 4 · Ann Arbor, MI",abbr:"MICH",color:"#00274C",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://mgoblue.com/sports/2016/6/20/contact-us.aspx' target='_blank'>MGoBlue.com Contact Form</a><br>or Michigan Athletics, 1000 S State St, Ann Arbor, MI 48109",
    evidence:"One of the largest college athletic programs by revenue. Michigan athletics has a dedicated fan experience team and champions-level community engagement ('We Are Champions' brand). Physical fan mail requests can be sent to the main athletics building. No specific community-confirmed fan pack receipts, but large budget and strong fan culture suggest feasibility.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"MGoBlue Contact",url:"https://mgoblue.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:19,team:"Georgia Bulldogs",sub:"SEC – Power 4 · Athens, GA",abbr:"UGA",color:"#BA0C2F",status:"medium",method:"Contact Form / Mail",
-   details:"<a href='https://georgiadogs.com/sports/2016/6/20/contact-us.aspx' target='_blank'>GeorgiaDogs.com Contact Form</a><br>or Georgia Athletics, 100 Sanford Dr, Athens, GA 30602",
-   evidence:"Recent national champion (2021, 2022). Georgia Athletics ('Commit to the G' program) has an active fan relations team. Bulldog Club membership materials include stickers and schedules. No confirmed community-thread fan pack receipts; contact form and mail address are both viable options. High fan mail volume may reduce individual response rate.",
-   sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"GeorgiaDogs Contact",url:"https://georgiadogs.com/sports/2016/6/20/contact-us.aspx"}]},
-
-  {rank:20,team:"Alabama Crimson Tide",sub:"SEC – Power 4 · Tuscaloosa, AL",abbr:"ALA",color:"#9E1B32",status:"medium",method:"Email / Mail",
+  {rank:16,team:"Alabama Crimson Tide",sub:"SEC – Power 4 · Tuscaloosa, AL",abbr:"ALA",color:"#9E1B32",status:"medium",method:"Email / Mail",
    details:"<a href='mailto:athletics@ua.edu'>athletics@ua.edu</a><br>or UA Athletics, 323 Paul W Bryant Dr, Tuscaloosa, AL 35487<br>Also: <a href='https://rolltide.com/sports/2016/6/20/contact-us.aspx' target='_blank'>RollTide.com Contact</a>",
    evidence:"One of the most storied college programs in America. Crimson Tide Scholarship Association has historically sent out branded materials. Alabama athletics receives extremely high fan mail volume which can reduce personalized response rates. FreestuffTimes lists Alabama as a Power 4 program worth contacting. No confirmed community-thread receipts, but the email and mailing address are active.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"RollTide Contact",url:"https://rolltide.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:21,team:"Clemson Tigers",sub:"ACC – Power 4 · Clemson, SC",abbr:"CLE",color:"#F66733",status:"medium",method:"Contact Form / Mail",
+  {rank:17,team:"Clemson Tigers",sub:"ACC – Power 4 · Clemson, SC",abbr:"CLE",color:"#F66733",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://clemsontigers.com/sports/2016/6/20/contact-us.aspx' target='_blank'>ClemsonTigers.com Contact Form</a><br>or IPTAY / Clemson Athletics, 100 Dan Foster Dr, Clemson, SC 29634",
    evidence:"IPTAY (Clemson booster club) handles fan engagement. Clemson athletics has a strong community outreach program ('All In'). No confirmed community-thread fan pack receipts, but the contact form and IPTAY mailing address are well-documented. ACC school with historically strong fan mail response among Power 4 programs.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"ClemsonTigers Contact",url:"https://clemsontigers.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:22,team:"Notre Dame Fighting Irish",sub:"Independent (ACC) · Notre Dame, IN",abbr:"ND",color:"#0C2340",status:"medium",method:"Contact Form / Mail",
+  {rank:18,team:"Notre Dame Fighting Irish",sub:"Independent (ACC) · Notre Dame, IN",abbr:"ND",color:"#0C2340",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://und.com/sports/2016/6/20/contact-us.aspx' target='_blank'>UND.com Contact Form</a><br>or Notre Dame Athletics, 113 Joyce Center, Notre Dame, IN 46556",
    evidence:"Notre Dame has a globally recognized brand and an active fan relations operation. The Notre Dame Club network distributes schedules and branded materials nationally. Physical fan mail requests have historically received responses from 'ND Fan Mail Coordinator.' No photo-confirmed community thread receipts; medium confidence based on scale and brand.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"UND.com Contact",url:"https://und.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:23,team:"Texas Longhorns",sub:"SEC – Power 4 · Austin, TX",abbr:"TEX",color:"#BF5700",status:"medium",method:"Contact Form / Mail",
+  {rank:19,team:"Texas Longhorns",sub:"SEC – Power 4 · Austin, TX",abbr:"TEX",color:"#BF5700",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://texassports.com/sports/2016/6/20/contact-us.aspx' target='_blank'>TexasSports.com Contact Form</a><br>or Longhorn Foundation, PO Box 7399, Austin, TX 78713",
    evidence:"Texas Athletics ('Hook 'Em') has one of the largest athletic budgets in college sports. Longhorn Foundation membership materials include branded items. No confirmed community thread receipts, but Texas has a dedicated fan experience team and the Longhorn Foundation mailing address is a viable route.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"TexasSports Contact",url:"https://texassports.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:24,team:"Oklahoma Sooners",sub:"SEC – Power 4 · Norman, OK",abbr:"OU",color:"#841617",status:"medium",method:"Contact Form / Mail",
+  {rank:20,team:"Oklahoma Sooners",sub:"SEC – Power 4 · Norman, OK",abbr:"OU",color:"#841617",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://soonersports.com/sports/2016/6/20/contact-us.aspx' target='_blank'>SoonerSports.com Contact Form</a><br>or Oklahoma Athletics, 1 Gaylord Family Dr, Norman, OK 73019",
    evidence:"Oklahoma Athletics ('Boomer Sooner') moved to the SEC in 2024. Large fan base with historically active community relations. Sooner Club membership materials include schedules and stickers. No confirmed fan pack receipts in community threads; medium confidence based on program scale and SEC-level funding.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"SoonerSports Contact",url:"https://soonersports.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:25,team:"Florida State Seminoles",sub:"ACC – Power 4 · Tallahassee, FL",abbr:"FSU",color:"#782F40",status:"medium",method:"Contact Form / Mail",
+  {rank:21,team:"Florida State Seminoles",sub:"ACC – Power 4 · Tallahassee, FL",abbr:"FSU",color:"#782F40",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://seminoles.com/sports/2016/6/20/contact-us.aspx' target='_blank'>Seminoles.com Contact Form</a><br>or Seminole Boosters, 403 Stadium Dr W, Tallahassee, FL 32306",
    evidence:"Seminole Boosters handles fan engagement. FSU athletics has a fan services team with a history of community distributions. No confirmed community thread receipts. Medium confidence based on Seminole Boosters' active mail program and documented contact path on FreestuffTimes.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"Seminoles.com Contact",url:"https://seminoles.com/sports/2016/6/20/contact-us.aspx"}]},
 
   // ── LOW / DIGITAL-ONLY / NO CONFIRMATION ─────────────────────────────
-  {rank:26,team:"Michigan State Spartans",sub:"Big Ten – Power 4 · East Lansing, MI",abbr:"MSU",color:"#18453B",status:"low",method:"Contact Form",
-   details:"<a href='https://msuspartans.com/sports/2016/6/20/contact-us.aspx' target='_blank'>MSUSpartans.com Contact Form</a><br>or MSU Athletics, Jenison Field House, East Lansing, MI 48824",
-   evidence:"No community-confirmed physical fan pack receipts found. MSU athletics has reduced physical fan mail programming since 2020. Contact form exists but multiple community posts note generic digital responses. Budget cuts in the athletic department have impacted fan services programs. Worth a single attempt but expectations should be low.",
-   sources:[{label:"MSUSpartans Contact",url:"https://msuspartans.com/sports/2016/6/20/contact-us.aspx"},{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"}]},
-
-  {rank:27,team:"Penn State / Ohio State / Alabama (Note)",sub:"Power 4 note",abbr:"NOTE",color:"#58627a",status:"low",method:"See individual entries above",
+  {rank:22,team:"Penn State / Ohio State / Alabama (Note)",sub:"Power 4 note",abbr:"NOTE",color:"#58627a",status:"low",method:"See individual entries above",
    details:"<small>Most major Power 4 programs receive very high fan mail volume — Alabama, Ohio State, Michigan, Georgia typically send digital acknowledgments rather than physical packs. Your best odds are smaller programs (Ball State, Iowa, BYU) or programs actively listed on freebie aggregator sites.</small>",
    evidence:"General pattern across community threads: the biggest brand programs (Alabama, Ohio State, Michigan) receive the most fan mail and are least likely to send physical items. Mid-major and smaller Power 4 programs with less volume (BYU, Iowa, Ball State, West Virginia, Florida) consistently outperform 'blue chip' programs in community experiments.",
    sources:[{label:"SportsCardForum – Ultimate NCAA Fan Pack Thread",url:"https://www.sportscardforum.com/threads/2446705-The-Ultimate-NCAA-Fan-Pack-Thread"},{label:"HFBoards – College Fan Packs Thread",url:"https://forums.hfboards.com/threads/college-football-fan-packs.2065989/"},{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"}]},
@@ -843,95 +815,75 @@ const NCAA = [
   // ── NEW ADDITIONS ─────────────────────────────────────────────────────
 
   // VERIFIED PHYSICAL RECEIPT
-  {rank:28,team:"Virginia Tech Hokies",sub:"ACC – Power 4 · Blacksburg, VA",abbr:"VT",color:"#630031",status:"high",method:"Contact Form / Mail",
+  {rank:23,team:"Virginia Tech Hokies",sub:"ACC – Power 4 · Blacksburg, VA",abbr:"VT",color:"#630031",status:"high",method:"Contact Form / Mail",
    details:"<a href='https://hokiesports.com/sports/2016/6/20/contact-us.aspx' target='_blank'>HokieSports.com Contact Form</a><br>or Hokie Club, Virginia Tech Athletics, Blacksburg, VA 24061<br>Phone: (540) 231-6618",
    evidence:"HFBoards College Fan Packs thread (2016): user reported receiving 10 free shirts, 5 sleeves, and a beanie from Virginia Tech — one of the most jaw-dropping single college fan pack hauls ever documented in any community thread. The OP of the thread specifically noted the VT pack was remarkable enough to prompt a follow-up comment ('you are no longer my friend'). HokieSports.com has an active contact form and the Hokie Club handles fan engagement.",
    redditReceipts:[{source:"HFBoards – College Football Fan Packs Thread",url:"https://forums.hfboards.com/threads/college-football-fan-packs.2065989/",desc:"Received: 10 free shirts, 5 sleeves, and a beanie — documented as one of the best single college fan pack hauls in community thread history. Prompted disbelief from other thread members."}],
    sources:[{label:"HFBoards – College Football Fan Packs Thread",url:"https://forums.hfboards.com/threads/college-football-fan-packs.2065989/"},{label:"HokieSports Contact",url:"https://hokiesports.com/sports/2016/6/20/contact-us.aspx"},{label:"Hokie Club Contact",url:"https://hokiesports.com/hokie-club-contact-the-hokie-club"}]},
 
   // MEDIUM – DOCUMENTED KIDS CLUB / CONTACT
-  {rank:29,team:"Nebraska Cornhuskers",sub:"Big Ten – Power 4 · Lincoln, NE",abbr:"NEB",color:"#E41C38",status:"medium",method:"Kids Club (Free Tier) / Email",
-   details:"<b>Free Nebraska JV Team Kids Club</b> (age 2–6th grade):<br><a href='https://huskers.com/kidsclub' target='_blank'>huskers.com/kidsclub</a> — free tier gives ticket access to soccer, wrestling, women's basketball, gymnastics, softball & baseball.<br>Paid Lil' Huskers ($25): welcome pack includes T-shirt, credential & lanyard.<br>Fan mail: <a href='mailto:nebraska@huskers.com'>nebraska@huskers.com</a><br>or Nebraska Athletics, 1 Memorial Stadium Dr, Lincoln, NE 68588",
-   evidence:"Nebraska Athletics confirmed a free 'JV Team' Kids Club tier open to kids through 6th grade — includes ticket access to multiple sports. Paid 'Lil' Huskers' tier ($25) includes a welcome pack with T-shirt, credential, and lanyard. Documented on huskers.com/kidsclub with enrollment each season (2025-26 season memberships are now closed — check back in August). Email kidsclub@huskers.com for questions.",
-   sources:[{label:"Nebraska Kids Club – huskers.com",url:"https://huskers.com/kidsclub"},{label:"Nebraska Athletics Contact",url:"https://huskers.com/contact-us"},{label:"Nebraska Kids Club Announcement",url:"https://huskers.com/news/2021/07/29/nebraska-athletics-announces-kids-club"}]},
-
-  {rank:30,team:"Wisconsin Badgers",sub:"Big Ten – Power 4 · Madison, WI",abbr:"WIS",color:"#C5050C",status:"medium",method:"Contact Form / Mail",
+  {rank:24,team:"Wisconsin Badgers",sub:"Big Ten – Power 4 · Madison, WI",abbr:"WIS",color:"#C5050C",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://uwbadgers.com/sports/2016/6/20/contact-us.aspx' target='_blank'>UWBadgers.com Contact Form</a><br>or Wisconsin Athletics, 1440 Monroe St, Madison, WI 53711",
    evidence:"FreestuffTimes lists Wisconsin as a viable Big Ten fan pack contact. Wisconsin athletics has a dedicated fan experience team and runs 'Bucky's Locker Room' giveaways at Camp Randall. No confirmed community-thread physical receipts, but contact form is active and Big Ten funding gives the department resources to respond to fan requests. Schedule posters are commonly distributed.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"UWBadgers Contact",url:"https://uwbadgers.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:31,team:"USC Trojans",sub:"Big Ten – Power 4 · Los Angeles, CA",abbr:"USC",color:"#9D2235",status:"medium",method:"Contact Form / Mail",
+  {rank:25,team:"USC Trojans",sub:"Big Ten – Power 4 · Los Angeles, CA",abbr:"USC",color:"#9D2235",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://usctrojans.com/sports/2016/6/20/contact-us.aspx' target='_blank'>USCTrojans.com Contact Form</a><br>or USC Athletics, Heritage Hall, Los Angeles, CA 90089",
    evidence:"USC is the second-largest athletic department in the Pac-12/Big Ten transition era by revenue. Heritage Hall processes fan mail and has historically distributed pocket schedules and stickers. No confirmed community thread receipts. 2024 Big Ten move increases funding levels significantly. Medium confidence based on documented contact path and program size.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"USCTrojans Contact",url:"https://usctrojans.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:32,team:"Colorado Buffaloes",sub:"Big 12 – Power 4 · Boulder, CO",abbr:"COL",color:"#CFB87C",status:"medium",method:"Contact Form / Mail",
+  {rank:26,team:"Colorado Buffaloes",sub:"Big 12 – Power 4 · Boulder, CO",abbr:"COL",color:"#CFB87C",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://cubuffs.com/sports/2016/6/20/contact-us.aspx' target='_blank'>CUBuffs.com Contact Form</a><br>or Colorado Athletics, Folsom Field, Boulder, CO 80309",
    evidence:"Colorado returned to the Big 12 in 2024 and saw a massive surge in fan engagement and national profile under Deion Sanders. CU Athletics has dramatically expanded its fan outreach programs since 2023. No confirmed community thread fan pack receipts, but contact form is active. 'Prime Time' era increased athletics budget and community engagement significantly.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"CUBuffs Contact",url:"https://cubuffs.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:33,team:"Utah Utes",sub:"Big 12 – Power 4 · Salt Lake City, UT",abbr:"UTAH",color:"#CC0000",status:"medium",method:"Contact Form / Mail",
+  {rank:27,team:"Utah Utes",sub:"Big 12 – Power 4 · Salt Lake City, UT",abbr:"UTAH",color:"#CC0000",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://utahutes.com/sports/2016/6/20/contact-us.aspx' target='_blank'>UtahUtes.com Contact Form</a><br>or Utah Athletics, Jon M. Huntsman Center, Salt Lake City, UT 84112",
    evidence:"Utah Athletics runs 'Crimson Club' fan engagement with active mail programs. Slickdeals posted a 2025 BYU/Utah football schedule fridge magnet giveaway (free via form for Utah County residents), confirming the school's active fan outreach culture. Contact form is documented. Medium confidence based on program engagement history.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"UtahUtes Contact",url:"https://utahutes.com/sports/2016/6/20/contact-us.aspx"},{label:"Slickdeals – BYU/Utah Schedule Magnet Giveaway",url:"https://slickdeals.net/f/18428650-free-2025-nfl-college-football-schedule-magnets"}]},
 
-  {rank:34,team:"Iowa State Cyclones",sub:"Big 12 – Power 4 · Ames, IA",abbr:"ISU",color:"#C8102E",status:"medium",method:"Contact Form / Mail",
+  {rank:28,team:"Iowa State Cyclones",sub:"Big 12 – Power 4 · Ames, IA",abbr:"ISU",color:"#C8102E",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://cyclones.com/sports/2016/6/20/contact-us.aspx' target='_blank'>Cyclones.com Contact Form</a><br>or Iowa State Athletics, Jacobson Athletic Building, Ames, IA 50011",
    evidence:"Iowa State Athletics runs 'Cyclone Club' fan outreach programs. No confirmed community thread receipts, but the Big 12 Conference schools have generally higher response rates than major SEC/Big Ten programs due to lower fan mail volume. Iowa (Hawkeyes) confirmed physical receipts in the same state, suggesting a regional culture of fan engagement.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"Cyclones Contact",url:"https://cyclones.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:35,team:"Kansas State Wildcats",sub:"Big 12 – Power 4 · Manhattan, KS",abbr:"KSU",color:"#512888",status:"medium",method:"Contact Form / Mail",
+  {rank:29,team:"Kansas State Wildcats",sub:"Big 12 – Power 4 · Manhattan, KS",abbr:"KSU",color:"#512888",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://kstatesports.com/sports/2016/6/20/contact-us.aspx' target='_blank'>KStateSports.com Contact Form</a><br>or Kansas State Athletics, Bramlage Coliseum, Manhattan, KS 66502",
    evidence:"K-State Athletics runs a 'Purple Pride' fan club. No confirmed community thread physical receipts. Mid-size Power 4 program with lower fan mail volume relative to flagship Big Ten/SEC programs, which historically improves response rates in community experiments.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"KStateSports Contact",url:"https://kstatesports.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:36,team:"Texas A&M Aggies",sub:"SEC – Power 4 · College Station, TX",abbr:"TAMU",color:"#500000",status:"medium",method:"Contact Form / Mail",
+  {rank:30,team:"Texas A&M Aggies",sub:"SEC – Power 4 · College Station, TX",abbr:"TAMU",color:"#500000",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://12thman.com/sports/2016/6/20/contact-us.aspx' target='_blank'>12thMan.com Contact Form</a><br>or Texas A&M Athletics, 1st Floor Kyle Field, College Station, TX 77843",
    evidence:"The 12th Man Foundation handles Aggie fan engagement. Texas A&M receives high fan mail volume as one of the SEC's largest programs. '12th Man' brand culture emphasizes fan connection. No confirmed community thread receipts, but contact path is well-documented. Medium confidence — Aggies fan culture is strong but program size may limit individual response rates.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"12thMan Contact",url:"https://12thman.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:37,team:"North Carolina Tar Heels",sub:"ACC – Power 4 · Chapel Hill, NC",abbr:"UNC",color:"#4B9CD3",status:"medium",method:"Contact Form / Mail",
+  {rank:31,team:"North Carolina Tar Heels",sub:"ACC – Power 4 · Chapel Hill, NC",abbr:"UNC",color:"#4B9CD3",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://goheels.com/sports/2016/6/20/contact-us.aspx' target='_blank'>GoHeels.com Contact Form</a><br>or UNC Athletics, Loudermilk Center, Chapel Hill, NC 27514",
    evidence:"UNC Athletics ('Ram's Club') has an active fan engagement and community outreach program. Atlantic Coast Conference school with historic brand. No confirmed community thread receipts, but UNC's contact form is documented and ACC schools generally have active fan relations departments. Michael Jordan legacy association keeps national fan interest high.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"GoHeels Contact",url:"https://goheels.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:38,team:"Oklahoma State Cowboys",sub:"Big 12 – Power 4 · Stillwater, OK",abbr:"OSU",color:"#FF7300",status:"medium",method:"Contact Form / Mail",
+  {rank:32,team:"Oklahoma State Cowboys",sub:"Big 12 – Power 4 · Stillwater, OK",abbr:"OSU",color:"#FF7300",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://okstate.com/sports/2016/6/20/contact-us.aspx' target='_blank'>OKState.com Contact Form</a><br>or Oklahoma State Athletics, 100 Athletic Annex, Stillwater, OK 74078",
    evidence:"OSU Athletics ('Cowboy Athletic Association') handles fan requests. Freestufftimes lists Oklahoma State as a viable Big 12 program. Lower fan mail volume compared to Oklahoma or Texas makes individual responses more likely. No confirmed community thread receipts. Medium confidence based on contact availability and program size.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"OKState Contact",url:"https://okstate.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:39,team:"Mississippi State Bulldogs",sub:"SEC – Power 4 · Starkville, MS",abbr:"MST",color:"#660000",status:"medium",method:"Email / Mail",
-   details:"<a href='mailto:athletics@msstate.edu'>athletics@msstate.edu</a><br>or Bulldog Club, PO Box 5327, Starkville, MS 39762<br>Also: <a href='https://hailstate.com/sports/2016/6/20/contact-us.aspx' target='_blank'>HailState.com Contact</a>",
-   evidence:"FreestuffTimes NCAA list references Mississippi State contact info. SEC-level funding with a smaller program footprint than Alabama/Georgia typically means more personalized fan mail responses. Cowbell culture gives the program a unique fan engagement identity. No confirmed community thread receipts, but contact is documented.",
-   sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"HailState Contact",url:"https://hailstate.com/sports/2016/6/20/contact-us.aspx"}]},
-
-  {rank:40,team:"Missouri Tigers",sub:"SEC – Power 4 · Columbia, MO",abbr:"MIZ",color:"#F1B82D",status:"medium",method:"Contact Form / Mail",
+  {rank:33,team:"Missouri Tigers",sub:"SEC – Power 4 · Columbia, MO",abbr:"MIZ",color:"#F1B82D",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://mutigers.com/sports/2016/6/20/contact-us.aspx' target='_blank'>MUTigers.com Contact Form</a><br>or Mizzou Athletics, Hearnes Center, Columbia, MO 65211",
    evidence:"Mizzou Athletics runs a 'Mizzou Athletic Association' fan engagement program. SEC school with mid-level fan mail volume. Kansas City and St. Louis area alumni networks help maintain active community outreach. No confirmed community thread receipts. Medium confidence based on SEC affiliation and documented contact path.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"MUTigers Contact",url:"https://mutigers.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:41,team:"Washington Huskies",sub:"Big Ten – Power 4 · Seattle, WA",abbr:"UW",color:"#4B2E83",status:"medium",method:"Contact Form / Mail",
-   details:"<a href='https://gohuskies.com/sports/2016/6/20/contact-us.aspx' target='_blank'>GoHuskies.com Contact Form</a><br>or Washington Athletics, 3910 Montlake Blvd NE, Seattle, WA 98195",
-   evidence:"Washington joined the Big Ten in 2024, bringing a substantial revenue increase. Husky Athletics has historically been responsive to fan requests from the Pacific Northwest community. Recent CFP Final Four appearance (Jan 2024) raised national profile. No confirmed community thread receipts. Medium confidence based on contact availability and growing program resources.",
-   sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"GoHuskies Contact",url:"https://gohuskies.com/sports/2016/6/20/contact-us.aspx"}]},
-
-  {rank:42,team:"Georgia Tech Yellow Jackets",sub:"ACC – Power 4 · Atlanta, GA",abbr:"GT",color:"#B3A369",status:"medium",method:"Contact Form / Mail",
+  {rank:34,team:"Georgia Tech Yellow Jackets",sub:"ACC – Power 4 · Atlanta, GA",abbr:"GT",color:"#B3A369",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://ramblinwreck.com/sports/2016/6/20/contact-us.aspx' target='_blank'>RamblinWreck.com Contact Form</a><br>or Alexander-Tharpe Fund, 150 Bobby Dodd Way NW, Atlanta, GA 30332",
    evidence:"GT Athletics ('Alexander-Tharpe Fund') handles fan engagement. Private research university with strong alumni network nationally. No confirmed community thread receipts. Lower fan mail volume than neighboring Georgia gives the department capacity to handle individual requests more personally. Medium confidence based on contact path.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"RamblinWreck Contact",url:"https://ramblinwreck.com/sports/2016/6/20/contact-us.aspx"}]},
 
   // LOW / UNCONFIRMED / DIGITAL-ONLY ───────────────────────────────────
-  {rank:43,team:"Duke Blue Devils",sub:"ACC – Power 4 · Durham, NC",abbr:"DUK",color:"#003087",status:"low",method:"Contact Form",
+  {rank:35,team:"Duke Blue Devils",sub:"ACC – Power 4 · Durham, NC",abbr:"DUK",color:"#003087",status:"low",method:"Contact Form",
    details:"<a href='https://goduke.com/sports/2016/6/20/contact-us.aspx' target='_blank'>GoDuke.com Contact Form</a><br>or IRON DUKES, PO Box 90553, Durham, NC 27708",
    evidence:"Duke Athletics is one of the most recognizable college brands globally, especially via basketball. Very high fan mail volume (top 5 in the country for basketball fan mail). Multiple community thread members have noted Duke rarely responds to cold fan pack requests — responses are typically reserved for paying Iron Dukes members or season ticket holders. No confirmed community thread receipts for non-members.",
    sources:[{label:"GoDuke Contact",url:"https://goduke.com/sports/2016/6/20/contact-us.aspx"},{label:"HFBoards – College Fan Packs Thread",url:"https://forums.hfboards.com/threads/college-football-fan-packs.2065989/"}]},
 
-  {rank:44,team:"South Carolina Gamecocks",sub:"SEC – Power 4 · Columbia, SC",abbr:"USC",color:"#73000A",status:"low",method:"Contact Form",
-   details:"<a href='https://gamecocksonline.com/sports/2016/6/20/contact-us.aspx' target='_blank'>GamecocksOnline.com Contact Form</a><br>or Gamecock Club, 1304 Heyward St, Columbia, SC 29208",
-   evidence:"South Carolina Athletics has a 'Gamecock Club' for fan engagement. No confirmed community thread fan pack receipts. SEC fan mail volume is high; individual response rates for non-members tend to be low. Decent contact path but low community confidence. Worth a single attempt via contact form.",
-   sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"GamecocksOnline Contact",url:"https://gamecocksonline.com/sports/2016/6/20/contact-us.aspx"}]},
-
-  {rank:45,team:"Indiana Hoosiers",sub:"Big Ten – Power 4 · Bloomington, IN",abbr:"IU",color:"#990000",status:"medium",method:"Contact Form / Mail",
+  {rank:36,team:"Indiana Hoosiers",sub:"Big Ten – Power 4 · Bloomington, IN",abbr:"IU",color:"#990000",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://iuhoosiers.com/sports/2016/6/20/contact-us.aspx' target='_blank'>IUHoosiers.com Contact Form</a><br>or IU Athletics, Assembly Hall, Bloomington, IN 47405",
    evidence:"AutographsTTM (2013): contacted Indiana via the website and received a basketball T-shirt, Indiana baseball and basketball stickers, plus schedules for baseball and basketball — a solid multi-item haul. Status upgraded to medium based on this confirmed receipt. Lower fan mail volume than flagship Big Ten schools improves personalized response chances.",
    redditReceipts:[{source:"AutographsTTM Fan Packs 2013",url:"https://autographsttm.weebly.com/fan-packs---2013.html",desc:"Received: Indiana Basketball T-shirt + baseball sticker + basketball sticker + baseball and basketball schedules. Via website contact form."}],
@@ -939,7 +891,7 @@ const NCAA = [
 
   // ── NEW BATCH: VERIFIED PHYSICAL RECEIPTS ─────────────────────────────
 
-  {rank:46,team:"Tennessee Volunteers",sub:"SEC – Power 4 · Knoxville, TN",abbr:"TENN",color:"#FF8200",status:"high",method:"Contact Form",
+  {rank:37,team:"Tennessee Volunteers",sub:"SEC – Power 4 · Knoxville, TN",abbr:"TENN",color:"#FF8200",status:"high",method:"Contact Form",
    details:"<a href='https://utsports.com/sports/2016/6/20/contact-us.aspx' target='_blank'>UTSports.com Contact Form</a><br>or UT Athletics, 1600 Stadium Dr, Knoxville, TN 37996<br><small>⚠️ Note: Tennessee runs a form specifically for fan pack / info requests — check utsports.com for the active link</small>",
    evidence:"Two verified sources: (1) AutographsTTM (2013) contacted Tennessee via website and received two basketball posters plus 4 full sheets of Tennessee stickers — a generous multi-item pack. (2) AutographsTTM (2012) noted Tennessee has a form on their athletic site for requesting a fan pack (either basketball or football); the football one included a poster and football schedule cards. One of the most reliably confirmed SEC fan pack programs.",
    redditReceipts:[
@@ -948,73 +900,73 @@ const NCAA = [
    ],
    sources:[{label:"AutographsTTM Fan Packs 2013",url:"https://autographsttm.weebly.com/fan-packs---2013.html"},{label:"AutographsTTM Fan Packs 2012",url:"https://autographsttm.weebly.com/fan-packs---2012.html"},{label:"UTSports Contact",url:"https://utsports.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:47,team:"Purdue Boilermakers",sub:"Big Ten – Power 4 · West Lafayette, IN",abbr:"PUR",color:"#CEB888",status:"high",method:"Contact Form / Mail",
+  {rank:38,team:"Purdue Boilermakers",sub:"Big Ten – Power 4 · West Lafayette, IN",abbr:"PUR",color:"#CEB888",status:"high",method:"Contact Form / Mail",
    details:"<a href='https://purduesports.com/sports/2016/6/20/contact-us.aspx' target='_blank'>PurdueSports.com Contact Form</a><br>or Purdue Athletics, Mackey Arena, West Lafayette, IN 47907",
    evidence:"AutographsTTM (2013): contacted Purdue via website and received a poster of their 2013 baseball team along with schedule cards. Clean and quick turnaround. Big Ten school with moderate fan mail volume — enough resources to respond but not overwhelmed. Consistent with the pattern of Big Ten schools outside the top-5 programs being more responsive.",
    redditReceipts:[{source:"AutographsTTM Fan Packs 2013",url:"https://autographsttm.weebly.com/fan-packs---2013.html",desc:"Received: 2013 baseball team poster + schedule cards. Via website contact form."}],
    sources:[{label:"AutographsTTM Fan Packs 2013",url:"https://autographsttm.weebly.com/fan-packs---2013.html"},{label:"PurdueSports Contact",url:"https://purduesports.com/sports/2016/6/20/contact-us.aspx"},{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"}]},
 
-  {rank:48,team:"Rutgers Scarlet Knights",sub:"Big Ten – Power 4 · Piscataway, NJ",abbr:"RUT",color:"#CC0033",status:"high",method:"Contact Form / Mail",
+  {rank:39,team:"Rutgers Scarlet Knights",sub:"Big Ten – Power 4 · Piscataway, NJ",abbr:"RUT",color:"#CC0033",status:"high",method:"Contact Form / Mail",
    details:"<a href='https://scarletknights.com/sports/2016/6/20/contact-us.aspx' target='_blank'>ScarletKnights.com Contact Form</a><br>or Rutgers Athletics, 83 Rockafeller Rd, Piscataway, NJ 08854",
    evidence:"AutographsTTM (2013): contacted Rutgers via website and received a basketball T-shirt, a basketball poster, and schedule cards — one of the best Big Ten hauls in the 2013 experiment. Rutgers joined the Big Ten in 2014; their fan mail response culture predates the conference shift and appears strong. Smaller program relative to Ohio State/Michigan means lower volume and better response odds.",
    redditReceipts:[{source:"AutographsTTM Fan Packs 2013",url:"https://autographsttm.weebly.com/fan-packs---2013.html",desc:"Received: Rutgers basketball T-shirt + basketball poster + schedule cards. Via website contact form."}],
    sources:[{label:"AutographsTTM Fan Packs 2013",url:"https://autographsttm.weebly.com/fan-packs---2013.html"},{label:"ScarletKnights Contact",url:"https://scarletknights.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:49,team:"Maryland Terrapins",sub:"Big Ten – Power 4 · College Park, MD",abbr:"UMD",color:"#E03A3E",status:"high",method:"Contact Form / Mail",
+  {rank:40,team:"Maryland Terrapins",sub:"Big Ten – Power 4 · College Park, MD",abbr:"UMD",color:"#E03A3E",status:"high",method:"Contact Form / Mail",
    details:"<a href='https://umterps.com/sports/2016/6/20/contact-us.aspx' target='_blank'>UMTerps.com Contact Form</a><br>or UMD Athletics, XFINITY Center, College Park, MD 20742",
    evidence:"AutographsTTM (2013): contacted Maryland via website and received a baseball poster, 2 basketball magnet schedules, and key-chain schedule cards — multiple items across sports. Upgraded from Medium to High based on this confirmed multi-item receipt. Consistent Big Ten response pattern.",
    redditReceipts:[{source:"AutographsTTM Fan Packs 2013",url:"https://autographsttm.weebly.com/fan-packs---2013.html",desc:"Received: Maryland baseball poster + 2 basketball magnet schedules + key-chain clip schedule cards. Via website contact form."}],
    sources:[{label:"AutographsTTM Fan Packs 2013",url:"https://autographsttm.weebly.com/fan-packs---2013.html"},{label:"UMTerps Contact",url:"https://umterps.com/sports/2016/6/20/contact-us.aspx"},{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"}]},
 
-  {rank:50,team:"Minnesota Golden Gophers",sub:"Big Ten – Power 4 · Minneapolis, MN",abbr:"MINN",color:"#7A0019",status:"high",method:"Contact Form / Mail",
+  {rank:41,team:"Minnesota Golden Gophers",sub:"Big Ten – Power 4 · Minneapolis, MN",abbr:"MINN",color:"#7A0019",status:"high",method:"Contact Form / Mail",
    details:"<a href='https://gophersports.com/sports/2016/6/20/contact-us.aspx' target='_blank'>GopherSports.com Contact Form</a><br>or Minnesota Athletics, Bierman Athletic Building, Minneapolis, MN 55455",
    evidence:"AutographsTTM (2013): contacted Minnesota via website and received a basketball poster, a baseball poster, and a collection of baseball and basketball schedule cards — a solid two-sport pack. Big Ten school with Midwest fan culture; consistent with other mid-tier Big Ten programs showing strong response rates.",
    redditReceipts:[{source:"AutographsTTM Fan Packs 2013",url:"https://autographsttm.weebly.com/fan-packs---2013.html",desc:"Received: basketball poster + baseball poster + baseball and basketball schedule cards. Via website contact form."}],
    sources:[{label:"AutographsTTM Fan Packs 2013",url:"https://autographsttm.weebly.com/fan-packs---2013.html"},{label:"GopherSports Contact",url:"https://gophersports.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:51,team:"Mississippi State Bulldogs (upgraded)",sub:"SEC – Power 4 · Starkville, MS",abbr:"MST",color:"#660000",status:"high",method:"Email / Mail",
+  {rank:42,team:"Mississippi State Bulldogs",sub:"SEC – Power 4 · Starkville, MS",abbr:"MST",color:"#660000",status:"high",method:"Email / Mail",
    details:"<a href='mailto:athletics@msstate.edu'>athletics@msstate.edu</a><br>or Bulldog Club, PO Box 5327, Starkville, MS 39762<br>Also: <a href='https://hailstate.com/sports/2016/6/20/contact-us.aspx' target='_blank'>HailState.com Contact</a>",
    evidence:"AutographsTTM (2013): contacted Mississippi State via website and received a 2013 baseball poster — a quick confirmed receipt. Upgraded from Medium to High. SEC-level funding with a smaller program footprint than Alabama/Georgia means more personalized fan mail responses. One of the more responsive SEC programs in community experiments.",
    redditReceipts:[{source:"AutographsTTM Fan Packs 2013",url:"https://autographsttm.weebly.com/fan-packs---2013.html",desc:"Received: 2013 Mississippi State baseball poster. Via website contact form — quick turnaround."}],
    sources:[{label:"AutographsTTM Fan Packs 2013",url:"https://autographsttm.weebly.com/fan-packs---2013.html"},{label:"HailState Contact",url:"https://hailstate.com/sports/2016/6/20/contact-us.aspx"},{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"}]},
 
-  {rank:52,team:"Boise State Broncos",sub:"Mountain West (→ Pac-12 2026) · Boise, ID",abbr:"BST",color:"#0033A0",status:"high",method:"Contact Form / Mail",
+  {rank:43,team:"Boise State Broncos",sub:"Mountain West (→ Pac-12 2026) · Boise, ID",abbr:"BST",color:"#0033A0",status:"high",method:"Contact Form / Mail",
    details:"<a href='https://broncosports.com/sports/2016/6/20/contact-us.aspx' target='_blank'>BroncoSports.com Contact Form</a><br>or Boise State Athletics, Albertsons Stadium, 1910 University Dr, Boise, ID 83725",
    evidence:"AutographsTTM (2013): contacted Boise State via website and received a football rally towel, a mini foam finger, and basketball pocket schedules — one of the most fun and varied non-Power-4 hauls in the experiment. Boise State is moving to the Pac-12 in 2026, which will increase their budget and fan outreach significantly. Known for excellent community engagement.",
    redditReceipts:[{source:"AutographsTTM Fan Packs 2013",url:"https://autographsttm.weebly.com/fan-packs---2013.html",desc:"Received: football rally towel + mini foam finger + basketball pocket schedules. Via website contact — one of the most varied non-P4 hauls in the experiment."}],
    sources:[{label:"AutographsTTM Fan Packs 2013",url:"https://autographsttm.weebly.com/fan-packs---2013.html"},{label:"BroncoSports Contact",url:"https://broncosports.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:53,team:"East Carolina Pirates",sub:"AAC · Greenville, NC",abbr:"ECU",color:"#592A8A",status:"high",method:"Contact Form / Mail",
+  {rank:44,team:"East Carolina Pirates",sub:"AAC · Greenville, NC",abbr:"ECU",color:"#592A8A",status:"high",method:"Contact Form / Mail",
    details:"<a href='https://ecupirates.com/sports/2016/6/20/contact-us.aspx' target='_blank'>ECUPirates.com Contact Form</a><br>or ECU Athletics, 512 E 10th St, Greenville, NC 27858",
    evidence:"AutographsTTM (2013): emailed East Carolina via website and received a full poster tube containing football and basketball posters plus a letter with multi-sport schedules — one of the most visually impressive non-P4 hauls in the experiment. ECU athletics has a well-documented tradition of fan mail engagement and is one of the most recommended schools in the community.",
    redditReceipts:[{source:"AutographsTTM Fan Packs 2013",url:"https://autographsttm.weebly.com/fan-packs---2013.html",desc:"Received: poster tube with football poster + basketball poster + multi-sport schedule letter. One of the standout non-P4 hauls in the 2013 experiment."}],
    sources:[{label:"AutographsTTM Fan Packs 2013",url:"https://autographsttm.weebly.com/fan-packs---2013.html"},{label:"ECUPirates Contact",url:"https://ecupirates.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:54,team:"Montana Grizzlies",sub:"Big Sky (FCS) · Missoula, MT",abbr:"MONT",color:"#840028",status:"high",method:"Contact Form / Mail",
+  {rank:45,team:"Montana Grizzlies",sub:"Big Sky (FCS) · Missoula, MT",abbr:"MONT",color:"#840028",status:"high",method:"Contact Form / Mail",
    details:"<a href='https://gogriz.com/sports/2016/6/20/contact-us.aspx' target='_blank'>GoGriz.com Contact Form</a><br>or Montana Athletics, Adams Center, Missoula, MT 59812",
    evidence:"AutographsTTM (2013): contacted Montana via website and received a Grizzlies drawstring bag plus a promotional Montana social media T-shirt — two functional, branded items. Remarkable for an FCS school. Montana Grizzlies have one of the most passionate fanbases in all of FCS football and a reputation for exceptional fan engagement.",
    redditReceipts:[{source:"AutographsTTM Fan Packs 2013",url:"https://autographsttm.weebly.com/fan-packs---2013.html",desc:"Received: Montana Grizzlies drawstring bag + promotional T-shirt. FCS school punching well above weight — two physical branded items."}],
    sources:[{label:"AutographsTTM Fan Packs 2013",url:"https://autographsttm.weebly.com/fan-packs---2013.html"},{label:"GoGriz Contact",url:"https://gogriz.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:55,team:"Eastern Illinois Panthers",sub:"Ohio Valley (FCS) · Charleston, IL",abbr:"EIU",color:"#004B98",status:"high",method:"Contact Form / Mail",
+  {rank:46,team:"Eastern Illinois Panthers",sub:"Ohio Valley (FCS) · Charleston, IL",abbr:"EIU",color:"#004B98",status:"high",method:"Contact Form / Mail",
    details:"<a href='https://eiupanthers.com/sports/2016/6/20/contact-us.aspx' target='_blank'>EIUPanthers.com Contact Form</a><br>or EIU Athletics, O'Brien Field, Charleston, IL 61920",
    evidence:"AutographsTTM (2013): contacted Eastern Illinois via website and received 2 basketball magnet schedules, 2 temporary tattoos, pocket schedules, and EIU silly bandz — a notably fun and varied multi-item pack from an FCS school. Excellent value-for-request ratio. Small program with big fan outreach energy.",
    redditReceipts:[{source:"AutographsTTM Fan Packs 2013",url:"https://autographsttm.weebly.com/fan-packs---2013.html",desc:"Received: 2 basketball magnet schedules + 2 temp tattoos + pocket schedules + silly bandz. Fun multi-item pack from FCS level."}],
    sources:[{label:"AutographsTTM Fan Packs 2013",url:"https://autographsttm.weebly.com/fan-packs---2013.html"},{label:"EIUPanthers Contact",url:"https://eiupanthers.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:56,team:"Hawaii Rainbow Warriors",sub:"Mountain West · Honolulu, HI",abbr:"HAW",color:"#024731",status:"high",method:"Contact Form / Mail",
+  {rank:47,team:"Hawaii Rainbow Warriors",sub:"Mountain West · Honolulu, HI",abbr:"HAW",color:"#024731",status:"high",method:"Contact Form / Mail",
    details:"<a href='https://hawaiiathletics.com/sports/2016/6/20/contact-us.aspx' target='_blank'>HawaiiAthletics.com Contact Form</a><br>or UH Athletics, 1337 Lower Campus Rd, Honolulu, HI 96822",
    evidence:"AutographsTTM (2013): contacted Hawaii via website and received Hawaii sports cards for various sports plus a handwritten personal note — a unique and personal response. The handwritten note is especially notable; it signals a small, attentive fan relations operation. Hawaii athletics has a reputation for warmth and fan connection in community experiments.",
    redditReceipts:[{source:"AutographsTTM Fan Packs 2013",url:"https://autographsttm.weebly.com/fan-packs---2013.html",desc:"Received: Hawaii sports cards for multiple sports + handwritten personal note. The handwritten note is rare — signals a personal, attentive fan relations team."}],
    sources:[{label:"AutographsTTM Fan Packs 2013",url:"https://autographsttm.weebly.com/fan-packs---2013.html"},{label:"HawaiiAthletics Contact",url:"https://hawaiiathletics.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:57,team:"New Mexico State Aggies",sub:"WAC (FBS Ind. → WAC) · Las Cruces, NM",abbr:"NMSU",color:"#861F2F",status:"high",method:"Contact Form / Mail",
+  {rank:48,team:"New Mexico State Aggies",sub:"WAC (FBS Ind. → WAC) · Las Cruces, NM",abbr:"NMSU",color:"#861F2F",status:"high",method:"Contact Form / Mail",
    details:"<a href='https://nmstatesports.com/sports/2016/6/20/contact-us.aspx' target='_blank'>NMStateSports.com Contact Form</a><br>or NMSU Athletics, PO Box 30001, Las Cruces, NM 88003",
    evidence:"AutographsTTM (2012): contacted New Mexico State via website and received a 2012 football poster in just 5 days — one of the fastest college turnarounds on record. Mid-major school with low fan mail volume; individual requests get handled quickly. NMSU is FBS-independent (joined WAC in 2023) with a lean but responsive athletics staff.",
    redditReceipts:[{source:"AutographsTTM Fan Packs 2012",url:"https://autographsttm.weebly.com/fan-packs---2012.html",desc:"Received: 2012 football poster in just 5 days. One of the fastest college fan pack turnarounds documented in community records."}],
    sources:[{label:"AutographsTTM Fan Packs 2012",url:"https://autographsttm.weebly.com/fan-packs---2012.html"},{label:"NMStateSports Contact",url:"https://nmstatesports.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:58,team:"Cincinnati Bearcats",sub:"Big 12 – Power 4 · Cincinnati, OH",abbr:"CIN",color:"#E00122",status:"high",method:"Contact Form / Mail",
+  {rank:49,team:"Cincinnati Bearcats",sub:"Big 12 – Power 4 · Cincinnati, OH",abbr:"CIN",color:"#E00122",status:"high",method:"Contact Form / Mail",
    details:"<a href='https://gobearcats.com/sports/2016/6/20/contact-us.aspx' target='_blank'>GoBearcats.com Contact Form</a><br>or Cincinnati Athletics, Zimmer Family Athletic Complex, Cincinnati, OH 45221",
    evidence:"AutographsTTM (2012): emailed Bearcats via official athletic site and in one week received schedule cards for Cincinnati's football and baseball teams plus temporary tattoos — a quick, multi-item confirmed receipt. Cincinnati joined the Big 12 in 2023, bringing substantially more resources to the athletics department. One of the more responsive American Athletic Conference programs before their Power 4 upgrade.",
    redditReceipts:[{source:"AutographsTTM Fan Packs 2012",url:"https://autographsttm.weebly.com/fan-packs---2012.html",desc:"Received: football schedule cards + baseball schedule cards + temporary tattoos. In under one week from email contact."}],
@@ -1022,198 +974,245 @@ const NCAA = [
 
   // ── ADDITIONAL MEDIUM ──────────────────────────────────────────────────
 
-  {rank:59,team:"Stanford Cardinal",sub:"ACC – Power 4 · Stanford, CA",abbr:"STAN",color:"#8C1515",status:"medium",method:"Contact Form / Mail",
+  {rank:50,team:"Stanford Cardinal",sub:"ACC – Power 4 · Stanford, CA",abbr:"STAN",color:"#8C1515",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://gostanford.com/sports/2016/6/20/contact-us.aspx' target='_blank'>GoStanford.com Contact Form</a><br>or Stanford Athletics, Arrillaga Family Sports Center, Stanford, CA 94305",
    evidence:"Stanford Athletics joined the ACC in 2024. Private university with a strong alumni giving culture — the 'Buck Shaw Award' athletic fund handles fan relations. No confirmed community thread receipts, but Stanford has a nationally recognized athletics program with significant resources. Contact form is active and well-documented.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"GoStanford Contact",url:"https://gostanford.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:60,team:"Virginia Cavaliers",sub:"ACC – Power 4 · Charlottesville, VA",abbr:"UVA",color:"#232D4B",status:"medium",method:"Contact Form / Mail",
+  {rank:51,team:"Virginia Cavaliers",sub:"ACC – Power 4 · Charlottesville, VA",abbr:"UVA",color:"#232D4B",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://virginiasports.com/sports/2016/6/20/contact-us.aspx' target='_blank'>VirginiaSports.com Contact Form</a><br>or UVA Athletics, McCue Center, Charlottesville, VA 22904",
    evidence:"Virginia Athletics ('Virginia Athletics Foundation') has a documented contact form. ACC school with basketball tradition (2019 National Champions) and an active community outreach program. No confirmed community thread physical receipts. Medium confidence based on documented contact path and program resources.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"VirginiaSports Contact",url:"https://virginiasports.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:61,team:"Pittsburgh Panthers",sub:"ACC – Power 4 · Pittsburgh, PA",abbr:"PITT",color:"#003594",status:"medium",method:"Contact Form / Mail",
+  {rank:52,team:"Pittsburgh Panthers",sub:"ACC – Power 4 · Pittsburgh, PA",abbr:"PITT",color:"#003594",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://pittsburghpanthers.com/sports/2016/6/20/contact-us.aspx' target='_blank'>PittsburghPanthers.com Contact Form</a><br>or Pitt Athletics, Petersen Events Center, Pittsburgh, PA 15260",
    evidence:"Pitt Athletics ('Panther Club') handles fan engagement. ACC school with strong football and basketball traditions. No confirmed community thread receipts, but Pitt receives lower fan mail volume than neighboring Penn State, giving the department capacity to respond to individual requests. Medium confidence.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"PittsburghPanthers Contact",url:"https://pittsburghpanthers.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:62,team:"Oregon State Beavers",sub:"Pac-12 · Corvallis, OR",abbr:"OST",color:"#DC4405",status:"medium",method:"Contact Form / Mail",
+  {rank:53,team:"Oregon State Beavers",sub:"Pac-12 · Corvallis, OR",abbr:"OST",color:"#DC4405",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://osubeavers.com/sports/2016/6/20/contact-us.aspx' target='_blank'>OSUBeavers.com Contact Form</a><br>or Oregon State Athletics, Reser Stadium, Corvallis, OR 97331",
    evidence:"Oregon State is one of only two Pac-12 holdovers (with Washington State) after 2024 conference realignment. OSU Athletics has a dedicated community outreach program. As a smaller Pacific Northwest program, fan mail volume is lower than the major programs, improving individual response odds. No confirmed community thread receipts but contact form is active.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"OSUBeavers Contact",url:"https://osubeavers.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:63,team:"TCU Horned Frogs",sub:"Big 12 – Power 4 · Fort Worth, TX",abbr:"TCU",color:"#4D1979",status:"medium",method:"Contact Form / Mail",
+  {rank:54,team:"TCU Horned Frogs",sub:"Big 12 – Power 4 · Fort Worth, TX",abbr:"TCU",color:"#4D1979",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://gofrogs.com/sports/2016/6/20/contact-us.aspx' target='_blank'>GoFrogs.com Contact Form</a><br>or TCU Athletics, Daniel-Meyer Coliseum, Fort Worth, TX 76129",
    evidence:"TCU reached the CFP National Championship in January 2023, dramatically raising the program's national profile. 'Frog Club' handles fan engagement. No confirmed community thread receipts, but the Big 12 position and recent national success suggests better resources for fan outreach. Medium confidence.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"GoFrogs Contact",url:"https://gofrogs.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:64,team:"Louisville Cardinals",sub:"ACC – Power 4 · Louisville, KY",abbr:"LOU",color:"#AD0000",status:"medium",method:"Contact Form / Mail",
+  {rank:55,team:"Louisville Cardinals",sub:"ACC – Power 4 · Louisville, KY",abbr:"LOU",color:"#AD0000",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://gocards.com/sports/2016/6/20/contact-us.aspx' target='_blank'>GoCards.com Contact Form</a><br>or Louisville Athletics, KFC Yum! Center, Louisville, KY 40202",
    evidence:"Louisville Athletics ('Cardinal Athletic Fund') handles fan engagement. Strong basketball and football traditions in the ACC. No confirmed community thread receipts. Medium-sized ACC program with documented contact path and active fan relations team.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"GoCards Contact",url:"https://gocards.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:65,team:"Kansas Jayhawks",sub:"Big 12 – Power 4 · Lawrence, KS",abbr:"KU",color:"#0051A5",status:"medium",method:"Contact Form / Mail",
+  {rank:56,team:"Kansas Jayhawks",sub:"Big 12 – Power 4 · Lawrence, KS",abbr:"KU",color:"#0051A5",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://kuathletics.com/sports/2016/6/20/contact-us.aspx' target='_blank'>KUAthletics.com Contact Form</a><br>or Kansas Athletics, Allen Fieldhouse, Lawrence, KS 66045",
    evidence:"Kansas Athletics ('Williams Fund') handles fan engagement. The Jayhawks are one of college basketball's most storied programs (2022 National Champions). Basketball-centric alumni network is exceptionally active. Fan letter requests to Allen Fieldhouse have historically received responses. No confirmed community thread receipts for physical mail but contact path is well-documented.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"KUAthletics Contact",url:"https://kuathletics.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:66,team:"Ole Miss Rebels",sub:"SEC – Power 4 · Oxford, MS",abbr:"MISS",color:"#CE1126",status:"medium",method:"Contact Form / Mail",
-   details:"<a href='https://olemisssports.com/sports/2016/6/20/contact-us.aspx' target='_blank'>OleMissSports.com Contact Form</a><br>or Ole Miss Athletics, Vaught-Hemingway Stadium, Oxford, MS 38677",
-   evidence:"Ole Miss Athletics ('Ole Miss Athletic Foundation') handles fan engagement. Grove-centric culture emphasizes strong fan connection. SEC school with a smaller fan mail volume than Alabama/Georgia gives better individual response odds. No confirmed community thread receipts; medium confidence based on contact path and program culture.",
-   sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"OleMissSports Contact",url:"https://olemisssports.com/sports/2016/6/20/contact-us.aspx"}]},
-
-  {rank:67,team:"Wake Forest Demon Deacons",sub:"ACC – Power 4 · Winston-Salem, NC",abbr:"WFU",color:"#9E7E38",status:"medium",method:"Contact Form / Mail",
+  {rank:57,team:"Wake Forest Demon Deacons",sub:"ACC – Power 4 · Winston-Salem, NC",abbr:"WFU",color:"#9E7E38",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://godeacs.com/sports/2016/6/20/contact-us.aspx' target='_blank'>GoDeacs.com Contact Form</a><br>or Wake Forest Athletics, Lawrence Joel Veterans Memorial Coliseum, Winston-Salem, NC 27109",
    evidence:"FreestuffTimes lists Wake Forest as a viable ACC contact. Private university with smaller program footprint than other ACC schools — lower fan mail volume means better individual response odds. No confirmed community thread receipts. Medium confidence.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"GoDeacs Contact",url:"https://godeacs.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:68,team:"Arizona Wildcats",sub:"Big 12 – Power 4 · Tucson, AZ",abbr:"ARIZ",color:"#003366",status:"medium",method:"Contact Form / Mail",
+  {rank:58,team:"Arizona Wildcats",sub:"Big 12 – Power 4 · Tucson, AZ",abbr:"ARIZ",color:"#003366",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://arizonawildcats.com/sports/2016/6/20/contact-us.aspx' target='_blank'>ArizonaWildcats.com Contact Form</a><br>or UA Athletics, McKale Center, Tucson, AZ 85721",
    evidence:"Arizona joined the Big 12 in 2024 after the Pac-12 collapse. 'Cat's Paw' athletic fund handles fan engagement. Transition to Big 12 brought new revenue streams and community outreach investment. No confirmed community thread receipts. Medium confidence based on documented contact and new conference resources.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"ArizonaWildcats Contact",url:"https://arizonawildcats.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:69,team:"Arizona State Sun Devils",sub:"Big 12 – Power 4 · Tempe, AZ",abbr:"ASU",color:"#8C1D40",status:"medium",method:"Contact Form / Mail",
+  {rank:59,team:"Arizona State Sun Devils",sub:"Big 12 – Power 4 · Tempe, AZ",abbr:"ASU",color:"#8C1D40",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://thesundevils.com/sports/2016/6/20/contact-us.aspx' target='_blank'>TheSunDevils.com Contact Form</a><br>or ASU Athletics, Desert Financial Arena, Tempe, AZ 85287",
    evidence:"Arizona State joined the Big 12 in 2024 and won the Big 12 Championship in December 2024. 'Sun Devil Club' handles fan engagement. New Big 12 revenue stream and heightened national profile post-championship. No confirmed community thread receipts. Medium confidence based on recent program surge and documented contact path.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"TheSunDevils Contact",url:"https://thesundevils.com/sports/2016/6/20/contact-us.aspx"}]},
 
   // ── POWER 4: REMAINING BIG TEN ────────────────────────────────────────
 
-  {rank:70,team:"Illinois Fighting Illini",sub:"Big Ten – Power 4 · Champaign, IL",abbr:"ILL",color:"#E84A27",status:"medium",method:"Contact Form / Mail",
+  {rank:60,team:"Illinois Fighting Illini",sub:"Big Ten – Power 4 · Champaign, IL",abbr:"ILL",color:"#E84A27",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://fightingillini.com/sports/2016/6/20/contact-us.aspx' target='_blank'>FightingIllini.com Contact Form</a><br>or Illinois Athletics, 1700 S Fourth St, Champaign, IL 61820",
    evidence:"FreestuffTimes lists Illinois as a viable Big Ten contact. Illinois Athletics ('Illini Fund') runs active community engagement programs. Multiple freebie aggregator sites list fightingillini.com/feedback as the request path. The AutographsTTM 2013 thread documented strong Big Ten response rates in general; Illinois fits the pattern of mid-tier programs being more responsive than flagship schools. No specific confirmed receipts but documented contact path is strong.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"FightingIllini Contact",url:"https://fightingillini.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:71,team:"Northwestern Wildcats",sub:"Big Ten – Power 4 · Evanston, IL",abbr:"NW",color:"#4E2A84",status:"medium",method:"Contact Form / Mail",
+  {rank:61,team:"Northwestern Wildcats",sub:"Big Ten – Power 4 · Evanston, IL",abbr:"NW",color:"#4E2A84",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://nusports.com/sports/2016/6/20/contact-us.aspx' target='_blank'>NUSports.com Contact Form</a><br>or Northwestern Athletics, Welsh-Ryan Arena, Evanston, IL 60208",
    evidence:"Northwestern Athletics ('Wildcat Fund') handles fan engagement. Private university with a small but loyal fanbase — lower fan mail volume than most Big Ten programs gives better individual response odds. New Ryan Field (opening 2026) signals major investment in fan experience. No confirmed community thread receipts, but the contact form is well-documented and Northwestern has historically shipped pocket schedules and media guides to fans on request.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"NUSports Contact",url:"https://nusports.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:72,team:"Michigan State Spartans",sub:"Big Ten – Power 4 · East Lansing, MI",abbr:"MSU",color:"#18453B",status:"medium",method:"Contact Form / Mail",
+  {rank:62,team:"Michigan State Spartans",sub:"Big Ten – Power 4 · East Lansing, MI",abbr:"MSU",color:"#18453B",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://msuspartans.com/sports/2016/6/20/contact-us.aspx' target='_blank'>MSUSpartans.com Contact Form</a><br>or MSU Athletics, Jenison Field House, East Lansing, MI 48824",
    evidence:"Status upgraded to medium based on AutographsTTM 2013 pattern: MSU is a Big Ten school of similar size to Indiana/Purdue/Rutgers, all of which confirmed physical receipts in that experiment. FreestuffTimes lists MSU contact. 'Spartan Fund' handles fan engagement. Lower volume than Michigan/Ohio State; MSU's fan services operation has historically distributed schedules and branded items to mail requests.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"MSUSpartans Contact",url:"https://msuspartans.com/sports/2016/6/20/contact-us.aspx"},{label:"AutographsTTM Fan Packs 2013",url:"https://autographsttm.weebly.com/fan-packs---2013.html"}]},
 
-  {rank:73,team:"Nebraska Cornhuskers (updated)",sub:"Big Ten – Power 4 · Lincoln, NE",abbr:"NEB",color:"#E41C38",status:"medium",method:"Kids Club (Free Tier) / Fan Zone / Email",
+  {rank:63,team:"Nebraska Cornhuskers",sub:"Big Ten – Power 4 · Lincoln, NE",abbr:"NEB",color:"#E41C38",status:"medium",method:"Kids Club (Free Tier) / Fan Zone / Email",
    details:"<b>Fan Zone & Kids Club:</b> <a href='https://huskers.com/sports/2016/6/20/contact-us.aspx' target='_blank'>huskers.com Contact</a> — includes 'Lost and Found' / Email Subscription / Game Watch Locations<br>Free JV Team Kids Club: <a href='mailto:kidsclub@huskers.com'>kidsclub@huskers.com</a> (age 2–6th grade)<br>or Nebraska Athletics, 1 Memorial Stadium Dr, Lincoln, NE 68588",
    evidence:"Nebraska's huskers.com Fan Zone page (confirmed active June 2026) lists contact, Kids Club, email subscription, and game watch locations. Free 'JV Team' Kids Club tier confirmed for kids through 6th grade; paid 'Lil' Huskers' ($25) includes a welcome pack with T-shirt and lanyard. Huskers.com Fan Zone is the main hub for fan engagement requests. Nebraska is one of the most engaged fan communities in college athletics with consistent contact paths.",
    sources:[{label:"huskers.com Fan Zone",url:"https://huskers.com/sports/football/schedule"},{label:"Nebraska Kids Club",url:"https://huskers.com/kidsclub"},{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"}]},
 
   // ── POWER 4: REMAINING ACC ─────────────────────────────────────────────
 
-  {rank:74,team:"NC State Wolfpack",sub:"ACC – Power 4 · Raleigh, NC",abbr:"NCST",color:"#CC0000",status:"medium",method:"Contact Form / Mail",
+  {rank:64,team:"NC State Wolfpack",sub:"ACC – Power 4 · Raleigh, NC",abbr:"NCST",color:"#CC0000",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://gopack.com/sports/2016/6/20/contact-us.aspx' target='_blank'>GoPack.com Contact Form</a><br>or NC State Athletics, 4600 Trinity Rd, Raleigh, NC 27607",
    evidence:"NC State Athletics ('Wolfpack Club') handles fan engagement. Mid-sized ACC program with a strong engineering and alumni network. Lower fan mail volume than Duke/Carolina gives better individual response odds. FreestuffTimes lists NC State as a viable ACC program. No confirmed community thread receipts; medium confidence.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"GoPack Contact",url:"https://gopack.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:75,team:"Syracuse Orange",sub:"ACC – Power 4 · Syracuse, NY",abbr:"SYR",color:"#F76900",status:"medium",method:"Contact Form / Mail",
+  {rank:65,team:"Syracuse Orange",sub:"ACC – Power 4 · Syracuse, NY",abbr:"SYR",color:"#F76900",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://cuse.com/sports/2016/6/20/contact-us.aspx' target='_blank'>Cuse.com Contact Form</a><br>or Syracuse Athletics, Carrier Dome, Syracuse, NY 13244",
    evidence:"Syracuse Athletics ('Syracuse Varsity Club') handles fan engagement. Orange fans have a strong basketball-focused community with documented fan outreach culture. No confirmed community thread receipts. Medium confidence based on contact path and Northeast fan base demographics.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"Cuse Contact",url:"https://cuse.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:76,team:"Boston College Eagles",sub:"ACC – Power 4 · Chestnut Hill, MA",abbr:"BC",color:"#8B0000",status:"medium",method:"Contact Form / Mail",
+  {rank:66,team:"Boston College Eagles",sub:"ACC – Power 4 · Chestnut Hill, MA",abbr:"BC",color:"#8B0000",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://bceagles.com/sports/2016/6/20/contact-us.aspx' target='_blank'>BCEagles.com Contact Form</a><br>or BC Athletics, Conte Forum, Chestnut Hill, MA 02467",
    evidence:"Boston College Athletics ('Eagles Fund') handles fan engagement. Private Jesuit university in Boston metro with a strong alumni network. Lower fan mail volume than other ACC programs. AutographsTTM 2013 lists Boston College as a responsive Eastern school. Medium confidence based on smaller program size and documented contact path.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"BCEagles Contact",url:"https://bceagles.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:77,team:"Miami Hurricanes",sub:"ACC – Power 4 · Coral Gables, FL",abbr:"MIA",color:"#F47321",status:"medium",method:"Contact Form / Mail",
+  {rank:67,team:"Miami Hurricanes",sub:"ACC – Power 4 · Coral Gables, FL",abbr:"MIA",color:"#F47321",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://hurricanesports.com/sports/2016/6/20/contact-us.aspx' target='_blank'>HurricaneSports.com Contact Form</a><br>or Miami Athletics, Watsco Center, Coral Gables, FL 33146",
    evidence:"Miami Athletics ('Hurricane Club') handles fan engagement. Strong football tradition and national brand. SEC-style fan culture in South Florida. FreestuffTimes lists Miami as a viable ACC program. No confirmed community thread receipts. Medium confidence; contact form and mailing address are active and documented.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"HurricaneSports Contact",url:"https://hurricanesports.com/sports/2016/6/20/contact-us.aspx"}]},
 
   // ── POWER 4: REMAINING SEC ─────────────────────────────────────────────
 
-  {rank:78,team:"Georgia Bulldogs (updated)",sub:"SEC – Power 4 · Athens, GA",abbr:"UGA",color:"#BA0C2F",status:"medium",method:"Contact Form / Mail",
+  {rank:68,team:"Georgia Bulldogs",sub:"SEC – Power 4 · Athens, GA",abbr:"UGA",color:"#BA0C2F",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://georgiadogs.com/sports/2016/6/20/contact-us.aspx' target='_blank'>GeorgiaDogs.com Contact Form</a><br>or Georgia Athletics, 100 Sanford Dr, Athens, GA 30602<br><small>Bulldog Club: <a href='mailto:bulldogclub@athletics.uga.edu'>bulldogclub@athletics.uga.edu</a></small>",
    evidence:"FreestuffTimes NCAA list and community documentation. Back-to-back national champions (2021, 2022). Bulldog Club email bulldogclub@athletics.uga.edu is the documented fan contact route. High fan mail volume from back-to-back championships may reduce response rate for non-members. Medium confidence — try the Bulldog Club email directly for best odds.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"GeorgiaDogs Contact",url:"https://georgiadogs.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:79,team:"South Carolina Gamecocks (updated)",sub:"SEC – Power 4 · Columbia, SC",abbr:"SC",color:"#73000A",status:"medium",method:"Contact Form",
+  {rank:69,team:"South Carolina Gamecocks",sub:"SEC – Power 4 · Columbia, SC",abbr:"SC",color:"#73000A",status:"medium",method:"Contact Form",
    details:"<a href='https://gamecocksonline.com/sports/2016/6/20/contact-us.aspx' target='_blank'>GamecocksOnline.com Contact Form</a><br>or Gamecock Club, 1304 Heyward St, Columbia, SC 29208<br><small>Email: <a href='mailto:gacock@athletics.sc.edu'>gacock@athletics.sc.edu</a></small>",
    evidence:"FreestuffTimes lists South Carolina as a viable SEC contact. The Dawn Staley women's basketball dynasty has dramatically elevated the program's national profile and fan engagement budget. No confirmed community thread receipts. Medium confidence — women's basketball success may make the athletics department more inclined to respond to general fan requests.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"GamecocksOnline Contact",url:"https://gamecocksonline.com/sports/2016/6/20/contact-us.aspx"}]},
 
   // ── NOTABLE G5 / MID-MAJOR: ADDITIONAL HIGH + MEDIUM ──────────────────
 
-  {rank:80,team:"UCF Knights",sub:"Big 12 – Power 4 · Orlando, FL",abbr:"UCF",color:"#BA9B37",status:"medium",method:"Contact Form / Mail",
+  {rank:70,team:"UCF Knights",sub:"Big 12 – Power 4 · Orlando, FL",abbr:"UCF",color:"#BA9B37",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://ucfathletics.com/sports/2016/6/20/contact-us.aspx' target='_blank'>UCFAthletics.com Contact Form</a><br>or UCF Athletics, Addition Financial Arena, Orlando, FL 32816",
    evidence:"UCF joined the Big 12 in 2023, bringing Power 4 resources to what was previously a G5 program. 'Knight Nation' is one of the most organized fan communities in the conference. UCF athletics dramatically expanded its fan outreach budget post-conference move. No confirmed community thread receipts; medium confidence based on contact path and new conference resources.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"UCF Athletics Contact",url:"https://ucfathletics.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:81,team:"Houston Cougars",sub:"Big 12 – Power 4 · Houston, TX",abbr:"HOU",color:"#C8102E",status:"medium",method:"Contact Form / Mail",
+  {rank:71,team:"Houston Cougars",sub:"Big 12 – Power 4 · Houston, TX",abbr:"HOU",color:"#C8102E",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://uhcougars.com/sports/2016/6/20/contact-us.aspx' target='_blank'>UHCougars.com Contact Form</a><br>or Houston Athletics, Guy V. Lewis Development Center, Houston, TX 77204",
    evidence:"Houston joined the Big 12 in 2023. 'Cougar Pride' fan engagement program was significantly expanded with new conference resources. No confirmed community thread receipts but contact form is well-documented and Big 12 revenue increase (2024 media deal) gives the athletics department substantially more fan outreach capacity than its AAC years.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"UHCougars Contact",url:"https://uhcougars.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:82,team:"SMU Mustangs",sub:"ACC – Power 4 · Dallas, TX",abbr:"SMU",color:"#0033A0",status:"medium",method:"Contact Form / Mail",
+  {rank:72,team:"SMU Mustangs",sub:"ACC – Power 4 · Dallas, TX",abbr:"SMU",color:"#0033A0",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://smumustangs.com/sports/2016/6/20/contact-us.aspx' target='_blank'>SMUMustangs.com Contact Form</a><br>or SMU Athletics, Moody Coliseum, Dallas, TX 75275",
    evidence:"SMU joined the ACC in 2024, their first Power 4 membership since leaving the SWC. 'Mustang Club' handles fan engagement. Private university in Dallas with strong alumni network and generous donor culture. No confirmed community thread receipts. Medium confidence based on new conference resources and documented contact path.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"SMUMustangs Contact",url:"https://smumustangs.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:83,team:"Tulane Green Wave",sub:"AAC · New Orleans, LA",abbr:"TUL",color:"#006341",status:"medium",method:"Contact Form / Mail",
+  {rank:73,team:"Tulane Green Wave",sub:"AAC · New Orleans, LA",abbr:"TUL",color:"#006341",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://tulanegreenwave.com/sports/2016/6/20/contact-us.aspx' target='_blank'>TulaneGreenWave.com Contact Form</a><br>or Tulane Athletics, Yulman Stadium, New Orleans, LA 70118",
    evidence:"Tulane won the 2022 Cotton Bowl Classic (CFP bowl) and reached the AAC Championship in 2024, dramatically elevating the program's national profile. 'Greenbackers' booster club and active fan engagement. No confirmed community thread receipts, but New Orleans fan culture is extremely strong and Tulane athletics has expanded outreach considerably with recent success.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"TulaneGreenWave Contact",url:"https://tulanegreenwave.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:84,team:"Memphis Tigers",sub:"AAC · Memphis, TN",abbr:"MEM",color:"#003087",status:"medium",method:"Contact Form / Mail",
+  {rank:74,team:"Memphis Tigers",sub:"AAC · Memphis, TN",abbr:"MEM",color:"#003087",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://gotigersgo.com/sports/2016/6/20/contact-us.aspx' target='_blank'>GoTigersGo.com Contact Form</a><br>or Memphis Athletics, FedExForum, Memphis, TN 38152",
    evidence:"Memphis Athletics ('Tiger Scholarship Fund') handles fan engagement. Strong basketball tradition under Penny Hardaway. No confirmed community thread receipts. Lower fan mail volume than Power 4 programs in the region improves individual response odds. Medium confidence based on active contact path and fan culture.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"GoTigersGo Contact",url:"https://gotigersgo.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:85,team:"App State Mountaineers",sub:"Sun Belt · Boone, NC",abbr:"APP",color:"#000000",status:"medium",method:"Contact Form / Mail",
+  {rank:75,team:"App State Mountaineers",sub:"Sun Belt · Boone, NC",abbr:"APP",color:"#000000",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://appstatesports.com/sports/2016/6/20/contact-us.aspx' target='_blank'>AppStateSports.com Contact Form</a><br>or App State Athletics, Holmes Convocation Center, Boone, NC 28608",
    evidence:"Appalachian State is one of the most successful Sun Belt programs, with multiple New Year's Six bowl bids and the famous 2007 Michigan upset. Small-college fan culture with very low fan mail volume gives excellent individual response odds. Sun Belt schools in general show higher per-capita response rates in community experiments than Power 4 programs due to lower volume.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"AppStateSports Contact",url:"https://appstatesports.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:86,team:"Georgia Southern Eagles",sub:"Sun Belt · Statesboro, GA",abbr:"GSU",color:"#003366",status:"medium",method:"Contact Form / Mail",
+  {rank:76,team:"Georgia Southern Eagles",sub:"Sun Belt · Statesboro, GA",abbr:"GSU",color:"#003366",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://gseagles.com/sports/2016/6/20/contact-us.aspx' target='_blank'>GSEagles.com Contact Form</a><br>or Georgia Southern Athletics, Paulson Stadium, Statesboro, GA 30458",
    evidence:"Georgia Southern is one of the most storied FCS/Sun Belt programs with a record 6 FCS national championships. Very low fan mail volume gives strong individual response odds. Sun Belt school with a passionate regional fanbase and an athletics department known for community engagement. Medium confidence.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"GSEagles Contact",url:"https://gseagles.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:87,team:"James Madison Dukes",sub:"Sun Belt · Harrisonburg, VA",abbr:"JMU",color:"#450084",status:"medium",method:"Contact Form / Mail",
+  {rank:77,team:"James Madison Dukes",sub:"Sun Belt · Harrisonburg, VA",abbr:"JMU",color:"#450084",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://jmusports.com/sports/2016/6/20/contact-us.aspx' target='_blank'>JMUSports.com Contact Form</a><br>or JMU Athletics, Bridgeforth Stadium, Harrisonburg, VA 22807",
    evidence:"JMU moved from FCS to FBS (Sun Belt) in 2023 and was ranked in the top 25 in their very first FBS season. Former FCS dynasty (multiple national titles). Very low fan mail volume as a recent FBS member — excellent individual response odds. The athletics department is actively growing its fan outreach as it builds a new FBS identity. Medium confidence.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"JMUSports Contact",url:"https://jmusports.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:88,team:"Liberty Flames",sub:"FBS Independent · Lynchburg, VA",abbr:"LIB",color:"#002868",status:"medium",method:"Contact Form / Mail",
+  {rank:78,team:"Liberty Flames",sub:"FBS Independent · Lynchburg, VA",abbr:"LIB",color:"#002868",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://libertyflames.com/sports/2016/6/20/contact-us.aspx' target='_blank'>LibertyFlames.com Contact Form</a><br>or Liberty Athletics, Williams Stadium, Lynchburg, VA 24515",
    evidence:"Liberty is one of the fastest-growing FBS programs, with consistent top-25 appearances. Christian university with one of the largest student bodies in the country — active community outreach culture. No confirmed community thread receipts but FBS independent status with moderate fan mail volume improves response odds. Medium confidence.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"LibertyFlames Contact",url:"https://libertyflames.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:89,team:"Navy Midshipmen",sub:"FBS Independent · Annapolis, MD",abbr:"NAVY",color:"#00205B",status:"medium",method:"Contact Form / Mail",
+  {rank:79,team:"Navy Midshipmen",sub:"FBS Independent · Annapolis, MD",abbr:"NAVY",color:"#00205B",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://navysports.com/sports/2016/6/20/contact-us.aspx' target='_blank'>NavySports.com Contact Form</a><br>or Naval Academy Athletics, Alumni Hall, Annapolis, MD 21402",
    evidence:"The Naval Academy has a unique and passionate national following. Navy athletics has a strong tradition of fan mail engagement — the Academy actively cultivates civilian supporters nationwide. No confirmed community thread receipts for physical packs, but Navy's military ethos encourages personal correspondence responses. Medium confidence.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"NavySports Contact",url:"https://navysports.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:90,team:"Army Black Knights",sub:"FBS Independent · West Point, NY",abbr:"ARMY",color:"#000000",status:"medium",method:"Contact Form / Mail",
+  {rank:80,team:"Army Black Knights",sub:"FBS Independent · West Point, NY",abbr:"ARMY",color:"#000000",status:"medium",method:"Contact Form / Mail",
    details:"<a href='https://goarmywestpoint.com/sports/2016/6/20/contact-us.aspx' target='_blank'>GoArmyWestPoint.com Contact Form</a><br>or Army Athletics, Michie Stadium, West Point, NY 10996",
    evidence:"West Point athletics has a deeply engaged national fan base. Like Navy, the Army Black Knights actively cultivate civilian supporters. Contact form is well-documented and the athletics department at West Point has a documented culture of responding to fan correspondence. Medium confidence based on military culture of personal engagement.",
    sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"GoArmyWestPoint Contact",url:"https://goarmywestpoint.com/sports/2016/6/20/contact-us.aspx"}]},
 
   // ── ADDITIONAL FCS / SMALLER SCHOOLS (HIGH CONFIDENCE) ────────────────
 
-  {rank:91,team:"Northern Iowa Panthers",sub:"Missouri Valley (FCS) · Cedar Falls, IA",abbr:"UNI",color:"#4B116F",status:"high",method:"Contact Form / Mail",
+  {rank:81,team:"Northern Iowa Panthers",sub:"Missouri Valley (FCS) · Cedar Falls, IA",abbr:"UNI",color:"#4B116F",status:"high",method:"Contact Form / Mail",
    details:"<a href='https://unipanthers.com/sports/2016/6/20/contact-us.aspx' target='_blank'>UNIPanthers.com Contact Form</a><br>or UNI Athletics, McLeod Center, Cedar Falls, IA 50614",
    evidence:"FCS schools in the Missouri Valley Conference have consistently been among the most responsive in community fan pack experiments. UNI is the home conference of multiple community-documented successes. The MVFC has a culture of active fan engagement with very low individual fan mail volume. FCS schools like Eastern Illinois (documented receipt) and Montana (documented receipt) are in comparable conferences — strong confidence that similar-tier MVFC schools respond well.",
    sources:[{label:"AutographsTTM Fan Packs 2013 (comparable FCS schools)",url:"https://autographsttm.weebly.com/fan-packs---2013.html"},{label:"UNIPanthers Contact",url:"https://unipanthers.com/sports/2016/6/20/contact-us.aspx"}]},
 
-  {rank:92,team:"South Dakota State Jackrabbits",sub:"Missouri Valley (FCS) · Brookings, SD",abbr:"SDST",color:"#0033A0",status:"high",method:"Contact Form / Mail",
+  {rank:82,team:"South Dakota State Jackrabbits",sub:"Missouri Valley (FCS) · Brookings, SD",abbr:"SDST",color:"#0033A0",status:"high",method:"Contact Form / Mail",
    details:"<a href='https://gojacks.com/sports/2016/6/20/contact-us.aspx' target='_blank'>GoJacks.com Contact Form</a><br>or SDSU Athletics, Frost Arena, Brookings, SD 57007",
    evidence:"South Dakota State has won multiple FCS national championships (2021, 2022, 2023, 2024) — the most dominant program in FCS history. Small school with extraordinary fan engagement culture. Very low fan mail volume. Community experiments consistently show FCS powerhouses like SDSU, Montana, and Eastern Illinois are among the most generous small-school responders. High confidence based on FCS pattern and national championship culture.",
    sources:[{label:"AutographsTTM Fan Packs 2013 (FCS pattern)",url:"https://autographsttm.weebly.com/fan-packs---2013.html"},{label:"GoJacks Contact",url:"https://gojacks.com/sports/2016/6/20/contact-us.aspx"}]},
 
   // ── LOW CONFIDENCE ────────────────────────────────────────────────────
 
-  {rank:93,team:"Kentucky Wildcats (note)",sub:"SEC – Power 4 · Lexington, KY",abbr:"UK2",color:"#0033A0",status:"low",method:"Contact Form (updated entry)",
-   details:"<a href='https://ukathletics.com/sports/2016/6/20/contact-us.aspx' target='_blank'>UKAthletics.com Contact Form</a><br><small>Note: duplicate entry — see rank #11 for full details.</small>",
-   evidence:"See rank #11 entry above for full Kentucky evidence. This entry is a placeholder noting UK was previously listed at two ranks during data expansion. Refer to rank #11 for the definitive UK entry.",
-   sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"}]},
-
-  {rank:94,team:"Oregon Ducks (updated)",sub:"Big Ten – Power 4 · Eugene, OR",abbr:"ORE2",color:"#154733",status:"high",method:"Contact Form / Email",
+  {rank:83,team:"Oregon Ducks",sub:"Big Ten – Power 4 · Eugene, OR",abbr:"ORE2",color:"#154733",status:"high",method:"Contact Form / Email",
    details:"<a href='https://goducks.com/sports/2016/6/20/contact-us.aspx' target='_blank'>GoDucks.com Contact Form</a><br>or <a href='mailto:athletics@uoregon.edu'>athletics@uoregon.edu</a><br>or Oregon Athletics, 2727 Leo Harris Pkwy, Eugene, OR 97401",
    evidence:"HFBoards College Fan Pack thread (original post, 2016): Oregon was the ONLY college that successfully responded to the OP's initial fan pack attempt — directly inspiring the creation of the HFBoards college fan pack thread. Oregon joined the Big Ten in 2024, dramatically increasing resources. The Nike partnership (Phil Knight/Oregon) ensures a strong branded-merchandise culture. One of the most reliably confirmed college programs for fan pack responses.",
    redditReceipts:[{source:"HFBoards – College Football Fan Packs Thread (original post)",url:"https://forums.hfboards.com/threads/college-football-fan-packs.2065989/",desc:"Original post states Oregon was the only college to successfully respond to the OP's fan pack requests — directly created this community discussion thread."}],
-   sources:[{label:"HFBoards – College Football Fan Packs Thread",url:"https://forums.hfboards.com/threads/college-football-fan-packs.2065989/"},{label:"GoDucks Contact",url:"https://goducks.com/sports/2016/6/20/contact-us.aspx"}]}
+   sources:[{label:"HFBoards – College Football Fan Packs Thread",url:"https://forums.hfboards.com/threads/college-football-fan-packs.2065989/"},{label:"GoDucks Contact",url:"https://goducks.com/sports/2016/6/20/contact-us.aspx"}]},
+
+  // ── ADDITIONAL VERIFIED RECEIPTS (AutographsTTM 2012 + new sources) ──
+
+  {rank:84,team:"Washington Huskies",sub:"Big Ten – Power 4 · Seattle, WA",abbr:"UW",color:"#4B2E83",status:"high",method:"Contact Form / Mail",
+   details:"<a href='https://gohuskies.com/sports/2016/6/20/contact-us.aspx' target='_blank'>GoHuskies.com Contact Form</a><br>or Washington Athletics, 3910 Montlake Blvd NE, Seattle, WA 98195",
+   evidence:"AutographsTTM (2012): emailed Washington Huskies via official athletic site and in just 3 days received a football magnet schedule and schedule cards — one of the fastest turnarounds in the entire 2012 experiment. 3-day response is exceptional and signals a lean, attentive fan services team. Washington joined the Big Ten in 2024, bringing substantially more resources. Upgraded to High based on the 2012 confirmed receipt.",
+   redditReceipts:[{source:"AutographsTTM Fan Packs 2012",url:"https://autographsttm.weebly.com/fan-packs---2012.html",desc:"Received: football magnet schedule + schedule cards in just 3 days. One of the fastest college turnarounds in the entire 2012 fan pack experiment."}],
+   sources:[{label:"AutographsTTM Fan Packs 2012",url:"https://autographsttm.weebly.com/fan-packs---2012.html"},{label:"GoHuskies Contact",url:"https://gohuskies.com/sports/2016/6/20/contact-us.aspx"},{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"}]},
+
+  {rank:85,team:"Ole Miss Rebels",sub:"SEC – Power 4 · Oxford, MS",abbr:"MISS",color:"#CE1126",status:"high",method:"Contact Form / Mail",
+   details:"<a href='https://olemisssports.com/sports/2016/6/20/contact-us.aspx' target='_blank'>OleMissSports.com Contact Form</a><br>or Ole Miss Athletics, Vaught-Hemingway Stadium, Oxford, MS 38677",
+   evidence:"AutographsTTM (2012): emailed Ole Miss via website and received a HUMONGOUS envelope in the mail — described in all-caps by the author, indicating an exceptionally large and impressive pack. This is the strongest language used for any college response in the 2012 experiment. Upgraded to High based on confirmed receipt. Grove-centric culture emphasizes strong fan connection and SEC-level funding supports large fan engagement operations.",
+   redditReceipts:[{source:"AutographsTTM Fan Packs 2012",url:"https://autographsttm.weebly.com/fan-packs---2012.html",desc:"Received: described as a 'HUMONGOUS envelope' — the most emphatic description of any college pack in the 2012 experiment. Author used all-caps to convey the impressive size of the response."}],
+   sources:[{label:"AutographsTTM Fan Packs 2012",url:"https://autographsttm.weebly.com/fan-packs---2012.html"},{label:"OleMissSports Contact",url:"https://olemisssports.com/sports/2016/6/20/contact-us.aspx"},{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"}]},
+
+  {rank:86,team:"Marquette Golden Eagles",sub:"Big East (Basketball-only D1) · Milwaukee, WI",abbr:"MU",color:"#003366",status:"high",method:"Contact Form / Email",
+   details:"<a href='https://gomarquette.com/sports/2016/6/20/contact-us.aspx' target='_blank'>GoMarquette.com Contact Form</a><br>or <a href='mailto:athletics@marquette.edu'>athletics@marquette.edu</a><br>or Marquette Athletics, Al McGuire Center, Milwaukee, WI 53233",
+   evidence:"AutographsTTM (2012): emailed Marquette via website and in just one week received 3 full sets of perforated basketball cards plus a generous supply of temporary tattoos — a quick, fun multi-item pack. Small private university with low fan mail volume; their basketball program has a national following from the Al McGuire / Dwyane Wade era. One of the better D1 basketball-only programs for fan pack responses.",
+   redditReceipts:[{source:"AutographsTTM Fan Packs 2012",url:"https://autographsttm.weebly.com/fan-packs---2012.html",desc:"Received: 3 sets of perforated basketball cards + temporary tattoos. In approximately one week from email contact."}],
+   sources:[{label:"AutographsTTM Fan Packs 2012",url:"https://autographsttm.weebly.com/fan-packs---2012.html"},{label:"GoMarquette Contact",url:"https://gomarquette.com/sports/2016/6/20/contact-us.aspx"}]},
+
+  // ── NEW MEDIUM: REMAINING NOTABLE PROGRAMS ─────────────────────────────
+
+  {rank:87,team:"Coastal Carolina Chanticleers",sub:"Sun Belt · Conway, SC",abbr:"CCU",color:"#006F51",status:"medium",method:"Contact Form / Mail",
+   details:"<a href='https://goccusports.com/sports/2016/6/20/contact-us.aspx' target='_blank'>GoCCUSports.com Contact Form</a><br>or CCU Athletics, Brooks Stadium, Conway, SC 29528",
+   evidence:"Coastal Carolina exploded onto the national scene with a 11-0 regular season in 2020 and Sun Belt Championship. 'Teal Nation' fan culture is extremely active. Small school with very low fan mail volume — one of the best combinations of active fan engagement culture + low competition for responses. Sun Belt Conference schools in community experiments consistently outperform expectations. Medium confidence.",
+   sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"GoCCUSports Contact",url:"https://gccusports.com/sports/2016/6/20/contact-us.aspx"}]},
+
+  {rank:88,team:"Western Kentucky Hilltoppers",sub:"C-USA · Bowling Green, KY",abbr:"WKU",color:"#C60C30",status:"medium",method:"Contact Form / Mail",
+   details:"<a href='https://wkusports.com/sports/2016/6/20/contact-us.aspx' target='_blank'>WKUSports.com Contact Form</a><br>or WKU Athletics, E.A. Diddle Arena, Bowling Green, KY 42101",
+   evidence:"WKU is one of the most successful mid-major programs over the past decade, with consistent bowl appearances. 'Big Red Nation' fan culture is active and engaged. Conference USA school with moderate fan mail volume. No confirmed community thread physical receipts but contact form is well-documented. Medium confidence.",
+   sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"WKUSports Contact",url:"https://wkusports.com/sports/2016/6/20/contact-us.aspx"}]},
+
+  {rank:89,team:"Air Force Falcons",sub:"Mountain West (FBS Independent) · USAFA, CO",abbr:"AFA",color:"#003087",status:"medium",method:"Contact Form / Mail",
+   details:"<a href='https://goairforcefalcons.com/sports/2016/6/20/contact-us.aspx' target='_blank'>GoAirForceFalcons.com Contact Form</a><br>or USAFA Athletics, Clune Arena, USAF Academy, CO 80840",
+   evidence:"Like Army and Navy, the Air Force Academy actively cultivates civilian supporters through its athletics department. Military service academy culture emphasizes personal correspondence and community engagement. Very low fan mail volume relative to civilian programs. No confirmed community thread receipts but strong expectation of response based on Navy/Army pattern and service academy culture. Medium confidence.",
+   sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"GoAirForceFalcons Contact",url:"https://goairforcefalcons.com/sports/2016/6/20/contact-us.aspx"}]},
+
+  {rank:90,team:"Middle Tennessee Blue Raiders",sub:"C-USA · Murfreesboro, TN",abbr:"MTSU",color:"#0066CC",status:"medium",method:"Contact Form / Mail",
+   details:"<a href='https://goblueraiders.com/sports/2016/6/20/contact-us.aspx' target='_blank'>GoBlueRaiders.com Contact Form</a><br>or MTSU Athletics, Murphy Center, Murfreesboro, TN 37132",
+   evidence:"Middle Tennessee is a well-established C-USA program known for several notable upsets over Power 4 teams (Michigan State 2016, etc.). 'Blue Raider Nation' fan culture. Low fan mail volume as a mid-major program. FreestuffTimes lists MTSU as a viable contact. Medium confidence based on contact path and program culture.",
+   sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"GoBlueRaiders Contact",url:"https://goblueraiders.com/sports/2016/6/20/contact-us.aspx"}]},
+
+  {rank:91,team:"Troy Trojans",sub:"Sun Belt · Troy, AL",abbr:"TROY",color:"#8B0000",status:"medium",method:"Contact Form / Mail",
+   details:"<a href='https://troytrojans.com/sports/2016/6/20/contact-us.aspx' target='_blank'>TroyTrojans.com Contact Form</a><br>or Troy Athletics, Veterans Memorial Stadium, Troy, AL 36082",
+   evidence:"Troy is one of the Sun Belt's most consistently successful programs with multiple conference championships and bowl wins. Very low fan mail volume as a small Alabama school. Sun Belt pattern in community experiments favors smaller programs with active fan cultures. Medium confidence based on contact path and Sun Belt responsiveness pattern.",
+   sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"TroyTrojans Contact",url:"https://troytrojans.com/sports/2016/6/20/contact-us.aspx"}]},
+
+  {rank:92,team:"UAB Blazers",sub:"C-USA · Birmingham, AL",abbr:"UAB",color:"#1E6B52",status:"medium",method:"Contact Form / Mail",
+   details:"<a href='https://uabsports.com/sports/2016/6/20/contact-us.aspx' target='_blank'>UABSports.com Contact Form</a><br>or UAB Athletics, Bartow Arena, Birmingham, AL 35294",
+   evidence:"UAB famously disbanded and reinstated its football program (2014–2017) — the resurrection created an enormous surge in fan loyalty and engagement. 'Blazer Nation' is one of the most passionate smaller-school fanbases. C-USA conference with low fan mail volume. Medium confidence based on unique fan culture and documented contact path.",
+   sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"UABSports Contact",url:"https://uabsports.com/sports/2016/6/20/contact-us.aspx"}]},
+
+  {rank:93,team:"UNLV Runnin' Rebels",sub:"Mountain West · Las Vegas, NV",abbr:"UNLV",color:"#CF0A2C",status:"medium",method:"Contact Form / Mail",
+   details:"<a href='https://unlvrebels.com/sports/2016/6/20/contact-us.aspx' target='_blank'>UNLVRebels.com Contact Form</a><br>or UNLV Athletics, Thomas & Mack Center, Las Vegas, NV 89154",
+   evidence:"UNLV is experiencing a major athletics resurgence with a new $600M football stadium (Allegiant) and rising basketball program. Las Vegas-based school with a growing national profile. Mountain West school with low-to-moderate fan mail volume. Medium confidence based on recent institutional investment and documented contact path.",
+   sources:[{label:"FreestuffTimes – NCAA Fan Packs",url:"https://www.freestufftimes.com/free-sports-teams-fan-packs"},{label:"UNLVRebels Contact",url:"https://unlvrebels.com/sports/2016/6/20/contact-us.aspx"}]}
 ];
 
 // ── STATE ─────────────────────────────────────────────────────────────
